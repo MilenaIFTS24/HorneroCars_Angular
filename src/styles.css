@@ -1,1 +1,8 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+    --primer-color: #E8751A; /*Botones principales y enlaces de texto*/
+    --segundo-color: #D46B12; /*Hover e interacción de botones principales*/
+    --tercer-color: #222831; /*Nav y footer*/
+    --cuarto-color: #F8F9FA; /*Fondo principal*/
+    --quinto-color: #FFFFFF; /*Color de texto en botones principales, nav y footer*/
+    --sexto-color: #EEEEEE; /*Bordes y fondos secundarios*/
+}
