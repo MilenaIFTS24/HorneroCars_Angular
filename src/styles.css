@@ -1,3 +1,19 @@
+/*Fuentes*/
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Numans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Numans&display=swap');
+.lato-regular {  /*PARRAFOS*/
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.lato-bold { /*NAV Y BOTONES*/
+  font-family: "Lato", sans-serif;
+  font-weight: 800;
+  font-style: normal;
+}
+
+/*Colores*/
 :root {
     --primer-color: #E8751A; /*Botones principales y enlaces de texto*/
     --segundo-color: #D46B12; /*Hover e interacción de botones principales*/
