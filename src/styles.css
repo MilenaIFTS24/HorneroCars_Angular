@@ -13,6 +13,12 @@
   font-style: normal;
 }
 
+.lato-bold {   /*TITULO*/
+  font-family: "Lato", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
 /*Colores*/
 :root {
     --primer-color: #E8751A; /*Botones principales y enlaces de texto*/
