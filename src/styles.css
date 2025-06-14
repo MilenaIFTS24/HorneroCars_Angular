@@ -5,4 +5,11 @@
     --cuarto-color: #F8F9FA; /*Fondo principal*/
     --quinto-color: #FFFFFF; /*Color de texto en botones principales, nav y footer*/
     --sexto-color: #EEEEEE; /*Bordes y fondos secundarios*/
+    --hornero-enlace-secundario: #0056b3; /* Enlace secundario */
+    --hornero-enlace-secundario-hover: #004494; /*Hover de enlace secundario*/
+
+     /* Colores de Feedback (UX) */
+    --hornero-exito: #198754;      
+    --hornero-error: #dc3545;       
+    --hornero-advertencia: #ffc107;
 }
