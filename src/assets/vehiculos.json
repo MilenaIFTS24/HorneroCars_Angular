@@ -1,0 +1,213 @@
+{
+    "vehiculos": [
+        {
+            "id": 1,
+            "marca": "Toyota",
+            "modelo": "Corolla",
+            "categoria": "sedan confort",
+            "descripcion_corta": "El equilibrio perfecto entre elegancia, confort y una eficiencia legendaria. Ideal para viajes de negocios o placer.",
+            "precio_dia": 18000,
+            "imagen": "https://www.motorwebargentina.com/wp-content/uploads/2020/02/NUEVO-COROLLA-XEI.jpg",
+            "disponible": true,
+            "caracteristicas": {
+                "puertas": 4,
+                "plazas": 5,
+                "transmision": "Automática",
+                "maletero": "2 valijas grandes, 1 pequeña",
+                "grupo": "B",
+                "matricula": "AB123CD"
+            },
+            "tags": [
+                "Popular",
+                "Bajo Consumo",
+                "Seguridad Avanzada"
+            ],
+            "requisitos": {
+                "edad_minima": 21
+            }
+        },
+        {
+            "id": 2,
+            "marca": "Fiat",
+            "modelo": "Cronos",
+            "categoria": "economico",
+            "descripcion_corta": "Ágil, moderno y con el baúl más grande de su categoría. El auto preferido por los argentinos para recorrer la ciudad.",
+            "precio_dia": 16000,
+            "imagen": "https://gower.ar/wp-content/uploads/2023/02/Copia-de-Cronos-2022.jpg",
+            "disponible": true,
+            "caracteristicas": {
+                "puertas": 4,
+                "plazas": 5,
+                "transmision": "Manual",
+                "maletero": "3 valijas grandes",
+                "grupo": "A",
+                "matricula": "CD456EF"
+            },
+            "tags": [
+                "Más Vendido",
+                "Gran Baúl",
+                "Económico"
+            ],
+            "requisitos": {
+                "edad_minima": 18
+            }
+        },
+        {
+            "id": 3,
+            "marca": "Jeep",
+            "modelo": "Renegade",
+            "categoria": "suv",
+            "descripcion_corta": "El SUV compacto con el auténtico espíritu Jeep. Listo para la aventura urbana y los escapes de fin de semana.",
+            "precio_dia": 25000,
+            "imagen": "https://autoenaccion.com.ar/wp-content/uploads/2023/03/jeep-renegade-serie-s-gris.jpg",
+            "disponible": true,
+            "caracteristicas": {
+                "puertas": 5,
+                "plazas": 5,
+                "transmision": "Automática",
+                "maletero": "1 valija grande, 2 pequeñas",
+                "grupo": "C",
+                "matricula": "GH789IJ"
+            },
+            "tags": [
+                "Aventura",
+                "SUV Compacto",
+                "Diseño Icónico"
+            ],
+            "requisitos": {
+                "edad_minima": 21
+            }
+        },
+        {
+            "id": 4,
+            "marca": "Fiat",
+            "modelo": "Fiorino",
+            "categoria": "utilitario",
+            "descripcion_corta": "Tu socio ideal para el trabajo. Espacio, versatilidad y la robustez que tu negocio necesita para crecer.",
+            "precio_dia": 20000,
+            "imagen": "https://cdn.motor1.com/images/mgl/9mZyYl/s1/fiat-fiorino-2022.webp",
+            "disponible": true,
+            "caracteristicas": {
+                "puertas": 3,
+                "plazas": 2,
+                "transmision": "Manual",
+                "maletero": "Gran capacidad de carga (3100 L)",
+                "grupo": "D",
+                "matricula": "KL012MN"
+            },
+            "tags": [
+                "Carga",
+                "Utilitario",
+                "Espacio Amplio"
+            ],
+            "requisitos": {
+                "edad_minima": 21
+            }
+        },
+        {
+            "id": 5,
+            "marca": "Mercedes-Benz",
+            "modelo": "Clase C",
+            "categoria": "lujo",
+            "descripcion_corta": "Experimenta el lujo, la tecnología y un rendimiento superior. El estándar de la elegancia automotriz.",
+            "precio_dia": 40000,
+            "imagen": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlbDhD1tGKThmSYDFQC0ypC2a1juXU-Ab32Q&s",
+            "disponible": true,
+            "caracteristicas": {
+                "puertas": 4,
+                "plazas": 5,
+                "transmision": "Automática",
+                "maletero": "2 valijas grandes, 1 pequeña",
+                "grupo": "E",
+                "matricula": "OP345QR"
+            },
+            "tags": [
+                "Lujo",
+                "Premium",
+                "Alta Gama"
+            ],
+            "requisitos": {
+                "edad_minima": 25
+            }
+        },
+        {
+            "id": 6,
+            "marca": "Volkswagen",
+            "modelo": "Virtus",
+            "categoria": "sedan confort",
+            "descripcion_corta": "Un sedán que redefine el espacio y la comodidad. Ideal para la familia y viajes largos con todo el equipaje.",
+            "precio_dia": 17500,
+            "imagen": "https://acroadtrip.blob.core.windows.net/catalogo-imagenes/xl/RT_V_b1d955afec114104ac572accdd250aa2.webp",
+            "disponible": true,
+            "caracteristicas": {
+                "puertas": 4,
+                "plazas": 5,
+                "transmision": "Automática",
+                "maletero": "3 valijas grandes",
+                "grupo": "B",
+                "matricula": "ST678UV"
+            },
+            "tags": [
+                "Familiar",
+                "Espacioso",
+                "Seguro"
+            ],
+            "requisitos": {
+                "edad_minima": 21
+            }
+        },
+        {
+            "id": 7,
+            "marca": "Volkswagen",
+            "modelo": "Taos",
+            "categoria": "suv",
+            "descripcion_corta": "El SUV familiar que lo tiene todo: tecnología, seguridad de vanguardia y un espacio interior increíble para cualquier plan.",
+            "precio_dia": 28000,
+            "imagen": "https://www.autosencuotas.com/img/modelos/taos/taos.jpg",
+            "disponible": true,
+            "caracteristicas": {
+                "puertas": 5,
+                "plazas": 5,
+                "transmision": "Automática",
+                "maletero": "2 valijas grandes, 2 pequeñas",
+                "grupo": "C",
+                "matricula": "WX901YZ"
+            },
+            "tags": [
+                "SUV",
+                "Familiar",
+                "Tecnología"
+            ],
+            "requisitos": {
+                "edad_minima": 21
+            }
+        },
+        {
+            "id": 8,
+            "marca": "Chevrolet",
+            "modelo": "Onix",
+            "categoria": "economico",
+            "descripcion_corta": "Conectividad total y la máxima seguridad en su segmento. El auto inteligente para tu día a día.",
+            "precio_dia": 15500,
+            "imagen": "https://cdn.wheel-size.com/thumbs/7f/b0/7fb05145d9e3d0ace5be1795594c3979.jpg",
+            "disponible": true,
+            "caracteristicas": {
+                "puertas": 4,
+                "plazas": 5,
+                "transmision": "Manual",
+                "maletero": "1 valija grande, 1 pequeña",
+                "grupo": "A",
+                "matricula": "AB234CD"
+            },
+            "tags": [
+                "Conectividad",
+                "Seguro",
+                "Económico"
+            ],
+            "requisitos": {
+                "edad_minima": 18
+            }
+        }
+    ]
+}
+

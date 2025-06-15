@@ -1,0 +1,219 @@
+/*
+ * Estilos específicos para el componente de vehículos.
+ * Gracias al encapsulamiento de Angular, estos estilos solo se aplican aquí.
+*/
+
+/* Contenedor principal que crea la cuadrícula responsive */
+.gallery-container {
+    display: grid;
+    /* Crea columnas que intentan tener un mínimo de 320px de ancho
+     y se ajustan para llenar el espacio. En pantallas pequeñas, se creará 
+     una sola columna. En grandes, varias. */
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 2rem;
+    /* Espacio entre las tarjetas */
+    padding: 1rem 0;
+    /* Un poco de aire arriba y abajo */
+}
+
+/* Tarjeta individual de vehículo */
+.vehicle-card {
+    background-color: #FFFFFF;
+    border-radius: 12px;
+    border: 1px solid #e9ecef;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.vehicle-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* Sección de la imagen */
+.vehicle-card__image-container {
+    position: relative;
+}
+
+.vehicle-card__image {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    /* La imagen cubre el espacio sin deformarse */
+    display: block;
+}
+
+/* Insignias de marketing (tags) */
+.vehicle-card__tags {
+    position: absolute;
+    top: 12px;
+    /* Espacio desde arriba */
+    left: 12px;
+    /* Espacio desde la izquierda */
+    display: flex;
+    flex-wrap: wrap;
+    /* Permite que los tags pasen a la siguiente línea si no caben */
+    gap: 8px;
+}
+
+.tag {
+    padding: 5px 12px;
+    /* Un poco más de padding */
+    border-radius: 20px;
+    font-size: 0.7rem;
+    font-family: 'Lato', sans-serif;
+    font-weight: 700;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    backdrop-filter: blur(4px);
+    /* Efecto "cristal esmerilado" para legibilidad sobre la imagen */
+    -webkit-backdrop-filter: blur(4px);
+    background-color: rgba(0, 0, 0, 0.25);
+    /* Fondo semitransparente oscuro */
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    /* Borde sutil */
+}
+
+/* Podemos dar colores especiales a tags específicos si queremos */
+.tag.tag--oferta {
+    background-color: var(--hornero-error, #dc3545);
+}
+
+.tag.tag--popular,
+.tag.tag--más-alquilado {
+    background-color: var(--hornero-exito, #198754);
+}
+
+/* Sección de información de texto */
+.vehicle-card__info {
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    /* Ocupa el espacio vertical restante */
+}
+
+.vehicle-card__title {
+    font-family: 'Merriweather', serif;
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+    color: var(--hornero-texto-oscuro, #222831);
+}
+
+.vehicle-card__description {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: #6c757d;
+    margin-bottom: 1rem;
+    flex-grow: 1;
+    /* Empuja el contenido de abajo hacia el final */
+}
+
+.vehicle-card__specs {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1rem 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+    color: #495057;
+}
+
+.vehicle-card__specs li {
+    display: flex;
+    align-items: center;
+}
+
+.vehicle-card__specs i {
+    margin-right: 0.5rem;
+    color: var(--hornero-naranja, #E8751A);
+    font-size: 1.2rem;
+}
+
+.vehicle-card__price {
+    font-family: 'Lato', sans-serif;
+    font-size: 1.1rem;
+    color: var(--hornero-texto-oscuro, #222831);
+    margin-top: auto;
+    /* Empuja el precio y el botón hacia abajo */
+    padding-top: 1rem;
+    border-top: 1px solid #f0f0f0;
+    text-align: right;
+}
+
+.vehicle-card__price span {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--hornero-naranja, #E8751A);
+}
+
+.vehicle-card__cta-button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 0.75rem;
+    border: none;
+    border-radius: 8px;
+    background-color: var(--hornero-naranja, #E8751A);
+    color: white;
+    font-family: 'Lato', sans-serif;
+    font-weight: 700;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.vehicle-card__cta-button:hover {
+    background-color: var(--hornero-naranja-hover, #D46B12);
+}
+
+---------------------------------------------------------------------------------
+
+/* === ESTILOS PARA LOS CONTROLES DE FILTRO === */
+.filter-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    align-items: flex-end;
+    padding: 1.5rem;
+    background-color: #ffffff;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+}
+
+.filter-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.filter-group label {
+    font-family: 'Lato', sans-serif;
+    font-weight: 700;
+    font-size: 0.8rem;
+    color: #6c757d;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+}
+
+.form-select {
+    padding: 0.5rem 1rem;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    min-width: 200px;
+    background-color: #f8f9fa;
+}
+
+.btn-clear-filters {
+    background: none;
+    border: none;
+    color: var(--hornero-naranja, #E8751A);
+    text-decoration: underline;
+    cursor: pointer;
+    padding: 0.5rem 0; /* Alinear con la base de los selects */
+}

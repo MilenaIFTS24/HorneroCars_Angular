@@ -17,5 +17,7 @@ export const routes: Routes = [ //rutas elaboradas con lazy loading.
     { path: "contacto", loadComponent: () => import('./componentes/publico/informacion/contacto/contacto.component').then(m => ContactoComponent) },
     { path: "informacion", loadComponent: () => import('./componentes/publico/informacion/informacion.component').then(m => InformacionComponent) },
     { path: "reserva", loadComponent: () => import('./componentes/publico/reserva/reserva.component').then(m => ReservaComponent) },
-    { path:'**', redirectTo: '/' } //en caso de no existir la ruta escrita, redirige al home.
+    { path: "vehiculos", loadComponent: () => import('./componentes/publico/informacion/vehiculos/vehiculos.component').then(m => m.VehiculosComponent) },
+
+    { path: '**', redirectTo: '/' } //en caso de no existir la ruta escrita, redirige al home.
 ];

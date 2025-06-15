@@ -1,1 +1,61 @@
-<p>vehiculos works!</p>
+<section class="filter-controls">
+    <div class="filter-group">
+        <label for="filtro-categoria">Filtrar por Categoría</label>
+        <select id="filtro-categoria" class="form-select" [(ngModel)]="categoriaSeleccionada"
+            (change)="aplicarFiltros()">
+            <option value="">Todas</option>
+            <option value="economico">Económicos</option>
+            <option value="sedan confort">Sedán Confort</option>
+            <option value="suv">SUV / Familiares</option>
+            <option value="utilitario">Utilitarios / Carga</option>
+            <option value="lujo">Premium / Lujo</option>
+        </select>
+    </div>
+
+    <div class="filter-group">
+        <label for="filtro-marca">Filtrar por Marca</label>
+        <select id="filtro-marca" class="form-select" [(ngModel)]="marcaSeleccionada" (change)="aplicarFiltros()">
+            <option value="">Todas</option>
+            <option *ngFor="let marca of marcasUnicas" [value]="marca">{{ marca }}</option>
+        </select>
+    </div>
+
+    <div class="filter-group">
+        <button class="btn-clear-filters" (click)="limpiarFiltros()">Limpiar Filtros</button>
+    </div>
+</section>
+<div class="gallery-container">
+    <div *ngFor="let auto of vehiculosFiltrados" class="vehicle-card">
+
+        <div class="vehicle-card__image-container">
+            <img class="vehicle-card__image" [src]="auto.imagen" [alt]="auto.marca + ' ' + auto.modelo">
+
+            <div class="vehicle-card__tags">
+                <span *ngFor="let tag of auto.tags" class="tag"
+                    [ngClass]="'tag--' + tag.toLowerCase().replace(' ', '-')">{{ tag }}</span>
+            </div>
+        </div>
+
+        <div class="vehicle-card__info">
+            <h3 class="vehicle-card__title">{{ auto.marca }} {{ auto.modelo }}</h3>
+
+            <p class="vehicle-card__description">
+                {{ auto.descripcion_corta }}
+            </p>
+
+            <ul class="vehicle-card__specs">
+                <li><i class="bi bi-people-fill"></i> {{ auto.caracteristicas.plazas }} Plazas</li>
+                <li><i class="bi bi-door-closed-fill"></i> {{ auto.caracteristicas.puertas }} Puertas</li>
+                <li><i class="bi bi-gear-wide-connected"></i> {{ auto.caracteristicas.transmision }}</li>
+                <li><i class="bi bi-briefcase-fill"></i> {{ auto.caracteristicas.maletero }}</li>
+            </ul>
+
+            <div class="vehicle-card__price">
+                <span>${{ auto.precio_dia | number:'1.0-0':'es-AR' }}</span>/día
+            </div>
+
+            <button class="vehicle-card__cta-button">
+                Ver Precios y Disponibilidad
+            </button>
+        </div>
+        <div></div>
