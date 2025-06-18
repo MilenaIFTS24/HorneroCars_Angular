@@ -1,1 +1,11 @@
-<app-tarifas></app-tarifas>
+@if (alertaVisible) {
+<div id="alertaEnConstruccion">
+    <p>
+        Página en construcción. Para más información,<a routerLink="contacto">póngase en contacto con nosotros</a>.
+    </p>
+    <button id="cerrarAlerta" (click)="ocultarAlertaEnConstruccion()">
+        x
+    </button>
+</div>
+}
+<app-tarifas (alertaEnConstruccion)="mostrarEnConstruccion()"></app-tarifas>

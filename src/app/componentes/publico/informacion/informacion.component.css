@@ -1,0 +1,15 @@
+#alertaEnConstruccion {
+    display: flex;
+    align-items: center;
+    margin: 1%;
+    background-color: grey;
+    color: white;
+}
+
+#alertaEnConstruccion a {
+    color: whitesmoke;
+}
+    
+#cerrarAlerta {
+    margin: 2px 0 20px 10px;
+}

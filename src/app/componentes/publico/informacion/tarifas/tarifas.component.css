@@ -2,8 +2,7 @@ body {
     background-color: var(--cuarto-color);
 }
 
-.tarifas {
-    align-items: center;
+.tarifas {    
     display: grid;
     /* Habilitamos CSS Grid */
     /* Define las columnas de la rejilla:
@@ -16,8 +15,8 @@ body {
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 20px;
     /* Espacio entre las tarjetas (tanto horizontal como vertical) */
-    padding: 20px 0;
-    /* Espacio vertical alrededor del grupo de tarjetas */
+    padding: 20px 5px;
+    /* Espacio alrededor del grupo de tarjetas */
     justify-items: center;
     /* Centra las tarjetas si no ocupan todo el ancho de su celda */
 }
@@ -35,11 +34,7 @@ body {
 }
 
 .planas:hover {
-    border-radius: 40px 40px 40px 40px;    
-}
-
-.ofertas:hover {
-    box-shadow: 11px 11px 13px -5px rgba(0,0,0,0.31);    
+     box-shadow: 11px 11px 13px -5px rgba(0,0,0,0.31);  
 }
 
 h1 {
@@ -77,9 +72,7 @@ button:hover {
 }
 
 ul {    
-     list-style: none;
-     padding: 0; 
-     margin: 0;  
+    list-style: none;    
 }
 
 li {    
