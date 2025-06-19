@@ -98,11 +98,10 @@
 }
 
 .carousel-caption {  
-  background-color: rgba(248, 249, 250, 0.9); /* Usando --cuarto-color (#F8F9FA) con 70% de opacidad */
+  background-color: rgba(248, 249, 250, 0.9); /* Usando --cuarto-color (#F8F9FA) con 90% de opacidad */
   padding: 1rem 1.5rem; /* Ajusta el padding para dar espacio al texto */
-  border-radius: 0.5rem; /* Opcional: bordes redondeados para el fondo */
-  /* Asegurar que el texto dentro del caption sea visible sobre este nuevo fondo */
-  color: var(--tercer-color); /* Tu color oscuro para el texto principal */
+  border-radius: 0.5rem; /* bordes redondeados para el fondo */
+  color: var(--tercer-color); /* color oscuro para el texto principal */
 }
 
 /* Texto dentro de la caption carrousel*/
