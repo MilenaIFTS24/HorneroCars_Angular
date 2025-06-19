@@ -1,1 +1,70 @@
-<p>contacto works!</p>
+<div class="contact-container">
+    <div class="contact-header">
+        <h1>Estamos Aquí para Ayudarte</h1>
+        <p class="lead">¿Tienes una consulta o necesitas asistencia? Contáctanos o encuentra tu sucursal más cercana.
+        </p>
+    </div>
+
+    <div class="row g-5">
+
+        <div class="col-lg-6">
+            <div class="contact-form-wrapper">
+                <h4 class="mb-4">Envíanos un Mensaje</h4>
+                <form>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="contact-nombre" class="form-label">Nombre</label>
+                            <input type="text" class="form-control" id="contact-nombre" placeholder="Tu nombre"
+                                required>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="contact-apellido" class="form-label">Apellido</label>
+                            <input type="text" class="form-control" id="contact-apellido" placeholder="Tu apellido"
+                                required>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="contact-email" class="form-label">Correo Electrónico</label>
+                        <input type="email" class="form-control" id="contact-email" placeholder="tu@email.com" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="contact-asunto" class="form-label">Asunto</label>
+                        <select class="form-select" id="contact-asunto">
+                            <option selected disabled value="">Elige un motivo...</option>
+                            <option value="consulta">Consulta General</option>
+                            <option value="reservas">Sobre una Reserva</option>
+                            <option value="soporte">Soporte Técnico</option>
+                            <option value="otro">Otro</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="contact-mensaje" class="form-label">Mensaje</label>
+                        <textarea class="form-control" id="contact-mensaje" rows="5"
+                            placeholder="Escribe tu mensaje aquí..." required></textarea>
+                    </div>
+
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-primary btn-lg">Enviar Mensaje</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="col-lg-6">
+            <div class="map-wrapper">
+                <h4 class="mb-4">Nuestras Oficinas</h4>
+
+                <div id="mapa-contacto"></div>
+
+                <div id="info-oficina-seleccionada" class="mt-3">
+                    <p class="text-muted text-center"><i class="bi bi-geo-alt-fill"></i> Haz clic en un punto del mapa
+                        para ver los detalles de la sucursal.</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

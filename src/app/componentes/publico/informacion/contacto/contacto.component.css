@@ -1,0 +1,70 @@
+/* Estilos específicos para el componente de Contacto */
+
+.contact-container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 2rem;
+}
+
+.contact-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.contact-header h1 {
+    font-family: 'Merriweather', serif;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.contact-header .lead {
+    font-size: 1.1rem;
+    color: #6c757d;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.contact-form-wrapper,
+.map-wrapper {
+    background-color: #ffffff;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    height: 100%;
+}
+
+.form-label {
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.form-control,
+.form-select {
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    border: 1px solid #ced4da;
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: var(--hornero-naranja, #E8751A);
+    box-shadow: 0 0 0 0.25rem rgba(232, 117, 26, 0.25);
+}
+
+/* Estilos para el contenedor del mapa */
+#mapa-contacto {
+    height: 450px;
+    /* Altura del mapa */
+    width: 100%;
+    border-radius: 8px;
+    border: 1px solid #dee2e6;
+    background-color: #e9ecef;
+    /* Color de fondo mientras carga */
+}
+
+/* Estilos para la info de la oficina seleccionada */
+#info-oficina-seleccionada {
+    padding: 1rem;
+    background-color: #f8f9fa;
+    border-top: 2px solid var(--hornero-naranja, #E8751A);
+}
