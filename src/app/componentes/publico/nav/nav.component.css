@@ -1,0 +1,60 @@
+/* Fondo navbar */
+.navbar {
+  background-color: var(--tercer-color);
+}
+
+/* Menú desplegable en hover */
+.nav-item.dropdown:hover > .dropdown-menu {
+  display: block;
+  margin-top: 0;
+}
+
+.logo{
+  margin-left: 20px;  /* Separación del borde izquierdo */
+  margin-right: 40px;
+}
+
+/* Fondo dropdown */
+.dropdown-menu {
+  background-color: var(--tercer-color);
+}
+
+.dropdown-item {
+  color: var(--quinto-color);
+  font-family: "Lato", sans-serif;
+  font-weight: 800;
+  font-style: normal;
+}
+
+.dropdown-item:hover{
+  color: var(--primer-color);
+  background-color: var(--tercer-color);
+}
+
+/* Separación entre enlaces */
+.nav-link {
+  margin-right: 1rem; /* Ajustá si querés más o menos espacio */
+  color: var(--quinto-color) !important;
+  font-family: "Lato", sans-serif;
+  font-weight: 800;
+  font-style: normal;
+}
+
+.nav-link:hover{
+  color: var(--primer-color) !important;
+}
+
+/* Estilo personalizado del botón */
+.btn-custom {
+  background-color: var(--tercer-color);
+  color: var(--primer-color);
+  border: 1px solid var(--primer-color);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Hover del botón */
+.btn-custom:hover {
+  background-color: var(--primer-color);
+  color: var(--tercer-color);
+  border-color: var(--primer-color);
+}
