@@ -24,12 +24,12 @@ export class HomeComponent implements OnInit {
     this.autosDestacados = [
       {
         rutaImagen: 'assets/img/auto1.png', 
-        textoAlt: 'Auto Deportivo Rojo',
+        textoAlt: 'Auto Deportivo',
         titulo: 'Deportivo Hornero',
         descripcion: 'Un auto potente y elegante para los amantes de la velocidad.'
       },
       {
-        rutaImagen: 'assets/img/auto2.png', 
+        rutaImagen: 'assets/img/auto4.png', 
         textoAlt: 'Camioneta Familiar',
         titulo: 'SUV Familiar Horizon',
         descripcion: 'Ideal para viajes en familia, con espacio y comodidad.'
@@ -41,7 +41,7 @@ export class HomeComponent implements OnInit {
         descripcion: 'El lujo y la tecnología se unen en este sofisticado sedán.'
       },
       {
-        rutaImagen: 'assets/img/auto4.png', 
+        rutaImagen: 'assets/img/auto2.png', 
         textoAlt: 'Auto Compacto',
         titulo:'Compact CityDrive',
         descripcion: 'Perfecto para la ciudad, ágil y económico.'
