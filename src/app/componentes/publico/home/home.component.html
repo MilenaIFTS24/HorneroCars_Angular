@@ -1,8 +1,45 @@
-<nav>
-    <h1>Home</h1>
-    <ul>
-        <li><a routerLink="reserva">Reserva</a></li>
-        <li>Link 2</li>
-        <li>Link 3</li>
-    </ul>
-</nav>
+<body>
+<!-- Banner Principal-->
+<section class="banner-home">
+  <img src="assets/img/ruta40.webp" alt="Hornero Cars Banner Principal" class="img-fluid">
+  <div class="banner-texto">
+    <h1>Descubre tu próximo auto en Hornero Cars</h1>
+    <p>La mejor selección de vehículos te espera.</p>
+    <button class="btn btn-primary btn-lg">Explorar Autos</button>
+  </div>
+</section>
+<!--Seccion Contenido Estatico y Carrousel-->
+<section class="carrousel-contenido my-5">
+    <!--Contenido Estatico-->
+  <div class="row align-items-center"> <div class="col-md-6 mb-4 mb-md-0"> <div class="carrousel-contenido-estatico text-center text-md-start">
+        <h3>Descubre la Experiencia Hornero Cars</h3>
+        <p class="carrousel-texto-estatico">
+          Con una selección inigualable de vehículos de alta calidad, desde deportivos de lujo hasta SUVs familiares, Hornero Cars te ofrece la mejor experiencia de conducción. Encuentra tu compañero perfecto para la aventura, el trabajo o la familia.
+        </p>
+        <p> <!--chamuyo gemini-->
+          Cada auto en nuestro inventario ha sido cuidadosamente inspeccionado para garantizar su rendimiento y seguridad. Nuestro compromiso es brindarte transparencia, confianza y un servicio excepcional en cada paso del camino.
+        </p>
+        <button class="btn btn-success btn-lg mt-3">¡Alquilar Ahora!</button>
+      </div>
+    </div>
+<!--Carrousel-->
+<div class="col-md-6">  
+  <ngb-carousel [showNavigationArrows]="true" [showNavigationIndicators]="true" [interval]="3000" [pauseOnHover]="true">
+    @for (auto of autosDestacados; track auto.rutaImagen)
+     {
+      <ng-template ngbSlide>
+        <div class="picsum-img-wrapper">
+          <img [src]="auto.rutaImagen" [alt]="auto.textoAlt" class="d-block w-100">
+        </div>
+        <div class="carousel-caption d-none d-md-block">
+          <h3>{{ auto.titulo }}</h3>
+          <p>{{ auto.descripcion }}</p>
+        </div>
+      </ng-template>
+    }
+  </ngb-carousel>
+  </div>
+  </div>
+</section> 
+<!--Fin Contenido y Carrousel-->
+</body>
