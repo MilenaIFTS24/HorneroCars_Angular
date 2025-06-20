@@ -12,29 +12,33 @@
 
     <div class="collapse navbar-collapse" id="navbarNav">
 
-  <ul class="navbar-nav me-auto mb-2 mb-lg-0" *ngIf="usuarioLogueado?.rol !== 'Administrador'">
-    <!-- Menú sólo para no admins -->
-    <li class="nav-item">
-      <a class="nav-link" routerLink="/reserva">Reservas</a>
-    </li>
-    <li class="nav-item dropdown">
-      <a
-        class="nav-link dropdown-toggle"
-        routerLink="/informacion"
-        id="infoDropdown"
-        role="button"
-        data-bs-toggle="dropdown"
-        aria-expanded="false"
-      >
-        Información
-      </a>
-      <ul class="dropdown-menu" aria-labelledby="infoDropdown">
-        <li><a class="dropdown-item" href="#">Vehículos</a></li>
-        <li><a class="dropdown-item" href="#">Tarifas</a></li>
-        <li><a class="dropdown-item" href="#">Contacto</a></li>
-      </ul>
-    </li>
-  </ul>
+  <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+  <!-- Mostrar "Reservas" solo si NO hay usuario -->
+  <li class="nav-item" *ngIf="!usuarioLogueado">
+    <a class="nav-link" routerLink="/reserva">Reservas</a>
+  </li>
+
+  <!-- Mostrar "Información" solo si NO hay usuario o si es Cliente -->
+  <li class="nav-item dropdown" *ngIf="!usuarioLogueado || usuarioLogueado.rol === 'Cliente'">
+    <a
+      class="nav-link dropdown-toggle"
+      routerLink="/informacion"
+      id="infoDropdown"
+      role="button"
+      data-bs-toggle="dropdown"
+      aria-expanded="false"
+    >
+      Información
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="infoDropdown">
+      <li><a class="dropdown-item" href="#">Vehículos</a></li>
+      <li><a class="dropdown-item" href="#">Tarifas</a></li>
+      <li><a class="dropdown-item" href="#">Contacto</a></li>
+    </ul>
+  </li>
+
+</ul>
 
   <!-- Contenedor para botón/usuario alineado a la derecha -->
   <ul class="navbar-nav ms-auto">
