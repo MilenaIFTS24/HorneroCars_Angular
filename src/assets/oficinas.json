@@ -1,0 +1,54 @@
+[
+    {
+        "id": "BUE",
+        "nombre": "Hornero Cars - Sede Central",
+        "ciudad": "Buenos Aires",
+        "provincia": "CABA",
+        "direccion": "Av. Corrientes 1234, C1043AAS",
+        "telefono": "+54 11 4123-4567",
+        "horario": "Lunes a Viernes de 8:00 a 20:00. Sábados de 9:00 a 14:00.",
+        "coordenadas": {
+            "lat": -34.6037,
+            "lng": -58.3816
+        }
+    },
+    {
+        "id": "COR",
+        "nombre": "Hornero Cars - Córdoba",
+        "ciudad": "Córdoba",
+        "provincia": "Córdoba",
+        "direccion": "Bv. San Juan 567, X5000ATH",
+        "telefono": "+54 351 432-1987",
+        "horario": "Lunes a Sábados de 9:00 a 19:00.",
+        "coordenadas": {
+            "lat": -31.4167,
+            "lng": -64.1833
+        }
+    },
+    {
+        "id": "MDZ",
+        "nombre": "Hornero Cars - Mendoza",
+        "ciudad": "Mendoza",
+        "provincia": "Mendoza",
+        "direccion": "Av. San Martín 890, M5500AAN",
+        "telefono": "+54 261 455-6789",
+        "horario": "Lunes a Viernes de 8:30 a 19:30.",
+        "coordenadas": {
+            "lat": -32.8895,
+            "lng": -68.8458
+        }
+    },
+    {
+        "id": "BRC",
+        "nombre": "Hornero Cars - Bariloche",
+        "ciudad": "San Carlos de Bariloche",
+        "provincia": "Río Negro",
+        "direccion": "Av. Exequiel Bustillo 12.500, R8402AHP",
+        "telefono": "+54 294 488-1234",
+        "horario": "Lunes a Domingo de 9:00 a 18:00.",
+        "coordenadas": {
+            "lat": -41.1335,
+            "lng": -71.3103
+        }
+    }
+]

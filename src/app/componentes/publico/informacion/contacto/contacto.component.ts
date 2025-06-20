@@ -1,14 +1,13 @@
-import { Component, AfterViewInit, Inject, PLATFORM_ID, OnDestroy } from '@angular/core';
+import { Component, AfterViewInit, OnDestroy, Inject, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser, CommonModule } from '@angular/common';
 
-// NO importamos LeafletModule. Solo importaremos La libreria (L) dinámicamente.
+// Importamos el servicio y la interfaz
+import { OficinasService, Oficina } from '../../../../servicios/oficinas.service';
 
 @Component({
   selector: 'app-contacto',
   standalone: true,
-  imports: [
-    CommonModule // Solo necesitamos CommonModule para ngIf/ngFor si los usamos
-  ],
+  imports: [CommonModule],
   templateUrl: './contacto.component.html',
   styleUrls: ['./contacto.component.css']
 })
@@ -16,48 +15,64 @@ export class ContactoComponent implements AfterViewInit, OnDestroy {
 
   private map: any;
 
-  // Inyectamos PLATFORM_ID para saber si estamos en el servidor o navegador.
-  constructor(@Inject(PLATFORM_ID) private platformId: Object) { }
+  constructor(
+    private oficinasService: OficinasService,
+    @Inject(PLATFORM_ID) private platformId: Object
+  ) { }
 
-  // ngAfterViewInit se ejecuta después de que el HTML del componente (incluyendo el div#mapa-contacto) está listo.
   ngAfterViewInit(): void {
-    // Solo ejecutamos este código si estamos en un navegador.
+    // Solo ejecutamos este código si estamos en un navegador
     if (isPlatformBrowser(this.platformId)) {
-      // Usamos import() dinámico para asegurarnos de que Leaflet NUNCA se cargue en el servidor.
+      // Importamos Leaflet dinámicamente para que no se ejecute en el servidor
       import('leaflet').then(L => {
-        console.log("Librería Leaflet cargada dinámicamente en el navegador.");
+        console.log("Librería Leaflet cargada correctamente.");
         this.inicializarMapa(L);
       }).catch(err => {
-        console.error("Error al cargar la librería Leaflet dinámicamente", err);
+        console.error("Error al cargar la librería Leaflet:", err);
       });
     }
   }
 
-  /**
-   * Esta función contiene toda la lógica de Leaflet.
-   * Recibe la librería 'L' como parámetro una vez que se ha cargado.
-   */
   private inicializarMapa(L: any): void {
-    // Evitar inicializar el mapa dos veces si algo extraño ocurre
-    if (this.map) {
-      this.map.remove();
-    }
+    if (this.map) { this.map.remove(); }
 
-    // Crear la instancia del mapa en nuestro div con id 'mapa-contacto'
-    this.map = L.map('mapa-contacto').setView([-40.0, -64.0], 4); // Centrado en Argentina
+    // Creamos el mapa en el div 'mapa-contacto'
+    this.map = L.map('mapa-contacto').setView([-40.0, -64.0], 4);
 
-    // Añadir la capa de teselas (el mapa de fondo de OpenStreetMap)
+    // Añadimos el mapa de fondo
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+      attribution: '&copy; OpenStreetMap contributors'
     }).addTo(this.map);
 
-    console.log("Mapa de Leaflet inicializado correctamente.");
+    console.log("Mapa inicializado. Cargando marcadores...");
 
-    // Aquí es donde añadiremos los marcadores de las oficinas en nuestro siguiente paso.
+    // Llamamos a la función para poner los pines
+    this.cargarMarcadores(L);
   }
 
-  // ngOnDestroy se ejecuta cuando el componente se destruye. Es una buena práctica
-  // limpiar el mapa para liberar memoria.
+  private cargarMarcadores(L: any): void {
+    this.oficinasService.getOficinas().subscribe({
+      next: (oficinas) => {
+        console.log("Oficinas recibidas:", oficinas);
+
+        oficinas.forEach(oficina => {
+          const popupContent = `
+            <strong>${oficina.nombre}</strong><br>
+            ${oficina.direccion}<br>
+            Tel: ${oficina.telefono}
+          `;
+
+          L.marker([oficina.coordenadas.lat, oficina.coordenadas.lng])
+            .addTo(this.map)
+            .bindPopup(popupContent);
+        });
+
+        console.log(`${oficinas.length} marcadores añadidos al mapa.`);
+      },
+      error: (err) => console.error("Error al cargar los datos de las oficinas:", err)
+    });
+  }
+
   ngOnDestroy(): void {
     if (this.map) {
       this.map.remove();
