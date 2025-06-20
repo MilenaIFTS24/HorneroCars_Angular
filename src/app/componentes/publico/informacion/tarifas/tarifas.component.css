@@ -1,0 +1,85 @@
+body {
+    background-color: var(--cuarto-color);
+}
+
+h1 {
+    text-align: center;    
+}
+
+.tarifas {    
+    display: grid;    
+    /* 
+    - repeat(auto-fit, ...): Crea tantas columnas como quepan.
+    - minmax(280px, 1fr): Cada columna tendrá un mínimo de 280px
+    y un máximo de 1 fracción del espacio disponible.
+    Esto hace que las tarjetas se adapten y se
+    ajusten a la siguiente línea si no hay espacio.*/
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    /* espacio entre las tarjetas (tanto horizontal como vertical) */
+    padding: 20px 5px;
+    /* espacio alrededor del grupo de tarjetas */
+    justify-items: center;
+    /* centra las tarjetas si no ocupan todo el ancho de su celda */
+}
+
+.planas, .ofertas {
+    display: flex;/*para usar las propiedades flexbox para controlar la posicion de los items*/
+    flex-direction: column;/*ordenar de forma vertical*/
+    justify-content: space-between;/*distribuir el espacio entre elementos de manera uniforme*/
+    text-align: center;
+    padding: 15px;
+    border: 1px solid var(--segundo-color);
+    border-radius: 3px;
+    transition: 0.4s linear;
+    background-color: var(--sexto-color);
+    /*height: 28rem; hace fija la altura de la tarjeta*/ 
+}
+
+.planas:hover {
+    box-shadow: 11px 11px 13px -5px rgba(0,0,0,0.31);  
+}
+
+img {
+    width: 100px;
+    align-self: center;    
+}
+
+p, h2 {
+    color: var(--tercer-color);    
+}
+
+
+button {
+    display: block;/*que se comporte como un bloque y ocupe toda la linea*/
+    max-width: 10rem;/*ancho máximo*/
+    align-self: center;/*centrarlo*/
+    margin: 5px;
+    padding: 5px 10px;
+    font-size: medium;
+    font-weight: 600;
+    border: 2px var(--sexto-color) outset;
+    border-radius: 10px;
+    transition: 0.2s linear;
+    background-color: var(--cuarto-color);
+}
+
+button:hover {
+    border-style: inset;
+    background-color: var(--primer-color) ;
+    color: var(--quinto-color);
+    cursor: pointer;
+}
+
+ul {    
+    list-style: none;    
+}
+
+li {    
+    text-align: left;   
+    
+}
+
+li::before {
+    content: '📌'; 
+}

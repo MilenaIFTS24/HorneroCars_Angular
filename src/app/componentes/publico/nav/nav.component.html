@@ -1,0 +1,80 @@
+
+<nav class="navbar navbar-expand-lg navbar-dark">
+  <div class="container-fluid">
+
+    <!-- Logo principal -->
+    <div class="nav-item logo">
+      <a class="navbar-brand" routerLink="/">
+        <img src="assets/img/horneroCarsBlanco2.png" class="img-fluid" alt="HorneroCars" style="height: 70px;">
+      </a>
+    </div>
+
+    <!-- Botón toggle para menú colapsable en dispositivos pequeños -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Contenedor colapsable del menú -->
+    <div class="collapse navbar-collapse" id="navbarNav">
+
+      <!-- Menú de navegación a la izquierda -->
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+        <!-- Enlace a "Reservas": solo visible si no hay usuario logueado -->
+        <li class="nav-item" *ngIf="!usuarioLogueado">
+          <a class="nav-link" routerLink="/reserva">Reservas</a>
+        </li>
+
+        <!-- Menú desplegable "Información": visible si no hay usuario o si es Cliente -->
+        <li class="nav-item dropdown" *ngIf="!usuarioLogueado || usuarioLogueado.rol === 'Cliente'">
+          <a
+            class="nav-link dropdown-toggle"
+            routerLink="/informacion"
+            id="infoDropdown"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            Información
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="infoDropdown">
+            <li><a class="dropdown-item" routerLink="/vehiculos">Vehículos</a></li>
+            <li><a class="dropdown-item" routerLink="/tarifas">Tarifas</a></li>
+            <li><a class="dropdown-item" routerLink="/contacto">Contacto</a></li>
+          </ul>
+        </li>
+
+      </ul>
+
+      <!-- Contenedor de opciones del usuario a la derecha -->
+      <ul class="navbar-nav ms-auto">
+
+        <!-- Botón "Iniciar sesión": visible si NO hay usuario logueado -->
+        <li class="nav-item" *ngIf="!usuarioLogueado">
+          <button class="btn btn-custom nav-link sesion_color" (click)="abrirModalSesion()">Iniciar sesión</button>
+        </li>
+
+        <!-- Menú desplegable del usuario logueado -->
+        <li class="nav-item dropdown" *ngIf="usuarioLogueado">
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            id="userDropdown"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            {{ usuarioLogueado.userId }}
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+            <li><a class="dropdown-item" href="#">Mi Cuenta</a></li>
+            <li><button class="dropdown-item" (click)="cerrarSesion()">Cerrar Sesión</button></li>
+          </ul>
+        </li>
+
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
