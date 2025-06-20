@@ -1,0 +1,85 @@
+/* ---------------- NAVBAR GENERAL ---------------- */
+
+/* Fondo del navbar */
+.navbar {
+  background-color: var(--tercer-color);
+}
+
+/* Logo: margen para separarlo del borde */
+.logo {
+  margin-left: 20px;
+  margin-right: 40px;
+}
+
+/* ---------------- MENÚ PRINCIPAL ---------------- */
+
+/* Enlaces principales del navbar */
+.nav-link {
+  margin-right: 1rem;
+  color: var(--quinto-color) !important;
+  font-family: "Lato", sans-serif;
+  font-weight: 800;
+  font-style: normal;
+}
+
+/* Hover de enlaces del navbar */
+.nav-link:hover {
+  color: var(--primer-color) !important;
+}
+
+/* ---------------- MENÚ DESPLEGABLE ---------------- */
+
+/* Mostrar dropdown al hacer hover (solo en desktop) */
+.nav-item.dropdown:hover > .dropdown-menu {
+  display: block;
+  margin-top: 0;
+}
+
+/* Estilo de fondo del menú desplegable */
+.dropdown-menu {
+  background-color: var(--tercer-color);
+}
+
+/* Estilo de cada ítem del menú */
+.dropdown-item {
+  color: var(--quinto-color);
+  background-color: var(--tercer-color);
+  font-family: "Lato", sans-serif;
+  font-weight: 800;
+  font-style: normal;
+}
+
+/* Hover sobre ítems del dropdown */
+.dropdown-item:hover {
+  color: var(--primer-color);
+  background-color: var(--tercer-color);
+}
+
+/* ---------------- BOTÓN "INICIAR SESIÓN" ---------------- */
+
+/* Estilo general del botón */
+.btn-custom {
+  background-color: var(--tercer-color);
+  border: 1px solid var(--primer-color);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Hover del botón */
+.btn-custom:hover {
+  background-color: var(--primer-color);
+  border-color: var(--primer-color);
+}
+
+/* Estilos adicionales cuando es el botón de sesión */
+.sesion_color,
+.btn-custom.sesion_color {
+  color: var(--primer-color) !important;
+}
+
+/* Hover del botón de sesión */
+.sesion_color:hover,
+.btn-custom.sesion_color:hover {
+  background-color: var(--primer-color);
+  color: var(--tercer-color) !important;
+  border-color: var(--primer-color);
+}
