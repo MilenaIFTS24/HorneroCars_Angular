@@ -9,7 +9,7 @@
   margin-top: 0;
 }
 
-.logo{
+.logo {
   margin-left: 20px;  /* Separación del borde izquierdo */
   margin-right: 40px;
 }
@@ -25,10 +25,9 @@
   font-weight: 800;
   font-style: normal;
   background-color: var(--tercer-color);
-
 }
 
-.dropdown-item:hover{
+.dropdown-item:hover {
   color: var(--primer-color);
   background-color: var(--tercer-color);
 }
@@ -42,21 +41,31 @@
   font-style: normal;
 }
 
-.nav-link:hover{
+.nav-link:hover {
   color: var(--primer-color) !important;
 }
 
 /* Estilo personalizado del botón */
 .btn-custom {
   background-color: var(--tercer-color);
-  color: var(--primer-color);
   border: 1px solid var(--primer-color);
   transition: background-color 0.3s, color 0.3s;
 }
 
-/* Hover del botón */
 .btn-custom:hover {
   background-color: var(--primer-color);
-  color: var(--tercer-color);
+  border-color: var(--primer-color);
+}
+
+/* Estilos específicos para botón iniciar sesión */
+.sesion_color,
+.btn-custom.sesion_color {
+  color: var(--primer-color) !important;
+}
+
+.sesion_color:hover,
+.btn-custom.sesion_color:hover {
+  background-color: var(--primer-color);
+  color: var(--tercer-color) !important;
   border-color: var(--primer-color);
 }

@@ -46,5 +46,6 @@ export class NavComponent {
   cerrarSesion() {
     this.usuarioLogueado = null;
     sessionStorage.removeItem('usuario');
+    this.router.navigate(['/'])
   }
 }
