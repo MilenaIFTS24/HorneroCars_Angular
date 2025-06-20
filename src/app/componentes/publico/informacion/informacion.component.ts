@@ -14,6 +14,7 @@ export class InformacionComponent {
   
   mostrarEnConstruccion() {
     this.alertaVisible = true;
+    
     console.log("Alerta visible")
   }
   ocultarAlertaEnConstruccion() {
