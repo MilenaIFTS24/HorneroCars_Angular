@@ -12,6 +12,6 @@ export class TarifasComponent {
 
   alertarEnConstruccion() {
     this.alertaEnConstruccion.emit();
-    console.log("Enviando alerta")
+    console.log("Enviando alerta");
   }
 }

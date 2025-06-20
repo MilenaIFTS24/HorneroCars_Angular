@@ -2,23 +2,25 @@ body {
     background-color: var(--cuarto-color);
 }
 
+h1 {
+    text-align: center;    
+}
+
 .tarifas {    
-    display: grid;
-    /* Habilitamos CSS Grid */
-    /* Define las columnas de la rejilla:
-               - repeat(auto-fit, ...): Crea tantas columnas como quepan.
-               - minmax(280px, 1fr): Cada columna tendrá un mínimo de 280px
-                                     y un máximo de 1 fracción del espacio disponible.
-                                     Esto hace que las tarjetas se adapten y se
-                                     ajusten a la siguiente línea si no hay espacio.
-            */
+    display: grid;    
+    /* 
+    - repeat(auto-fit, ...): Crea tantas columnas como quepan.
+    - minmax(280px, 1fr): Cada columna tendrá un mínimo de 280px
+    y un máximo de 1 fracción del espacio disponible.
+    Esto hace que las tarjetas se adapten y se
+    ajusten a la siguiente línea si no hay espacio.*/
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 20px;
-    /* Espacio entre las tarjetas (tanto horizontal como vertical) */
+    /* espacio entre las tarjetas (tanto horizontal como vertical) */
     padding: 20px 5px;
-    /* Espacio alrededor del grupo de tarjetas */
+    /* espacio alrededor del grupo de tarjetas */
     justify-items: center;
-    /* Centra las tarjetas si no ocupan todo el ancho de su celda */
+    /* centra las tarjetas si no ocupan todo el ancho de su celda */
 }
 
 .planas, .ofertas {
@@ -30,19 +32,16 @@ body {
     border: 2px solid var(--segundo-color);
     transition: 0.4s linear;
     background-color: var(--sexto-color);
-    height: 28rem;
+    /*height: 28rem; hace fija la altura de la tarjeta*/ 
 }
 
 .planas:hover {
      box-shadow: 11px 11px 13px -5px rgba(0,0,0,0.31);  
 }
 
-h1 {
-    text-align: center;    
-}
-
 img {
-    width: 100px;    
+    width: 100px;
+    align-self: center;    
 }
 
 p, h2 {
