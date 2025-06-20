@@ -1,0 +1,68 @@
+[
+    {
+        "userId": "GustCerati",
+        "rol": "Cliente",
+        "nombreCompleto": "Gustavo Cerati",
+        "email": "juan@mail.com",
+        "password": "1234",
+        "telefono": "1122334455",
+        "fechaNacimiento": "1959-07-11",
+        "documentacion": {
+            "dni": {
+                "numero": "12345678",
+                "fotoFrenteSim": ""
+            },
+            "licencia": {
+                "numero": "LIC123456",
+                "categoria": "B",
+                "fechaVencimiento": "2026-12-31",
+                "fotoSim": ""
+            }
+        },
+        "fechaRegistro": "2024-05-30T10:00:00.000Z"
+    },
+    {
+        "userId": "InvisibleSpinetta",
+        "nombreCompleto": "Luis Alberto Spinetta",
+        "rol": "Cliente",
+        "email": "ana@mail.com",
+        "password": "abcd",
+        "telefono": "1199887766",
+        "fechaNacimiento": "1950-01-23",
+        "documentacion": {
+            "dni": {
+                "numero": "87654321",
+                "fotoFrenteSim": ""
+            },
+            "licencia": {
+                "numero": "LIC654321",
+                "categoria": "C",
+                "fechaVencimiento": "2025-08-15",
+                "fotoSim": ""
+            }
+        },
+        "fechaRegistro": "2024-05-31T15:20:00.000Z"
+    },
+    {
+        "userId": "Brendo",
+        "rol": "Administrador",
+        "nombreCompleto": "Brendoooo Car",
+        "email": "brendoCar@mail.com",
+        "password": "abcd",
+        "telefono": "1199887766",
+        "fechaNacimiento": "1950-01-23",
+        "documentacion": {
+            "dni": {
+                "numero": "87654321",
+                "fotoFrenteSim": ""
+            },
+            "licencia": {
+                "numero": "LIC654321",
+                "categoria": "C",
+                "fechaVencimiento": "2025-08-15",
+                "fotoSim": ""
+            }
+        },
+        "fechaRegistro": "2024-05-31T15:20:00.000Z"
+    }
+]
