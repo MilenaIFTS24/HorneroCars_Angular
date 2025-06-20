@@ -1,0 +1,20 @@
+.footer-custom {
+  background-color: var(--tercer-color);
+  color: var(--quinto-color);
+}
+
+.footer-custom a {
+  color: var(--quinto-color);
+  text-decoration: none;
+}
+
+.footer-custom a:hover {
+  text-decoration: underline !important;
+}
+
+/* Aplicación de tipografía en letras */
+.lato-bold {
+  font-family: "Lato", sans-serif;
+  font-weight: 800;
+  font-style: normal;
+}

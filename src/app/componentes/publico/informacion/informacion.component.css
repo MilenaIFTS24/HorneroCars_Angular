@@ -1,0 +1,22 @@
+#alertaEnConstruccion {
+    display: flex;    
+    padding: 3px 0 0 1px;
+    background-color: #f8d7da;
+    color: #721c24;
+    transition: 0.3s ease-in-out;
+    position: relative;
+}
+
+#alertaEnConstruccion a {
+    color: #721c24;    
+}
+    
+#cerrarAlerta {
+    font-weight: bolder;
+    background: #fcbfc5;
+    border: 1px solid #721c24;
+    border-radius: 5px;
+    position: absolute; /* se posiciona respecto al contenedor, moviendose a la derecha */
+    top: 5px; /* ajusta la distancia desde arriba */
+    right: 10px; /* ajusta la distancia desde la derecha */
+}
