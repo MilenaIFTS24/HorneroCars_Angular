@@ -29,14 +29,15 @@ h1 {
     justify-content: space-between;/*distribuir el espacio entre elementos de manera uniforme*/
     text-align: center;
     padding: 15px;
-    border: 2px solid var(--segundo-color);
+    border: 1px solid var(--segundo-color);
+    border-radius: 3px;
     transition: 0.4s linear;
     background-color: var(--sexto-color);
     /*height: 28rem; hace fija la altura de la tarjeta*/ 
 }
 
 .planas:hover {
-     box-shadow: 11px 11px 13px -5px rgba(0,0,0,0.31);  
+    box-shadow: 11px 11px 13px -5px rgba(0,0,0,0.31);  
 }
 
 img {
