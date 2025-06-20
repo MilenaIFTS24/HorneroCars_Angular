@@ -1,0 +1,128 @@
+/*********** Banner Principal **********/
+.banner-home {
+  position: relative;
+  text-align: center;
+  color: white;
+  overflow: hidden;
+  height: 100vh; 
+  display: flex; 
+  align-items: center; /* Centrar verticalmente */
+  justify-content: center; /* Centrar horizontalmente */
+}
+
+.banner-home img {
+  width: 100%;
+  height: 100%; /* La imagen ocupa el 100% de la altura del contenedor del banner */
+  object-fit: cover;
+  filter: brightness(0.7);
+  position: absolute; /* Para que el texto quede encima */
+  top: 0;
+  left: 0;
+  z-index: 1; /* Detras del overlay */
+}
+
+.banner-home .btn-primary {
+  background-color: var(--primer-color) !important; /* Aplica color principal de la paleta acordada*/
+  border-color: var(--primer-color) !important;   
+  color: var(--quinto-color) !important;         
+}
+
+.banner-home .btn-primary:hover {
+  background-color: var(--segundo-color) !important; /* Color para el hover */
+  border-color: var(--segundo-color) !important;
+  color: var(--quinto-color) !important;
+}
+
+.banner-texto {
+  position: relative; /* Cambiado a relative para que z-index funcione bien con la imagen absolute */
+  z-index: 10;
+}
+
+.banner-texto h1 {
+  font-size: 4rem; /* Mas grande, para el banner */
+  margin-bottom: 1rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Sombra */
+}
+
+.banner-texto p {
+  font-size: 1.8rem; 
+  margin-bottom: 2.5rem; 
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7); 
+}
+
+/*********** Seccion Contenido Estatico y Carrousel ***********/
+.carrousel-contenido {
+  padding: 3rem 0;
+  margin: 1rem;
+}
+
+/* Boton "Alquilar Ahora"*/
+.carrousel-contenido .btn-success {
+  background-color: var(--primer-color) !important; 
+  border-color: var(--primer-color) !important;   
+  color: var(--quinto-color) !important;         
+}
+
+.carrousel-contenido .btn-success:hover {
+  background-color: var(--segundo-color) !important; 
+  border-color: var(--segundo-color) !important;
+  color: var(--quinto-color) !important;
+}
+
+/*Texto contenido estatico */
+.carrousel-contenido-estatico h3 {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  color: #343a40; 
+}
+
+.carrousel-contenido-estatico p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #6c757d;
+}
+
+.carrousel-contenido-estatico .carrousel-texto-estatico {
+  font-size: 1.3rem;
+  font-weight: 400;
+  color: #495057;
+}
+
+/*********** Carrousel***********/
+
+/* Ajuste para el carrousel*/
+.carrousel-contenido .picsum-img-wrapper img {
+  height: 350px; 
+  object-fit: cover;
+  margin-bottom: 40px;
+}
+
+.carousel-caption {  
+  background-color: rgba(248, 249, 250, 0.9); /* Usando --cuarto-color (#F8F9FA) con 90% de opacidad */
+  padding: 1rem 1.5rem; /* Ajusta el padding para dar espacio al texto */
+  border-radius: 0.5rem; /* bordes redondeados para el fondo */
+  color: var(--tercer-color); /* color oscuro para el texto principal */
+}
+
+/* Texto dentro de la caption carrousel*/
+.carousel-caption h3 {
+  font-size: 1.5rem; 
+
+}
+.carousel-caption p {
+  font-size: 1rem; 
+}
+
+/*********** Media queries ***********/
+@media (max-width: 767.98px) {
+  .banner-overlay h1 {
+    font-size: 2.5rem;
+  }
+  .banner-overlay p {
+    font-size: 1.2rem;
+  }
+  .static-content h3 {
+    font-size: 2rem;
+  }
+}
+
