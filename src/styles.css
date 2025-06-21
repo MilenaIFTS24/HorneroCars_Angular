@@ -1,6 +1,8 @@
 /*Fuentes*/
 @import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Numans&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Numans&display=swap');
+
+
 .lato-regular {  /*PARRAFOS*/
   font-family: "Lato", sans-serif;
   font-weight: 400;
@@ -34,4 +36,11 @@
     --hornero-exito: #198754;      
     --hornero-error: #dc3545;       
     --hornero-advertencia: #ffc107;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%; /* Asegura que no se desborde */
+  overflow-x: hidden; /* oculta desbordamiento horizontal (para que no aparezca la barra de desplazamiento horizontal)*/
 }

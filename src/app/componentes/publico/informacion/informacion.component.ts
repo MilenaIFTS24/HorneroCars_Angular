@@ -11,10 +11,18 @@ import { CommonModule } from '@angular/common';
 })
 export class InformacionComponent {
   alertaVisible: boolean = false;
-  
+
   mostrarEnConstruccion() {
     this.alertaVisible = true;
-    
+    setTimeout(() => {
+      const alertaElement = document.getElementById('alertaEnConstruccion');
+      if (alertaElement) {
+        alertaElement.scrollIntoView({
+          behavior: 'smooth', // scrolleo suave
+          block: 'center'    // centrar la alerta
+        });
+      }
+    }, 10);/* delay */
     console.log("Alerta visible")
   }
   ocultarAlertaEnConstruccion() {
