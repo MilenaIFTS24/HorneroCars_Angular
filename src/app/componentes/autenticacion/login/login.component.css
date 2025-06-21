@@ -1,0 +1,94 @@
+/* Tamaño y estilo del modal */
+.modal-content.custom-login-modal {
+  border-radius: 12px;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.25);
+  border: none;
+  background-color: #ffffff;
+}
+
+/* Encabezado del modal */
+.modal-header {
+  background-color: var(--primer-color);
+  border-bottom: 1px solid var(--segundo-color);
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  padding: 1rem 1.5rem;
+}
+
+.modal-title {
+  font-weight: 600;
+  color: var(--tercer-color);
+  width: 100%;
+  text-align: center;
+  font-family: "Lato", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.btn-close {
+  background-color: transparent;
+  border: none;
+  opacity: 0.7;
+  color: var(--tercer-color);
+}
+.btn-close:hover {
+  opacity: 1;
+}
+
+/* Cuerpo del modal */
+
+.logo-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.modal-body {
+  padding: 1.5rem;
+  background-color: var(--tercer-color);
+}
+
+.form-label {
+  font-weight: 500;
+  color: var(--primer-color);
+   font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  
+}
+
+.form-control {
+  border-radius: 8px;
+  border: 1px solid #ced4da;
+  transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.form-control:focus {
+  border-color: #0d6efd;
+  box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+}
+
+/* Botón */
+.btn-primary {
+  border-radius: 8px;
+  padding: 0.5rem 1.25rem;
+  font-weight: 500;
+}
+
+
+
+.input-container {
+  position: relative;
+}
+
+.icon-lock {
+  position: absolute;
+  top: 50%;
+  left: 14px;
+  transform: translateY(-25%);
+  color: #666;
+  pointer-events: none;
+  font-size: 1rem;
+  line-height: 1;
+  height: 1rem;
+}

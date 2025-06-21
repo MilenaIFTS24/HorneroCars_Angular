@@ -44,3 +44,18 @@ html, body {
   width: 100%; /* Asegura que no se desborde */
   overflow-x: hidden; /* oculta desbordamiento horizontal (para que no aparezca la barra de desplazamiento horizontal)*/
 }
+
+/* Tamaño del modal */
+.custom-modal-size .modal-dialog {
+  max-width: 400px;
+  width: 100%;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  min-height: calc(100vh - 1rem); /* importante para centrarlo */
+}
+
+.custom-modal-size .modal-content {
+  margin: auto;
+  width: 100%;
+}

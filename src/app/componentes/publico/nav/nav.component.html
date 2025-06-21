@@ -5,7 +5,7 @@
     <!-- Logo principal -->
     <div class="nav-item logo">
       <a class="navbar-brand" routerLink="/">
-        <img src="assets/img/horneroCarsBlanco2.png" class="img-fluid" alt="HorneroCars" style="height: 70px;">
+        <img src="assets\img\horneroCarsBlanco2.png" class="img-fluid" alt="HorneroCars" style="height: 70px;">
       </a>
     </div>
 
@@ -21,56 +21,69 @@
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
         <!-- Enlace a "Reservas": solo visible si no hay usuario logueado -->
-        <li class="nav-item" *ngIf="!usuarioLogueado">
-          <a class="nav-link" routerLink="/reserva">Reservas</a>
-        </li>
+        @if (!usuarioLogueado){
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/reserva">Reservas</a>
+          </li>
+        }
 
         <!-- Menú desplegable "Información": visible si no hay usuario o si es Cliente -->
-        <li class="nav-item dropdown" *ngIf="!usuarioLogueado || usuarioLogueado.rol === 'Cliente'">
-          <a
-            class="nav-link dropdown-toggle"
-            routerLink="/informacion"
-            id="infoDropdown"
-            role="button"
-            data-bs-toggle="dropdown"
-            aria-expanded="false"
-          >
-            Información
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="infoDropdown">
-            <li><a class="dropdown-item" routerLink="/vehiculos">Vehículos</a></li>
-            <li><a class="dropdown-item" routerLink="/tarifas">Tarifas</a></li>
-            <li><a class="dropdown-item" routerLink="/contacto">Contacto</a></li>
-          </ul>
-        </li>
-
+        @if(!usuarioLogueado || usuarioLogueado.rol === 'Cliente'){
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              routerLink="/informacion"
+              id="infoDropdown"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Información
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="infoDropdown">
+              <li><a class="dropdown-item" routerLink="/vehiculos">Vehículos</a></li>
+              <li><a class="dropdown-item" routerLink="/tarifas">Tarifas</a></li>
+              <li><a class="dropdown-item" routerLink="/contacto">Contacto</a></li>
+            </ul>
+          </li>
+        }
       </ul>
 
       <!-- Contenedor de opciones del usuario a la derecha -->
-      <ul class="navbar-nav ms-auto">
+      <ul class="navbar-nav ms-auto me-2">
 
         <!-- Botón "Iniciar sesión": visible si NO hay usuario logueado -->
-        <li class="nav-item" *ngIf="!usuarioLogueado">
-          <button class="btn btn-custom nav-link sesion_color" (click)="abrirModalSesion()">Iniciar sesión</button>
-        </li>
+        @if (!usuarioLogueado) {
+          <li class="nav-item">
+            <button class="btn btn-custom nav-link sesion_color" (click)="abrirModalSesion()">Iniciar sesión</button>
+          </li>
+        }
 
         <!-- Menú desplegable del usuario logueado -->
-        <li class="nav-item dropdown" *ngIf="usuarioLogueado">
-          <a
-            class="nav-link dropdown-toggle"
-            href="#"
-            id="userDropdown"
-            role="button"
-            data-bs-toggle="dropdown"
-            aria-expanded="false"
-          >
-            {{ usuarioLogueado.userId }}
-          </a>
-          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
-            <li><a class="dropdown-item" href="#">Mi Cuenta</a></li>
-            <li><button class="dropdown-item" (click)="cerrarSesion()">Cerrar Sesión</button></li>
-          </ul>
-        </li>
+        @if (usuarioLogueado) {
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle sesion_on_color"
+              href="#"
+              id="userDropdown"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              {{ usuarioLogueado.userId }}
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+              <li>
+                @if (usuarioLogueado?.rol === 'Cliente') {
+                  <a class="dropdown-item" routerLink="/dashboardUser">Mi Cuenta</a>
+                } @else {
+                  <a class="dropdown-item" routerLink="/dashboardAdmin">Mi Cuenta</a>
+                }
+              </li>
+              <li><button class="dropdown-item" (click)="cerrarSesion()">Cerrar Sesión</button></li>
+            </ul>
+          </li>
+        }
 
       </ul>
 

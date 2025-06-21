@@ -85,3 +85,7 @@
   border-color: var(--primer-color);
 }
 
+.sesion_on_color{
+  color: var(--primer-color) !important
+}
+
