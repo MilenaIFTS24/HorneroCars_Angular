@@ -1,12 +1,214 @@
-.card {
-  border-radius: 0.75rem; /* Bordes más suaves */
+/* --- Estilos Generales y de Layout Fullscreen --- */
+body {
+    font-family: 'Roboto', sans-serif; /* O una fuente sans-serif limpia de Google Fonts */
+    background-color: var(--cuarto-color); /* Fondo principal */
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    overflow-y: auto;
 }
 
-.card-header {
-  border-radius: 0.75rem 0.75rem 0 0 !important; /* Bordes superiores redondeados */
+¡Entendido! Vamos a simplificar el diseño quitando la imagen decorativa y usando un fondo que contraste con el formulario. La idea es que el body tenga un color de fondo diferente al form-area (el contenedor del formulario) para darle una separación visual limpia y corporativa.
+
+Aquí tienes el CSS ajustado para lograr esto, manteniendo la estructura de dos columnas para los campos dentro del formulario.
+
+CSS Ajustado para Fondo Contrastante (sin imagen decorativa)
+CSS
+
+/* Colores de Hornero Cars (mantener como está) */
+:root {
+    --primer-color: #E8751A; /* Botones principales y enlaces de texto */
+    --segundo-color: #D46B12; /* Hover e interacción de botones principales */
+    --tercer-color: #222831; /* Nav y footer, Texto principal */
+    --cuarto-color: #F8F9FA; /* Fondo principal muy claro (casi blanco) */
+    --quinto-color: #FFFFFF; /* Color de texto en botones principales, nav y footer, Fondo de campos (blanco puro) */
+    --sexto-color: #EEEEEE; /* Bordes y fondos secundarios, Bordes de input (gris muy claro) */
+    --hornero-enlace-secundario: #0056b3;
+    --hornero-enlace-secundario-hover: #004494;
+    --hornero-exito: #198754;
+    --hornero-error: #dc3545;
+    --hornero-advertencia: #ffc107;
 }
 
-/* Estilo adicional para el mensaje de error de coincidencia de contraseña si lo deseas */
+/* --- Estilos Generales y de Layout Fullscreen --- */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--sexto-color); /* ¡CAMBIO CLAVE AQUÍ! Usamos un gris muy claro para el fondo general */
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    overflow-y: auto;
+}
+
+/* Contenedor principal para centrar y estructurar */
+.container.mt-5 {
+    margin-top: 0 !important;
+    padding: 0;
+    display: flex; /* Esto ya no necesitará la imagen, pero sigue siendo útil para centrar */
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: 100vh;
+    max-width: none;
+}
+
+/* Fila principal que contiene el formulario (ahora única columna de contenido) */
+.fullscreen-row {
+    width: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center; /* Centramos la única columna de contenido */
+    align-items: center;
+    flex-grow: 1;
+    /* Eliminamos el 'gap' ya que no hay una segunda columna de imagen */
+}
+
+/* Columna del formulario (contenedor de h2 y form) */
+.form-area {
+    max-width: 800px; /* Ancho máximo para el formulario de dos columnas */
+    width: 100%;
+    padding: 40px 50px; /* Mantener un buen padding interno */
+    background-color: var(--quinto-color); /* ¡FONDO DEL FORMULARIO BLANCO PURO! */
+    border-radius: 8px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1); /* Sombra más pronunciada para que resalte */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centra el contenido verticalmente */
+}
+
+h2 {
+    color: var(--tercer-color);
+    text-align: center;
+    margin-bottom: 35px;
+    font-size: 2.2em;
+    font-weight: 500;
+}
+
+form {
+    width: 100%;
+}
+
+/* Reducimos el margen entre los grupos de campos */
+.mb-3 {
+    margin-bottom: 15px !important;
+}
+
+.form-label {
+    color: var(--tercer-color);
+    font-weight: 500;
+    margin-bottom: 5px;
+    font-size: 0.9em;
+}
+
+.form-control {
+    border: 1px solid var(--sexto-color);
+    border-radius: 5px;
+    padding: 12px 15px;
+    color: var(--tercer-color);
+    background-color: var(--quinto-color);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    height: auto;
+    line-height: 1.5;
+}
+
+.form-control:focus {
+    border-color: var(--primer-color);
+    box-shadow: 0 0 0 0.2rem rgba(232, 117, 26, 0.2);
+    outline: none;
+}
+
+/* Fix para el campo de fecha */
+input[type="date"].form-control {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+.form-control.is-invalid {
+    border-color: var(--hornero-error);
+}
+
 .invalid-feedback {
-  display: block; /* Asegura que el mensaje se muestre */
+    color: var(--hornero-error);
+    font-size: 0.8em;
+    margin-top: 4px;
+}
+
+.btn-primary {
+    background-color: var(--primer-color) !important;
+    border-color: var(--primer-color) !important;
+    color: var(--quinto-color) !important;
+    padding: 14px 25px;
+    font-size: 1.1em;
+    font-weight: 600;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
+    letter-spacing: 0.5px;
+    margin-top: 25px;
+}
+
+.btn-primary:hover {
+    background-color: var(--segundo-color) !important;
+    border-color: var(--segundo-color) !important;
+    transform: translateY(-2px);
+}
+
+.btn-primary:active {
+    transform: translateY(0);
+}
+
+.btn-primary:disabled {
+    background-color:rgba(47, 46, 46, 0.2) ;
+    border-color: var(--sexto-color) !important;
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+
+/* Media Queries */
+@media (max-width: 991.98px) {
+    .fullscreen-row {
+        flex-direction: column;
+        height: auto;
+        padding: 20px;
+    }
+
+    .form-area {
+        max-width: 100%;
+        padding: 25px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); /* Mantener una sombra sutil en móviles */
+        border-radius: 8px; /* Mantener bordes redondeados */
+    }
+
+    h2 {
+        font-size: 1.8em;
+        margin-bottom: 25px;
+    }
+
+    .form-area .row > div {
+        width: 100% !important;
+        margin-left: 0;
+        margin-right: 0;
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
+
+@media (min-width: 992px) {
+    .fullscreen-row {
+        max-width: 900px; /* Ajusta el ancho máximo total del formulario sin imagen */
+        /* Ya no hay 'gap' aquí */
+    }
+    .form-area {
+        min-height: 600px;
+        justify-content: center; /* Centrar el formulario verticalmente en pantallas grandes */
+    }
 }
