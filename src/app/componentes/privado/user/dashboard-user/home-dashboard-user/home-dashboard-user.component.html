@@ -1,0 +1,41 @@
+<div class="home-dashboard-container">
+  <div class="welcome-section">
+    <h1>¡Bienvenido de nuevo, Gustavo Cerati!</h1>
+    <p>Aquí tienes un resumen de tu actividad y acceso rápido a lo que más necesitas.</p>
+  </div>
+
+  <div class="summary-widgets">
+    <div class="widget">
+      <h3><i class="fas fa-calendar-alt"></i> Próxima Reserva</h3>
+      <p>Corte de Pelo el <strong>10 de julio a las 15:00</strong></p>
+      <button [routerLink]="['/dashboardUser/mis-reservas']">Ver Detalles</button>
+    </div>
+    <div class="widget">
+      <h3><i class="fas fa-coins"></i> Puntos de Fidelidad</h3>
+      <p>Acumulados: <strong>250 puntos</strong></p>
+      <button>Canjear Puntos</button>
+    </div>
+    <div class="widget">
+      <h3><i class="fas fa-comments"></i> Chatea con nuestro Bot</h3>
+      <p>¿Necesitas ayuda o tienes alguna pregunta rápida? ¡Estoy aquí para ayudarte!</p>
+      <button (click)="openChatBot()">Abrir Chat</button>
+    </div>
+  </div>
+
+  <div class="quick-actions-section">
+    <h2>¿Qué quieres hacer hoy?</h2>
+    <div class="action-buttons">
+        <button class="cta-button primary" [routerLink]="['/dashboardUser/hacer-reserva']">
+            <i class="fas fa-calendar-plus"></i> Hacer Nueva Reserva
+        </button>
+        <button class="cta-button secondary" [routerLink]="['/dashboardUser/mi-cuenta']">
+            <i class="fas fa-user-edit"></i> Editar mi Perfil
+        </button>
+        <button class="cta-button tertiary">
+            <i class="fas fa-ticket-alt"></i> Ver Promociones
+        </button>
+    </div>
+  </div>
+</div>
+
+ 
