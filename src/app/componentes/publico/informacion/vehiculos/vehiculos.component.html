@@ -1,61 +1,68 @@
-<section class="filter-controls">
-    <div class="filter-group">
-        <label for="filtro-categoria">Filtrar por Categoría</label>
-        <select id="filtro-categoria" class="form-select" [(ngModel)]="categoriaSeleccionada"
-            (change)="aplicarFiltros()">
-            <option value="">Todas</option>
-            <option value="economico">Económicos</option>
-            <option value="sedan confort">Sedán Confort</option>
-            <option value="suv">SUV / Familiares</option>
-            <option value="utilitario">Utilitarios / Carga</option>
-            <option value="lujo">Premium / Lujo</option>
-        </select>
-    </div>
+<div class="vehiculos-container container-fluid py-4">
 
-    <div class="filter-group">
-        <label for="filtro-marca">Filtrar por Marca</label>
-        <select id="filtro-marca" class="form-select" [(ngModel)]="marcaSeleccionada" (change)="aplicarFiltros()">
-            <option value="">Todas</option>
-            <option *ngFor="let marca of marcasUnicas" [value]="marca">{{ marca }}</option>
-        </select>
-    </div>
+  <header class="vehiculos-header text-center mb-4">
+    <h1>Nuestra Flota</h1>
+    <p class="lead text-muted">Vehículos para cada tipo de viaje. Encuentra el tuyo, siempre con la calidad y confianza de Hornero Cars.</p>
+  </header>
+  
+  <section class="filter-controls d-flex flex-wrap justify-content-center align-items-center gap-3 mb-5 p-3">
+    
+    <select id="filtro-categoria" class="form-select" [(ngModel)]="categoriaSeleccionada" (change)="aplicarFiltros()">
+      <option value="">Todas las Categorías</option>
+      <option value="economico">Económicos</option>
+      <option value="sedan confort">Sedán Confort</option>
+      <option value="suv">SUV / Familiares</option>
+      <option value="utilitario">Utilitarios / Carga</option>
+      <option value="lujo">Premium / Lujo</option>
+    </select>
+    
+    <select id="filtro-marca" class="form-select" [(ngModel)]="marcaSeleccionada" (change)="aplicarFiltros()">
+      <option value="">Todas las Marcas</option>
+      <option *ngFor="let marca of marcasUnicas" [value]="marca">{{ marca }}</option>
+    </select>
+    
+    <button class="btn-clear-filters" (click)="limpiarFiltros()">Limpiar Filtros</button>
+    
+  </section>
 
-    <div class="filter-group">
-        <button class="btn-clear-filters" (click)="limpiarFiltros()">Limpiar Filtros</button>
-    </div>
-</section>
-<div class="gallery-container">
-    <div *ngFor="let auto of vehiculosFiltrados" class="vehicle-card">
+  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+    
+    <div *ngFor="let auto of vehiculosFiltrados" class="col d-flex align-items-stretch">
+      
+      <div class="card h-100 vehicle-card">
+        <img class="card-img-top vehicle-card__image" [src]="auto.imagen" [alt]="auto.marca + ' ' + auto.modelo">
 
-        <div class="vehicle-card__image-container">
-            <img class="vehicle-card__image" [src]="auto.imagen" [alt]="auto.marca + ' ' + auto.modelo">
+        <div class="card-body d-flex flex-column">
+          
+          <div class="vehicle-card__tags mb-2">
+             <span *ngFor="let tag of auto.tags" class="badge rounded-pill" [ngClass]="{
+              'tag--oferta': tag.toLowerCase() === 'oferta',
+              'tag--popular': tag.toLowerCase() === 'popular' || tag.toLowerCase() === 'más vendido',
+              'tag--default': tag.toLowerCase() !== 'oferta' && tag.toLowerCase() !== 'popular' && tag.toLowerCase() !== 'más vendido'
+            }">{{ tag }}</span>
+          </div>
 
-            <div class="vehicle-card__tags">
-                <span *ngFor="let tag of auto.tags" class="tag"
-                    [ngClass]="'tag--' + tag.toLowerCase().replace(' ', '-')">{{ tag }}</span>
-            </div>
-        </div>
+          <h5 class="card-title vehicle-card__title">{{ auto.marca }} {{ auto.modelo }}</h5>
+          
+          <p class="card-text vehicle-card__description">{{ auto.descripcion_corta }}</p>
+          
+          <ul class="list-group list-group-flush vehicle-card__specs">
+            <li class="list-group-item"><i class="bi bi-people-fill"></i> {{ auto.caracteristicas.plazas }} Plazas</li>
+            <li class="list-group-item"><i class="bi bi-door-closed-fill"></i> {{ auto.caracteristicas.puertas }} Puertas</li>
+            <li class="list-group-item"><i class="bi bi-gear-wide-connected"></i> {{ auto.caracteristicas.transmision }}</li>
+            <li class="list-group-item"><i class="bi bi-briefcase-fill"></i> {{ auto.caracteristicas.maletero }}</li>
+          </ul>
 
-        <div class="vehicle-card__info">
-            <h3 class="vehicle-card__title">{{ auto.marca }} {{ auto.modelo }}</h3>
-
-            <p class="vehicle-card__description">
-                {{ auto.descripcion_corta }}
+          <div class="mt-auto text-end pt-3">
+            <p class="vehicle-card__price mb-2">
+              <span class="fs-4 fw-bold">${{ auto.precio_dia | number:'1.0-0':'es-AR' }}</span>/día
             </p>
-
-            <ul class="vehicle-card__specs">
-                <li><i class="bi bi-people-fill"></i> {{ auto.caracteristicas.plazas }} Plazas</li>
-                <li><i class="bi bi-door-closed-fill"></i> {{ auto.caracteristicas.puertas }} Puertas</li>
-                <li><i class="bi bi-gear-wide-connected"></i> {{ auto.caracteristicas.transmision }}</li>
-                <li><i class="bi bi-briefcase-fill"></i> {{ auto.caracteristicas.maletero }}</li>
-            </ul>
-
-            <div class="vehicle-card__price">
-                <span>${{ auto.precio_dia | number:'1.0-0':'es-AR' }}</span>/día
-            </div>
-
-            <button class="vehicle-card__cta-button">
-                Ver Precios y Disponibilidad
+            <button class="btn btn-primary btn-sm w-100 vehicle-card__cta-button">
+              Ver Precios y Disponibilidad
             </button>
+          </div>
         </div>
-        <div></div>
+      </div>
+    </div> 
+  </div> 
+</div>
