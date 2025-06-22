@@ -92,3 +92,19 @@
   line-height: 1;
   height: 1rem;
 }
+
+.olvideCuenta{
+  text-align: center;
+  margin-bottom: 1em;
+  margin-top: 1em;
+}
+
+.crear-cuenta {
+  text-align: center;
+}
+
+.crear-cuenta p{
+  margin-bottom: 0;
+  color: var(--cuarto-color);
+}
+
