@@ -2,7 +2,7 @@ import { ApplicationConfig, importProvidersFrom, provideZoneChangeDetection } fr
 import { provideRouter } from '@angular/router';
 import { provideClientHydration, withEventReplay } from '@angular/platform-browser';
 
-import { provideHttpClient } from '@angular/common/http'; // ✅ para HttpClient
+import { provideHttpClient,withFetch } from '@angular/common/http'; // ✅ para HttpClient
 import { provideAnimations } from '@angular/platform-browser/animations'; // ✅ para animaciones Bootstrap
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap'; // ✅ para NgbModal
 
@@ -15,7 +15,7 @@ export const appConfig: ApplicationConfig = {
     provideClientHydration(withEventReplay()),
 
     // ✅ Agregados necesarios:
-    provideHttpClient(),
+    provideHttpClient(withFetch()), // <-- Agrega withFetch() aquí
     provideAnimations(),
     importProvidersFrom(NgbModule)
   ]
