@@ -1,124 +1,75 @@
-/* :host es un selector especial de Angular que se refiere al elemento raíz del componente (<app-contacto>) */
+/*
+ * El Bootstrap maneja el layout principal, este archivo
+ * solo se encarga de los detalles finos y la personalización.
+*/
 :host {
-    display: block;
-    padding: 2rem 0;
-    /* Espacio arriba y abajo para toda la sección de contacto */
-}
-
-.contact-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 1rem;
-    /* Padding lateral en pantallas pequeñas */
-}
-
-.contact-header {
-    text-align: center;
-    margin-bottom: 3rem;
+  display: block;
 }
 
 .contact-header h1 {
-    font-family: 'Merriweather', serif;
-    font-weight: 700;
-    margin-bottom: 0.5rem;
-    color: var(--hornero-texto-oscuro, #222831);
-}
-
-.contact-header .lead {
-    font-size: 1.1rem;
-    color: #6c757d;
-    max-width: 600px;
-    margin: 0 auto;
+  font-family: 'Merriweather', serif;
 }
 
 .contact-form-wrapper,
 .map-wrapper {
-    background-color: #ffffff;
-    padding: 2rem;
-    border-radius: 12px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-    height: 100%;
+  /* Estas clases ahora solo definen la apariencia de las "tarjetas" 
+     que contienen el formulario y el mapa */
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  height: 100%; /* Para que ambas columnas tengan la misma altura */
 }
 
-.form-label {
-    font-weight: 600;
-    font-size: 0.9rem;
-    color: #495057;
-}
-
-/* Estilo para todos los campos del formulario */
-.form-control,
-.form-select {
-    border-radius: 8px;
-    padding: 0.75rem 1rem;
-    border: 1px solid #ced4da;
-    transition: border-color 0.2s ease, box-shadow 0.2s ease;
-}
-
-/* Efecto visual cuando el usuario hace clic en un campo */
+/* Los estilos del formulario ya usan clases de Bootstrap (.form-label, .form-control),
+   por lo que no necesitamos redefinirlos aquí a menos que queramos algo muy específico. */
 .form-control:focus,
 .form-select:focus {
-    border-color: var(--hornero-naranja, #E8751A);
-    box-shadow: 0 0 0 0.25rem rgba(232, 117, 26, 0.25);
+  border-color: var(--hornero-naranja, #E8751A);
+  box-shadow: 0 0 0 0.25rem rgba(232, 117, 26, 0.25);
 }
 
-/* Estilos para el contenedor del mapa */
+/* Estilos para el mapa */
 #mapa-contacto {
     height: 450px;
-    /* Altura fija para el mapa */
     width: 100%;
     border-radius: 8px;
-    border: 1px solid #dee2e6;
-    background-color: #e9ecef;
-    /* Color de fondo mientras el mapa carga */
 }
 
-/* Estilos para la tarjeta de detalles de la oficina seleccionada */
+/* Estilos para la info de la oficina */
 .initial-office-info {
     border: 2px dashed #e0e0e0;
     border-radius: 8px;
+    min-height: 140px; /* Le damos una altura mínima para que se alinee con la otra tarjeta */
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .office-details-card {
     background-color: #f8f9fa;
-    border: 1px solid #dee2e6;
     border-left: 5px solid var(--hornero-naranja, #E8751A);
-    /* Acento de color de marca */
     border-radius: 8px;
     padding: 1rem 1.5rem;
     animation: fadeIn 0.5s ease;
-    /* Pequeña animación de entrada */
+    min-height: 140px;
 }
 
 .office-details-card h5 {
-    font-family: 'Merriweather', serif;
-    color: var(--hornero-texto-oscuro);
+  font-family: 'Merriweather', serif;
 }
 
 .office-details-card p {
     display: flex;
     align-items: center;
     font-size: 0.95rem;
-    color: #495057;
 }
 
 .office-details-card i {
     margin-right: 0.75rem;
-    font-size: 1.1rem;
     color: var(--hornero-naranja, #E8751A);
-    width: 20px;
-    text-align: center;
 }
 
-/* Animación de entrada para los detalles de la oficina */
 @keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(10px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
 }

@@ -38,7 +38,7 @@ export class ContactoComponent implements OnInit, AfterViewInit, OnDestroy {
 
   // 'public contactForm: FormGroup;' : Creamos la propiedad que guardará nuestro formulario reactivo.
   // Es 'public' porque nuestro archivo HTML necesita acceder a ella.
-  public contactForm: FormGroup;
+  public contactForm!: FormGroup;
 
 
   // --- EL CONSTRUCTOR ---
@@ -49,10 +49,7 @@ export class ContactoComponent implements OnInit, AfterViewInit, OnDestroy {
     @Inject(PLATFORM_ID) private platformId: Object, // Inyectamos PLATFORM_ID para saber si estamos en el servidor o en el navegador.
     private fb: FormBuilder // El FormBuilder es una herramienta para crear formularios
   ) {
-    // Inicializamos la propiedad del formulario aquí
-    this.contactForm = this.fb.group({
-     
-    });
+    
   }
 
   // ngOnInit se ejecuta una vez, al inicio. Es el lugar perfecto para configurar el formulario.
