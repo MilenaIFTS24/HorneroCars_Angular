@@ -1,19 +1,12 @@
 import { Component } from '@angular/core';
 import { ContactoComponent } from "./contacto/contacto.component";
 import { VehiculosComponent } from "./vehiculos/vehiculos.component";
-
-@Component({
-  selector: 'app-informacion',
-  imports: [ContactoComponent, VehiculosComponent],
-
 import { TarifasComponent } from './tarifas/tarifas.component';
 import { RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
-
 @Component({
   selector: 'app-informacion',
-  imports: [TarifasComponent, RouterLink, CommonModule],
-
+  imports: [TarifasComponent, ContactoComponent, VehiculosComponent, RouterLink, CommonModule],
   templateUrl: './informacion.component.html',
   styleUrl: './informacion.component.css'
 })

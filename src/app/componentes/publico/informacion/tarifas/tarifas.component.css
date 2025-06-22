@@ -1,13 +1,9 @@
-body {
-    background-color: var(--cuarto-color);
-}
-
 h1 {
-    text-align: center;    
+    text-align: center;
 }
 
-.tarifas {    
-    display: grid;    
+.tarifas {
+    display: grid;
     /* 
     - repeat(auto-fit, ...): Crea tantas columnas como quepan.
     - minmax(280px, 1fr): Cada columna tendrá un mínimo de 280px
@@ -23,37 +19,46 @@ h1 {
     /* centra las tarjetas si no ocupan todo el ancho de su celda */
 }
 
-.planas, .ofertas {
-    display: flex;/*para usar las propiedades flexbox para controlar la posicion de los items*/
-    flex-direction: column;/*ordenar de forma vertical*/
-    justify-content: space-between;/*distribuir el espacio entre elementos de manera uniforme*/
+.planas,
+.ofertas {
+    display: flex;
+    /*para usar las propiedades flexbox para controlar la posicion de los items*/
+    flex-direction: column;
+    /*ordenar de forma vertical*/
+    justify-content: space-between;
+    /*distribuir el espacio entre elementos de manera uniforme*/
     text-align: center;
     padding: 15px;
-    border: 1px solid var(--segundo-color);
-    border-radius: 3px;
+    border: 1px solid #eef0f2;
+    border-radius: 16px;
     transition: 0.4s linear;
-    background-color: var(--sexto-color);
-    /*height: 28rem; hace fija la altura de la tarjeta*/ 
+    background-color: var(--quinto-color);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+    /*height: 28rem; hace fija la altura de la tarjeta*/
 }
 
 .planas:hover {
-    box-shadow: 11px 11px 13px -5px rgba(0,0,0,0.31);  
+    box-shadow: 11px 11px 13px -5px rgba(0, 0, 0, 0.31);
 }
 
 img {
     width: 100px;
-    align-self: center;    
+    align-self: center;
 }
 
-p, h2 {
-    color: var(--tercer-color);    
+p,
+h2 {
+    color: var(--tercer-color);
 }
 
 
 button {
-    display: block;/*que se comporte como un bloque y ocupe toda la linea*/
-    max-width: 10rem;/*ancho máximo*/
-    align-self: center;/*centrarlo*/
+    display: block;
+    /*que se comporte como un bloque y ocupe toda la linea*/
+    max-width: 10rem;
+    /*ancho máximo*/
+    align-self: center;
+    /*centrarlo*/
     margin: 5px;
     padding: 5px 10px;
     font-size: medium;
@@ -61,25 +66,26 @@ button {
     border: 2px var(--sexto-color) outset;
     border-radius: 10px;
     transition: 0.2s linear;
-    background-color: var(--cuarto-color);
+    background-color: var(--primer-color);
+    color: white;
 }
 
 button:hover {
     border-style: inset;
-    background-color: var(--primer-color) ;
+    background-color: var(--segundo-color);
     color: var(--quinto-color);
     cursor: pointer;
 }
 
-ul {    
-    list-style: none;    
+ul {
+    list-style: none;
 }
 
-li {    
-    text-align: left;   
-    
+li {
+    text-align: left;
+
 }
 
-li::before {
-    content: '📌'; 
+i {
+    color: var(--primer-color);
 }

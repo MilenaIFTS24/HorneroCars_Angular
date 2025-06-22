@@ -60,7 +60,7 @@ export class ContactoComponent implements OnInit, AfterViewInit, OnDestroy {
       apellido: ['', [Validators.required, Validators.minLength(3)]],
       email: ['', [Validators.required, Validators.email]],
       asunto: ['', Validators.required],
-      mensaje: ['', [Validators.required, Validators.minLength(10)]]
+      mensaje: ['', [Validators.required, Validators.minLength(3)]]
     });
   }
 

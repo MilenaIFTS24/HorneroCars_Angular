@@ -1,72 +1,47 @@
+// --- SECCIÓN DE IMPORTACIONES ---
+// Aquí importamos todas las herramientas necesarias de Angular, una sola vez.
 
-import { ApplicationConfig, provideZoneChangeDetection, LOCALE_ID } from '@angular/core';
+import { ApplicationConfig, LOCALE_ID, provideZoneChangeDetection } from '@angular/core';
 import { provideRouter } from '@angular/router';
 import { provideClientHydration, withEventReplay } from '@angular/platform-browser';
-// 1. IMPORTA el proveedor de HttpClient desde @angular/common/http
-import { provideHttpClient } from '@angular/common/http';
 
-// ▼▼▼ PASO 1: AÑADE ESTOS DOS IMPORTS PARA EL IDIOMA ▼▼▼
-import { registerLocaleData } from '@angular/common';
-import localeEsAr from '@angular/common/locales/es-AR';
-
-
-import { ApplicationConfig, provideZoneChangeDetection, LOCALE_ID } from '@angular/core';
-import { provideRouter } from '@angular/router';
-import { provideClientHydration, withEventReplay } from '@angular/platform-browser';
+// Importaciones para la comunicación con APIs (HttpClient) y para el idioma.
 import { provideHttpClient, withFetch } from '@angular/common/http';
 import { registerLocaleData } from '@angular/common';
 import localeEsAr from '@angular/common/locales/es-AR';
+
+// Importación de las rutas de tu aplicación.
 import { routes } from './app.routes';
 
 
-// Registramos el idioma para que Angular lo conozca
-registerLocaleData(localeEsAr, 'es-AR'); // Registra los datos de formato para 'es-AR'
+// --- REGISTRO DEL IDIOMA (LOCALIZACIÓN) ---
+// Esta línea "registra" los formatos de español de Argentina para que Angular
+// sepa cómo mostrar precios, fechas y números correctamente.
+registerLocaleData(localeEsAr, 'es-AR');
 
+
+// --- CONFIGURACIÓN PRINCIPAL DE LA APLICACIÓN ---
 export const appConfig: ApplicationConfig = {
+
+  // 'providers' es la lista de todos los servicios y configuraciones
+  // que estarán disponibles para toda tu aplicación.
   providers: [
+    
+    // Configuración estándar de Angular para la detección de cambios y el router.
     provideZoneChangeDetection({ eventCoalescing: true }), 
     provideRouter(routes), 
+    
+    // Habilita la hidratación del cliente para mejorar el rendimiento con SSR.
     provideClientHydration(withEventReplay()),
     
-    // Proveedor para peticiones web con el modo 'fetch' recomendado
+    // Habilita el servicio HttpClient usando el método 'fetch' moderno.
+    // Esto soluciona el error 'No provider for HttpClient' y la advertencia de 'fetch'.
     provideHttpClient(withFetch()), 
     
-    // Proveedor para establecer el idioma por defecto para los pipes de formato
+    // Establece 'es-AR' como el idioma por defecto para toda la aplicación.
+    // Esto soluciona el error del 'pipe number' que teníamos.
     { provide: LOCALE_ID, useValue: 'es-AR' } 
-
-import { ApplicationConfig, importProvidersFrom, provideZoneChangeDetection } from '@angular/core';
-import { provideRouter } from '@angular/router';
-import { provideClientHydration, withEventReplay } from '@angular/platform-browser';
-
-
-import { provideHttpClient } from '@angular/common/http'; // ✅ para HttpClient
-import { provideAnimations } from '@angular/platform-browser/animations'; // ✅ para animaciones Bootstrap
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap'; // ✅ para NgbModal
-
-import { routes } from './app.routes';
-
-export const appConfig: ApplicationConfig = {
-  providers: [
-    provideZoneChangeDetection({ eventCoalescing: true }),
-    provideRouter(routes),
-    provideClientHydration(withEventReplay()),
-
-    // 2. AÑADE el proveedor aquí al final de la lista
-    provideHttpClient(),
-
-    // ▼▼▼ PASO 3: AÑADE ESTE PROVEEDOR PARA ESTABLECER EL IDIOMA POR DEFECTO ▼▼▼
-    { provide: LOCALE_ID, useValue: 'es-AR' }
-
-  ]
-};
-
-
-
-    // ✅ Agregados necesarios:
-    provideHttpClient(),
-    provideAnimations(),
-    importProvidersFrom(NgbModule)
-
+    
   ]
 };
 

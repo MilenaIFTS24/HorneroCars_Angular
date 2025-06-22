@@ -4,7 +4,6 @@ import { LoginComponent } from './componentes/autenticacion/login/login.componen
 import { RegistroComponent } from './componentes/autenticacion/registro/registro.component';
 import { DashboardAdminComponent } from './componentes/privado/admin/dashboard-admin/dashboard-admin.component';
 import { DashboardUserComponent } from './componentes/privado/user/dashboard-user/dashboard-user.component';
-import { ContactoComponent } from './componentes/publico/informacion/contacto/contacto.component';
 import { InformacionComponent } from './componentes/publico/informacion/informacion.component';
 import { ReservaComponent } from './componentes/publico/reserva/reserva.component';
 
