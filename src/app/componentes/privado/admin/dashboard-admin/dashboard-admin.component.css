@@ -1,0 +1,104 @@
+/* sidebar.component.scss */
+.panel-contenedor {
+  width: 250px; /* Ancho de tu panel */
+  background-color: #3a3e43;
+  color: var(--tercer-color); /* Color del texto */
+  height: 90vh; /* Ocupa el 100% de la altura de la ventana */
+  display: flex;
+  flex-direction: column;
+  padding: 20px 0;
+  padding-bottom: 0px;
+  box-shadow: 2px 0 5px rgba(0,0,0,0.2);
+}
+
+.logo {
+  text-align: center;
+  margin-bottom: 30px;
+  img {
+    max-width: 80%;
+    height: auto;
+  }
+}
+
+.panel-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  flex-grow: 1; /* Para que la lista ocupe el espacio disponible */
+}
+
+.panel-nav li {
+  margin-bottom: 5px;
+}
+
+.panel-nav a {
+  display: flex;
+  align-items: center;
+  padding: 15px 20px;
+  color: #cacccf;
+  text-decoration: none;
+  font-size: 1.1em;
+  transition: background-color 0.3s ease;
+
+  i {
+    margin-right: 15px;
+    font-size: 1.3em;
+  }
+}
+
+.panel-nav a:hover,
+.panel-nav li.active a {
+  background-color: var(--primer-color); /* Color al pasar el ratón o cuando está activo */
+  border-left: 5px solid var(--segundo-color); /* Indicador de activo */
+  color: #3a3e43;
+}
+
+.panel-footer {
+  margin-top: auto; /* Empuja el footer hacia abajo */
+  padding: 20px;
+border-top:solid 1px #9fa0a0; 
+  background-color: #3a3e43;;
+  justify-content: center;
+  justify-items: center;
+
+  a {
+    display: flex;
+    align-items: center;
+    color: #cacccf;
+    text-decoration: none;
+    font-size: 1em;
+  }
+    a:hover {
+    color: var(--hornero-error);
+    }
+
+    i {
+      margin-right: 10px;
+    }
+  }
+.dashboard-layout {
+  display: flex;
+  height: 90vh;
+}
+
+.panel-contenedor {
+  width: 250px;
+  /* resto de estilos */
+}
+
+.dashboard-content {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+  background-color: #f5f5f5;
+}
+
+h3{
+  color: var(--segundo-color);
+  margin-top: 1.8rem;
+}
+
+h5{
+  color: #cacccf;
+  margin-bottom: 3.1rem;
+}

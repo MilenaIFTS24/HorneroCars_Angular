@@ -1,14 +1,11 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { NgbNavModule, NgbDropdownModule, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule, Router } from '@angular/router';
 import { LoginComponent } from '../../autenticacion/login/login.component';
 
 @Component({
   selector: 'app-nav',
-  standalone: true,
   imports: [
-    CommonModule,
     NgbNavModule,
     NgbDropdownModule,
     RouterModule,
@@ -39,7 +36,7 @@ export class NavComponent {
     // Abre modal de login y procesa el resultado
     const modalRef = this.modalService.open(LoginComponent, {
       size: 'md',
-      centered: true
+      windowClass: 'custom-modal-size'
     });
 
     modalRef.result.then((user) => {
