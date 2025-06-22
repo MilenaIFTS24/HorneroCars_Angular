@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
@@ -21,20 +22,24 @@ export class DashboardAdminComponent implements OnInit {
 
   navItems: NavItem[] = [
     { label: 'Inicio', icon: 'fas fa-home', link: 'home' },
-    { label: 'Mi Cuenta', icon: 'fas fa-circle-user', link: 'mi-cuenta' },
-    { label: 'Mis Reservas', icon: 'fas fa-suitcase', link: 'mis-reservas' },
-    { label: 'Hacer Reserva', icon: 'fa-solid fa-car', link: 'hacer-reserva' },
-    { label: 'Configuración', icon: 'fas fa-cog', link: 'configuracion' }
+    { label: 'Mi Cuenta', icon: 'fa-regular fa-id-card', link: 'mi-cuenta' },
+    { label: 'Gestión reservas', icon: 'fa-solid fa-user-plus', link: '' },
+    { label: 'Gestión vehículos', icon: 'fa-solid fa-truck', link: '' },
+    { label: 'Gestión sucursales', icon: 'fa-solid fa-building', link: '' },
+    { label: 'Consultas y Reportes', icon: 'fa-solid fa-chart-line', link: '' },
+    { label: 'Configuracion', icon: 'fas fa-cog', link: 'configuracion' }
   ];
 
-  constructor() {}
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
 
   ngOnInit(): void {
-    const usuarioString = sessionStorage.getItem('usuario');
-    if (usuarioString) {
-      const usuario = JSON.parse(usuarioString);
-      this.userId = usuario.userId;
+    if (isPlatformBrowser(this.platformId)) {
+      const usuarioString = sessionStorage.getItem('usuario');
+      if (usuarioString) {
+        const usuario = JSON.parse(usuarioString);
+        this.userId = usuario.userId;
+        console.log(this.userId);
+      }
     }
   }
-
 }

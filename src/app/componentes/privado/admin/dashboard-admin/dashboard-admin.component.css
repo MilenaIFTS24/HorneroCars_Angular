@@ -1,7 +1,7 @@
 /* sidebar.component.scss */
 .panel-contenedor {
   width: 250px; /* Ancho de tu panel */
-  background-color: var(--cuarto-color); /* Color de fondo oscuro, puedes cambiarlo */
+  background-color: #3a3e43;
   color: var(--tercer-color); /* Color del texto */
   height: 90vh; /* Ocupa el 100% de la altura de la ventana */
   display: flex;
@@ -35,7 +35,7 @@
   display: flex;
   align-items: center;
   padding: 15px 20px;
-  color: var(--tercer-color);
+  color: #cacccf;
   text-decoration: none;
   font-size: 1.1em;
   transition: background-color 0.3s ease;
@@ -50,21 +50,21 @@
 .panel-nav li.active a {
   background-color: var(--primer-color); /* Color al pasar el ratón o cuando está activo */
   border-left: 5px solid var(--segundo-color); /* Indicador de activo */
-  color: #ecf0f1;
+  color: #3a3e43;
 }
 
 .panel-footer {
   margin-top: auto; /* Empuja el footer hacia abajo */
   padding: 20px;
 border-top:solid 1px #9fa0a0; 
-  background-color: var(--cuarto-color);
+  background-color: #3a3e43;;
   justify-content: center;
   justify-items: center;
 
   a {
     display: flex;
     align-items: center;
-    color: #626465;
+    color: #cacccf;
     text-decoration: none;
     font-size: 1em;
   }
@@ -91,4 +91,14 @@ border-top:solid 1px #9fa0a0;
   padding: 20px;
   overflow-y: auto;
   background-color: #f5f5f5;
+}
+
+h3{
+  color: var(--segundo-color);
+  margin-top: 1.8rem;
+}
+
+h5{
+  color: #cacccf;
+  margin-bottom: 3.1rem;
 }
