@@ -1,21 +1,23 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { LoginService } from '../../../servicios/login.service';
 import { User } from '../../../modelos/user';
+import { RouterModule} from '@angular/router';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [FormsModule, RouterModule],
   templateUrl: './login.component.html',
-  styleUrl: './login.component.css'
+  styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
- userId: string = '';
+  userId: string = '';
   password: string = '';
-  error: string = '';
+
+  usuarioIncorrecto: boolean = false;
+  passwordIncorrecto: boolean = false;
 
   constructor(
     private loginService: LoginService,
@@ -23,16 +25,33 @@ export class LoginComponent {
   ) {}
 
   iniciarSesion() {
+    this.usuarioIncorrecto = false;
+    this.passwordIncorrecto = false;
+
     this.loginService.getUsuarios().subscribe((usuarios: User[]) => {
+      // Buscamos un usuario cuyo userId o email coincida con lo ingresado
       const user = usuarios.find(
-        u => u.userId === this.userId && u.password === this.password
+        u =>
+          (u.userId === this.userId || u.email === this.userId) &&
+          u.password === this.password
       );
 
       if (user) {
         sessionStorage.setItem('usuario', JSON.stringify(user));
         this.activeModal.close(user);
       } else {
-        this.error = 'Usuario o contraseña incorrectos';
+        // Si no encontró usuario con userId/email
+        const userExistente = usuarios.find(
+          u => u.userId === this.userId || u.email === this.userId
+        );
+
+        if (!userExistente) {
+          // Usuario/email incorrecto
+          this.usuarioIncorrecto = true;
+        } else {
+          // Usuario/email correcto pero password incorrecto
+          this.passwordIncorrecto = true;
+        }
       }
     });
   }
