@@ -1,22 +1,47 @@
-// Importaciones necesarias para el servicio
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { User } from '../modelos/user';
 
 @Injectable({
-  providedIn: 'root' // Hace que el servicio esté disponible a nivel global
+  providedIn: 'root'
 })
 export class LoginService {
+  private readonly localStorageKey = 'appUsers';
+  private readonly url = 'assets/usuarios.json';
 
-  // Ruta del archivo JSON local con los usuarios (simulando una API)
-  private url = 'assets/usuarios.json';
+  constructor(private http: HttpClient) {
+    this.initUsuarios();
+  }
 
-  // Inyección de HttpClient para realizar peticiones HTTP
-  constructor(private http: HttpClient) {}
+  private initUsuarios(): void {
+    const data = localStorage.getItem(this.localStorageKey);
 
-  // Método que retorna la lista de usuarios como observable
+    if (!data) {
+      this.http.get<User[]>(this.url).subscribe({
+        next: (usuarios) => {
+          console.log('Usuarios cargados desde JSON:', usuarios);
+          localStorage.setItem(this.localStorageKey, JSON.stringify(usuarios));
+        },
+        error: (err) => {
+          console.error('Error cargando JSON:', err);
+          localStorage.setItem(this.localStorageKey, JSON.stringify([]));
+        }
+      });
+    } else {
+      console.log('Ya hay usuarios en localStorage');
+    }
+  }
+
   getUsuarios(): Observable<User[]> {
-    return this.http.get<User[]>(this.url);
+    const stored = localStorage.getItem(this.localStorageKey);
+    if (stored) {
+      try {
+        return of(JSON.parse(stored));
+      } catch {
+        return of([]);
+      }
+    }
+    return of([]);
   }
 }

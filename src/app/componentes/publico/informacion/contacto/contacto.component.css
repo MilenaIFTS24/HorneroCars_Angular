@@ -1,0 +1,90 @@
+/*
+ * El Bootstrap maneja el layout principal, este archivo
+ * solo se encarga de los detalles finos y la personalización.
+*/
+:host {
+    display: block;
+}
+
+.contact-header h1 {
+    font-family: 'Merriweather', serif;
+}
+
+.contact-form-wrapper,
+.map-wrapper {
+    /* Estas clases ahora solo definen la apariencia de las "tarjetas" 
+     que contienen el formulario y el mapa */
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    height: 100%;
+    /* Para que ambas columnas tengan la misma altura */
+}
+
+/* Los estilos del formulario ya usan clases de Bootstrap (.form-label, .form-control),
+   por lo que no necesitamos redefinirlos aquí a menos que queramos algo muy específico. */
+.form-control:focus,
+.form-select:focus {
+    border-color: var(--hornero-naranja, #E8751A);
+    box-shadow: 0 0 0 0.25rem rgba(232, 117, 26, 0.25);
+}
+
+/* Estilos para el mapa */
+#mapa-contacto {
+    height: 450px;
+    width: 100%;
+    border-radius: 8px;
+}
+
+/* Estilos para la info de la oficina */
+.initial-office-info {
+    border: 2px dashed #e0e0e0;
+    border-radius: 8px;
+    min-height: 140px;
+    /* Le damos una altura mínima para que se alinee con la otra tarjeta */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.office-details-card {
+    background-color: #f8f9fa;
+    border-left: 5px solid var(--hornero-naranja, #E8751A);
+    border-radius: 8px;
+    padding: 1rem 1.5rem;
+    animation: fadeIn 0.5s ease;
+    min-height: 140px;
+}
+
+.office-details-card h5 {
+    font-family: 'Merriweather', serif;
+}
+
+.office-details-card p {
+    display: flex;
+    align-items: center;
+    font-size: 0.95rem;
+}
+
+.office-details-card i {
+    margin-right: 0.75rem;
+    color: var(--hornero-naranja, #E8751A);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.btn-primary {
+    background-color: var(--primer-color) !important;
+    border-color: var(--segundo-color) !important;
+
+}
