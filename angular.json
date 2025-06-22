@@ -22,6 +22,20 @@
             ],
             "tsConfig": "tsconfig.app.json",
             "assets": [
+
+              "src/assets",
+              {
+                "glob": "**/*",
+                "input": "public"
+              }
+            ],
+            "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "src/styles.css"
+            ],
+            "scripts": [
+              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
+
           
                 "src/favicon.ico",
                 "src/assets/img",              
@@ -40,6 +54,7 @@
 
               "node_modules/bootstrap-icons/font/bootstrap-icons.css"
   
+
 
             ],
             "server": "src/main.server.ts",
@@ -112,6 +127,9 @@
     }
   },
   "cli": {
+
+    "analytics": false
+
 
     "analytics": "aec098c3-55d4-4f98-8d18-33c7aa34335c"
 
