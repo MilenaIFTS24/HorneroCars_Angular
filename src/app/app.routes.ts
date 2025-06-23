@@ -67,7 +67,7 @@ export const routes: Routes = [ //rutas elaboradas con lazy loading.
       },
       {
         path: 'hacer-reserva',
-        loadComponent: () => import('./componentes/publico/informacion/vehiculos/vehiculos.component').then(m => m.VehiculosComponent)
+        loadComponent: () => import('./componentes/privado/user/dashboard-user/hacer-reserva/hacer-reserva.component').then(m => m.HacerReservaComponent) 
       },
       {
         path: 'configuracion',
