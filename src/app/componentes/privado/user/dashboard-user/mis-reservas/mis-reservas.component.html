@@ -1,0 +1,58 @@
+<div class="container-fluid pt-4">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h2 class="h3">Mis Reservas</h2>
+    <a routerLink="../hacer-reserva" class="btn btn-primary">
+      <i class="bi bi-plus-circle-fill me-2"></i>Nueva Reserva
+    </a>
+  </div>
+
+  <div *ngIf="isLoading" class="text-center">
+    <p>Cargando tus reservas...</p>
+  </div>
+
+  <div *ngIf="!isLoading && misReservas.length === 0" class="alert alert-info">
+    Aún no tienes ninguna reserva. ¡Anímate a planear tu próximo viaje!
+  </div>
+
+  <div *ngIf="!isLoading && misReservas.length > 0" class="row g-4">
+    <div *ngFor="let reserva of misReservas" class="col-md-6 col-lg-12">
+      <div class="card reserva-card">
+        <div class="card-body">
+          <div class="row align-items-center">
+            
+            <div class="col-md-6">
+              <h5 class="card-title mb-1">{{ reserva.vehiculoNombre }}</h5>
+              <p class="card-text text-muted mb-2">
+                ID Reserva: {{ reserva.reservaId }}
+              </p>
+              <p class="card-text mb-1">
+                <i class="bi bi-calendar-range me-2"></i>
+                Del <strong>{{ reserva.fechaInicio }}</strong> al <strong>{{ reserva.fechaFin }}</strong>
+              </p>
+            </div>
+            
+            <div class="col-md-3 text-md-center">
+              <p class="mb-1"><strong>Total Pagado:</strong></p>
+              <p class="h5">${{ reserva.costoTotal | number:'1.0-0':'es-AR' }}</p>
+            </div>
+
+            <div class="col-md-3 text-md-end">
+              <span class="badge" [ngClass]="{
+                'bg-success': reserva.estado.includes('Confirmada'),
+                'bg-danger': reserva.estado === 'Cancelada',
+                'bg-secondary': reserva.estado === 'Finalizada'
+              }">{{ reserva.estado }}</span>
+
+              <button *ngIf="reserva.estado !== 'Cancelada' && reserva.estado !== 'Finalizada'" 
+                      (click)="cancelarReserva(reserva.reservaId)" 
+                      class="btn btn-sm btn-outline-danger mt-2 w-100">
+                Cancelar
+              </button>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
