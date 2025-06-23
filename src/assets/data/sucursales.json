@@ -1,54 +1,52 @@
-[
-  {
-    "sucursalId": 1,
-    "nombre": "Hornero Cars - Sede Central",
-    "telefono": "+541141234567",
-    "direccion": {
-      "direccionId": 201,
-      "calleNombre": "Av. Corrientes",
-      "calleAltura": "1234",
-      "codigoPostal": "C1043AAS",
-      "provincia": "CABA",
-      "localidad": "Buenos Aires"
+{
+  "sucursales": [
+    {
+      "sucursalId": 1,
+      "telefono": 541141234567,
+      "direccion": {
+        "direccionId": 201,
+        "calleNombre": "Av. Corrientes",
+        "calleAltura": "1234",
+        "codigoPostal": "C1043AAS",
+        "provincia": "CABA",
+        "localidad": "Buenos Aires"
+      }
+    },
+    {
+      "sucursalId": 2,
+      "telefono": 543514321987,
+      "direccion": {
+        "direccionId": 202,
+        "calleNombre": "Bv. San Juan",
+        "calleAltura": "567",
+        "codigoPostal": "X5000ATH",
+        "provincia": "Córdoba",
+        "localidad": "Córdoba"
+      }
+    },
+    {
+      "sucursalId": 3,
+      "telefono": 542614556789,
+      "direccion": {
+        "direccionId": 203,
+        "calleNombre": "Av. San Martín",
+        "calleAltura": "890",
+        "codigoPostal": "M5500AAN",
+        "provincia": "Mendoza",
+        "localidad": "Mendoza"
+      }
+    },
+    {
+      "sucursalId": 4,
+      "telefono": 542944881234,
+      "direccion": {
+        "direccionId": 204,
+        "calleNombre": "Av. Exequiel Bustillo",
+        "calleAltura": "12500",
+        "codigoPostal": "R8402AHP",
+        "provincia": "Río Negro",
+        "localidad": "San Carlos de Bariloche"
+      }
     }
-  },
-  {
-    "sucursalId": 2,
-    "nombre": "Hornero Cars - Córdoba",
-    "telefono": "+543514321987",
-    "direccion": {
-      "direccionId": 202,
-      "calleNombre": "Bv. San Juan",
-      "calleAltura": "567",
-      "codigoPostal": "X5000ATH",
-      "provincia": "Córdoba",
-      "localidad": "Córdoba"
-    }
-  },
-  {
-    "sucursalId": 3,
-    "nombre": "Hornero Cars - Mendoza",
-    "telefono": "+542614556789",
-    "direccion": {
-      "direccionId": 203,
-      "calleNombre": "Av. San Martín",
-      "calleAltura": "890",
-      "codigoPostal": "M5500AAN",
-      "provincia": "Mendoza",
-      "localidad": "Mendoza"
-    }
-  },
-  {
-    "sucursalId": 4,
-    "nombre": "Hornero Cars - Bariloche",
-    "telefono": "+542944881234",
-    "direccion": {
-      "direccionId": 204,
-      "calleNombre": "Av. Exequiel Bustillo",
-      "calleAltura": "12500",
-      "codigoPostal": "R8402AHP",
-      "provincia": "Río Negro",
-      "localidad": "San Carlos de Bariloche"
-    }
-  }
-]
+  ]
+}

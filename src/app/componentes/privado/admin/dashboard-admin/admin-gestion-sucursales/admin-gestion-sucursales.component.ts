@@ -70,7 +70,7 @@ export class GestionSucursalesComponent implements OnInit {
    */
   aplicarFiltros(): void {
     let tempSucursales = [...this.sucursales]; // Trabaja con una copia para no modificar el array original
-        
+
     if (this.filtroProvincia) {
       tempSucursales = tempSucursales.filter(s =>
         s.direccion.provincia.toLowerCase().includes(this.filtroProvincia.toLowerCase())
@@ -80,6 +80,7 @@ export class GestionSucursalesComponent implements OnInit {
       tempSucursales = tempSucursales.filter(s =>
         s.direccion.localidad.toLowerCase().includes(this.filtroLocalidad.toLowerCase())
       );
+      console.log('Filtro por localidad...')
     }
     if (this.filtroCodigoPostal) {
       tempSucursales = tempSucursales.filter(s =>
