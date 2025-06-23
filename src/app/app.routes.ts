@@ -13,9 +13,33 @@ export const routes: Routes = [ //rutas elaboradas con lazy loading.
   { path: "login", loadComponent: () => import('./componentes/autenticacion/login/login.component').then(m => LoginComponent) },
   { path: "registro", loadComponent: () => import('./componentes/autenticacion/registro/registro.component').then(m => RegistroComponent) },
   { path: "dashboardAdmin", loadComponent: () => import('./componentes/privado/admin/dashboard-admin/dashboard-admin.component').then(m => DashboardAdminComponent) },
-  { path: "contacto", loadComponent: () => import('./componentes/publico/informacion/contacto/contacto.component').then(m => ContactoComponent) },
-  { path: "informacion", loadComponent: () => import('./componentes/publico/informacion/informacion.component').then(m => InformacionComponent) },
+ 
   { path: "reserva", loadComponent: () => import('./componentes/publico/reserva/reserva.component').then(m => ReservaComponent) },
+
+  { 
+    path: "informacion",
+    loadComponent: () => import('./componentes/publico/informacion/informacion.component').then(m => m.InformacionComponent),
+    children: [
+      { 
+        path: 'vehiculos', // URL final: /informacion/vehiculos
+        loadComponent: () => import('./componentes/publico/informacion/vehiculos/vehiculos.component').then(m => m.VehiculosComponent)
+      },
+      { 
+        path: 'tarifas', // URL final: /informacion/tarifas
+        loadComponent: () => import('./componentes/publico/informacion/tarifas/tarifas.component').then(m => m.TarifasComponent)
+      },
+      { 
+        path: 'contacto', // URL final: /informacion/contacto
+        loadComponent: () => import('./componentes/publico/informacion/contacto/contacto.component').then(m => m.ContactoComponent)
+      },
+      { 
+        path: '', // Si solo se navega a /informacion, redirigir a vehículos
+        redirectTo: 'vehiculos', 
+        pathMatch: 'full' 
+      }
+    ]
+  },
+  
 
   {
     path: "dashboardUser",
