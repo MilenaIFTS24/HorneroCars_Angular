@@ -24,8 +24,7 @@ export class OficinasService {
 
   // La ruta debe ser 'assets/oficinas.json'.
   // Angular sabe dónde encontrar la carpeta 'assets' desde la raíz de la aplicación.
-  private oficinasUrl = 'assets/oficinas.json'; 
-
+  private oficinasUrl = 'assets/oficinas.json';
   // Se inyecta HttpClient para hacer peticiones web.
   constructor(private http: HttpClient) { }
 

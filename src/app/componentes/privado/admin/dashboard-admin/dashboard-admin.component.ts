@@ -25,7 +25,7 @@ export class DashboardAdminComponent implements OnInit {
     { label: 'Mi Cuenta', icon: 'fa-regular fa-id-card', link: 'mi-cuenta' },
     { label: 'Gestión reservas', icon: 'fa-solid fa-user-plus', link: '' },
     { label: 'Gestión vehículos', icon: 'fa-solid fa-truck', link: '' },
-    { label: 'Gestión sucursales', icon: 'fa-solid fa-building', link: '' },
+    { label: 'Gestión sucursales', icon: 'fa-solid fa-building', link: 'gestionSucursales' },
     { label: 'Consultas y Reportes', icon: 'fa-solid fa-chart-line', link: '' },
     { label: 'Configuracion', icon: 'fas fa-cog', link: 'configuracion' }
   ];

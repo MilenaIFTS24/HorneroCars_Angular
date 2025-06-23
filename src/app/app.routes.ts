@@ -6,6 +6,7 @@ import { DashboardAdminComponent } from './componentes/privado/admin/dashboard-a
 import { DashboardUserComponent } from './componentes/privado/user/dashboard-user/dashboard-user.component';
 import { InformacionComponent } from './componentes/publico/informacion/informacion.component';
 import { ReservaComponent } from './componentes/publico/reserva/reserva.component';
+import { GestionSucursalesComponent } from './componentes/privado/admin/dashboard-admin/admin-gestion-sucursales/admin-gestion-sucursales.component';
 
 export const routes: Routes = [ //rutas elaboradas con lazy loading.
 
@@ -17,6 +18,6 @@ export const routes: Routes = [ //rutas elaboradas con lazy loading.
     { path: "dashboardUser", loadComponent: () => import('./componentes/privado/user/dashboard-user/dashboard-user.component').then(m => DashboardUserComponent) },
     { path: "informacion", loadComponent: () => import('./componentes/publico/informacion/informacion.component').then(m => InformacionComponent) },
     { path: "reserva", loadComponent: () => import('./componentes/publico/reserva/reserva.component').then(m => ReservaComponent) },
-    
+    { path: "gestionSucursales", loadComponent: () => import('./componentes/privado/admin/dashboard-admin/admin-gestion-sucursales/admin-gestion-sucursales.component').then(m => GestionSucursalesComponent) },
     { path: '**', redirectTo: '/' } //en caso de no existir la ruta escrita, redirige al home.
 ];
