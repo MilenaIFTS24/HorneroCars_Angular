@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common'; // Necesario para ngFor, ngIf, etc.
+import { CommonModule } from '@angular/common'; 
 import { FormsModule } from '@angular/forms'; // Necesario para ngModel (two-way binding)
 import { AbmVehiculoService } from '../../../../../servicios/abm-vehiculo.service';
 import { Vehiculo } from '../../../../../modelos/vehiculo';
@@ -8,25 +8,22 @@ import { VehiculosComponent } from '../../../../publico/informacion/vehiculos/ve
 @Component({
   selector: 'app-gestion-vehiculos',
   standalone: true,
-  imports: [CommonModule, FormsModule], // Importa módulos necesarios para plantillas
+  imports: [CommonModule, FormsModule],
   templateUrl: './gestion-vehiculos.component.html',
-  styleUrl: './gestion-vehiculos.component.css'
+  styleUrls: ['./gestion-vehiculos.component.css']
 })
-
 export class GestionVehiculosComponent implements OnInit {
-  // Array para almacenar los vehículos que se muestran en la tabla
-  vehiculos: Vehiculo[] = [];
+  vehiculos: Vehiculo[] = []; // Todos los vehículos cargados del servicio
+  vehiculosFiltrados: Vehiculo[] = []; // Vehículos que se muestran en la tabla después de aplicar filtros
 
-  // Objeto para el formulario, inicializado con valores por defecto
-  // Es importante inicializar todas las propiedades anidadas como 'caracteristicas' y 'requisitos'
   vehiculoForm: Vehiculo = {
-    id: 0, // El ID se generará automáticamente o se asignará al editar
+    id: 0,
     marca: '',
     modelo: '',
     categoria: '',
     descripcion_corta: '',
     precio_dia: 0,
-    imagen: '', // URL de imagen vacía por defecto
+    imagen: '',
     disponible: true,
     caracteristicas: {
       puertas: 0,
@@ -42,28 +39,28 @@ export class GestionVehiculosComponent implements OnInit {
     }
   };
 
-  // Variable para controlar si estamos en modo edición o adición
-  modoEdicion: boolean = false;
+  filtroMarca: string = '';
+  filtroModelo: string = '';
+  filtroCategoria: string = '';
+  filtroMatricula: string = '';
+  filtroDisponible: string = 'todos'; // 'todos', 'true', 'false'
 
-  // Variable para mostrar mensajes de error al usuario
+  modoEdicion: boolean = false;
   mensajeError: string = '';
 
   constructor(private abmVehiculoService: AbmVehiculoService) { }
 
   ngOnInit(): void {
-    // Cuando el componente se inicializa, carga la lista de vehículos
     this.cargarVehiculos();
   }
 
-  /**
-   * Carga la lista de vehículos desde el servicio y la asigna a 'vehiculos'.
-   * Maneja errores y muestra mensajes al usuario.
-   */
+  /* Carga todos los vehículos del servicio y luego aplica los filtros iniciales.*/
   cargarVehiculos(): void {
     this.abmVehiculoService.getVehiculos().subscribe({
       next: (data) => {
         this.vehiculos = data;
-        this.mensajeError = ''; // Limpiar mensaje de error si la carga es exitosa
+        this.aplicarFiltros(); //  Aplica los filtros después de cargar todos los vehículos
+        this.mensajeError = '';
       },
       error: (err) => {
         console.error('Error al cargar vehículos:', err);
@@ -72,20 +69,57 @@ export class GestionVehiculosComponent implements OnInit {
     });
   }
 
-  /**
-   * Agrega un nuevo vehículo utilizando el servicio.
-   * Genera un ID simple para el nuevo vehículo (considerar un generador de UUIDs en producción).
-   */
+  /* Aplica los criterios de filtro a la lista completa de vehículos.*/
+  aplicarFiltros(): void {
+    let tempVehiculos = [...this.vehiculos]; // Trabaja con una copia para no modificar el original
+
+    if (this.filtroMarca) {
+      tempVehiculos = tempVehiculos.filter(v =>
+        v.marca.toLowerCase().includes(this.filtroMarca.toLowerCase())
+      );
+    }
+    if (this.filtroModelo) {
+      tempVehiculos = tempVehiculos.filter(v =>
+        v.modelo.toLowerCase().includes(this.filtroModelo.toLowerCase())
+      );
+    }
+    if (this.filtroCategoria) {
+      tempVehiculos = tempVehiculos.filter(v =>
+        v.categoria.toLowerCase().includes(this.filtroCategoria.toLowerCase())
+      );
+    }
+    if (this.filtroMatricula) {
+      tempVehiculos = tempVehiculos.filter(v =>
+        v.caracteristicas?.matricula?.toLowerCase().includes(this.filtroMatricula.toLowerCase())
+      );
+    }
+
+    if (this.filtroDisponible !== 'todos') {
+      const isDisponible = this.filtroDisponible === 'true';
+      tempVehiculos = tempVehiculos.filter(v => v.disponible === isDisponible);
+    }
+
+    this.vehiculosFiltrados = tempVehiculos; //  Asigna el resultado filtrado a la lista que se muestra
+  }
+
+  /* Limpia todos los campos de filtro y vuelve a aplicar los filtros (mostrando todos). */
+  limpiarFiltros(): void {
+    this.filtroMarca = '';
+    this.filtroModelo = '';
+    this.filtroCategoria = '';
+    this.filtroMatricula = '';
+    this.filtroDisponible = 'todos';
+    this.aplicarFiltros(); //  Vuelve a aplicar los filtros para refrescar la tabla
+  }
+
   agregarVehiculo(): void {
-    // Generar un ID simple basado en el timestamp actual.
-    // Esto es suficiente para el manejo en localStorage.
     this.vehiculoForm.id = Date.now();
 
     this.abmVehiculoService.addVehiculo(this.vehiculoForm).subscribe({
       next: (vehiculo) => {
         console.log('Vehículo agregado:', vehiculo);
-        this.cargarVehiculos(); // Recargar la lista para mostrar el nuevo vehículo
-        this.limpiarFormulario(); // Resetear el formulario
+        this.cargarVehiculos(); // Recargar todos y aplicar filtros
+        this.limpiarFormulario();
         this.mensajeError = '';
       },
       error: (err) => {
@@ -95,14 +129,7 @@ export class GestionVehiculosComponent implements OnInit {
     });
   }
 
-  /**
-   * Prepara el formulario para editar un vehículo existente.
-   * Clona el objeto para evitar modificar directamente el array 'vehiculos'.
-   * @param vehiculo El vehículo a editar.
-   */
   seleccionarVehiculo(vehiculo: Vehiculo): void {
-    // Clonar el objeto para no modificar directamente el array 'vehiculos'
-    // Asegurarse de clonar también las propiedades anidadas como 'caracteristicas' y 'requisitos'
     this.vehiculoForm = {
       ...vehiculo,
       caracteristicas: { ...vehiculo.caracteristicas },
@@ -113,15 +140,12 @@ export class GestionVehiculosComponent implements OnInit {
     this.mensajeError = '';
   }
 
-  /**
-   * Actualiza un vehículo existente utilizando los datos del formulario.
-   */
   actualizarVehiculo(): void {
     this.abmVehiculoService.updateVehiculo(this.vehiculoForm).subscribe({
       next: (vehiculo) => {
         console.log('Vehículo actualizado:', vehiculo);
-        this.cargarVehiculos(); // Recargar la lista para mostrar los cambios
-        this.limpiarFormulario(); // Resetear el formulario
+        this.cargarVehiculos(); // Recargar todos y aplicar filtros
+        this.limpiarFormulario();
         this.mensajeError = '';
       },
       error: (err) => {
@@ -131,20 +155,13 @@ export class GestionVehiculosComponent implements OnInit {
     });
   }
 
-  /**
-   * Elimina un vehículo por su ID.
-   * Solicita confirmación antes de eliminar.
-   * @param id El ID del vehículo a eliminar.
-   */
   eliminarVehiculo(id: number): void {
-    // Usar un modal personalizado en lugar de 'confirm()' en entornos de Canvas/Iframe
-    // Por simplicidad, se usa 'confirm' aquí, pero se recomienda una solución UI personalizada.
     if (window.confirm('¿Estás seguro de que deseas eliminar este vehículo?')) {
       this.abmVehiculoService.deleteVehiculo(id).subscribe({
         next: () => {
           console.log('Vehículo eliminado con éxito.');
-          this.cargarVehiculos(); // Recargar la lista
-          this.limpiarFormulario(); // Limpiar el formulario en caso de que el eliminado fuera el seleccionado
+          this.cargarVehiculos(); // Recargar todos y aplicar filtros
+          this.limpiarFormulario();
           this.mensajeError = '';
         },
         error: (err) => {
@@ -155,16 +172,10 @@ export class GestionVehiculosComponent implements OnInit {
     }
   }
 
-  /**
-   * Cancela el modo edición y limpia el formulario.
-   */
   cancelarEdicion(): void {
     this.limpiarFormulario();
   }
 
-  /**
-   * Resetea el formulario a su estado inicial.
-   */
   limpiarFormulario(): void {
     this.vehiculoForm = {
       id: 0,
@@ -189,6 +200,6 @@ export class GestionVehiculosComponent implements OnInit {
       }
     };
     this.modoEdicion = false;
-    this.mensajeError = ''; // Limpiar cualquier mensaje de error pendiente del formulario
+    this.mensajeError = '';
   }
 }

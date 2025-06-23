@@ -1,138 +1,198 @@
 <div class="container my-5">
-  <div class="card shadow-lg p-4 mb-5 bg-body rounded">
-    <h2 class="text-center mb-4 text-primary fw-bold">Gestión de Vehículos</h2>
+  <div class="card shadow-lg p-4 mb-5 bg-body rounded" id="card-gestion">
+    <h2 class="text-center mb-4 text-dark fw-bold">Gestión de Vehículos</h2>
 
     <!-- Mensaje de Error/Éxito -->
-    <div *ngIf="mensajeError" class="alert alert-danger alert-dismissible fade show" role="alert">
-      <strong>¡Error!</strong> {{ mensajeError }}
-      <button type="button" class="btn-close" (click)="mensajeError = ''" aria-label="Close"></button>
-    </div>
+    @if (mensajeError) {
+      <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <strong>¡Error!</strong> {{ mensajeError }}
+        <button type="button" class="btn-close" (click)="mensajeError = ''" aria-label="Close"></button>
+      </div>
+    }
 
-    <!-- Formulario de Añadir/Editar Vehículo -->
-    <div class="card p-4 mb-4 bg-light shadow-sm">
+    <!-- Formulario de Agregar/Editar vehiculo -->
+    <div class="card p-4 mb-4 bg-light shadow-sm hornero-form-card">
       <form (ngSubmit)="modoEdicion ? actualizarVehiculo() : agregarVehiculo()">
-        <div class="row g-3">
-          <div class="col-md-6">
-            <label for="marca" class="form-label">Marca:</label>
-            <input type="text" id="marca" name="marca" [(ngModel)]="vehiculoForm.marca" required class="form-control">
+        <div class="row g-2">
+          <!-- Primera fila: Campos principales -->
+          <div class="col-md-3 col-sm-6">
+            <label for="marca" class="form-label mb-1">Marca:</label>
+            <input type="text" id="marca" name="marca" [(ngModel)]="vehiculoForm.marca" required class="form-control form-control-sm">
           </div>
-          <div class="col-md-6">
-            <label for="modelo" class="form-label">Modelo:</label>
-            <input type="text" id="modelo" name="modelo" [(ngModel)]="vehiculoForm.modelo" required class="form-control">
+          <div class="col-md-3 col-sm-6">
+            <label for="modelo" class="form-label mb-1">Modelo:</label>
+            <input type="text" id="modelo" name="modelo" [(ngModel)]="vehiculoForm.modelo" required class="form-control form-control-sm">
           </div>
-          <div class="col-md-6">
-            <label for="categoria" class="form-label">Categoría:</label>
-            <input type="text" id="categoria" name="categoria" [(ngModel)]="vehiculoForm.categoria" required class="form-control">
+          <div class="col-md-3 col-sm-6">
+            <label for="categoria" class="form-label mb-1">Categoría:</label>
+            <input type="text" id="categoria" name="categoria" [(ngModel)]="vehiculoForm.categoria" required class="form-control form-control-sm">
           </div>
-          <div class="col-md-6">
-            <label for="precio_dia" class="form-label">Precio por Día:</label>
-            <input type="number" id="precio_dia" name="precio_dia" [(ngModel)]="vehiculoForm.precio_dia" required class="form-control">
-          </div>
-          <div class="col-md-6">
-            <label for="matricula" class="form-label">Matrícula:</label>
-            <input type="text" id="matricula" name="matricula" [(ngModel)]="vehiculoForm.caracteristicas.matricula" required class="form-control">
-          </div>
-          <div class="col-md-6 d-flex align-items-center">
-            <div class="form-check">
-              <input type="checkbox" id="disponible" name="disponible" [(ngModel)]="vehiculoForm.disponible" class="form-check-input">
-              <label for="disponible" class="form-check-label">Disponible:</label>
-            </div>
-          </div>
-          <div class="col-12">
-            <label for="descripcion_corta" class="form-label">Descripción Corta:</label>
-            <textarea id="descripcion_corta" name="descripcion_corta" [(ngModel)]="vehiculoForm.descripcion_corta" rows="2" class="form-control"></textarea>
-          </div>
-          <div class="col-12">
-            <label for="imagen" class="form-label">URL de Imagen:</label>
-            <input type="url" id="imagen" name="imagen" [(ngModel)]="vehiculoForm.imagen" class="form-control">
+          <div class="col-md-3 col-sm-6">
+            <label for="precio_dia" class="form-label mb-1">Precio/Día:</label>
+            <input type="number" id="precio_dia" name="precio_dia" [(ngModel)]="vehiculoForm.precio_dia" required class="form-control form-control-sm">
           </div>
 
-          <!-- Campos de Características Anidadas -->
-          <div class="col-md-6">
-            <label for="puertas" class="form-label">Puertas:</label>
-            <input type="number" id="puertas" name="puertas" [(ngModel)]="vehiculoForm.caracteristicas.puertas" class="form-control">
+          <!-- Segunda fila -->
+          <div class="col-md-3 col-sm-6">
+            <label for="matricula" class="form-label mb-1">Matrícula:</label>
+            <input type="text" id="matricula" name="matricula" [(ngModel)]="vehiculoForm.caracteristicas.matricula" required class="form-control form-control-sm">
           </div>
-          <div class="col-md-6">
-            <label for="plazas" class="form-label">Plazas:</label>
-            <input type="number" id="plazas" name="plazas" [(ngModel)]="vehiculoForm.caracteristicas.plazas" class="form-control">
+          <div class="col-md-3 col-sm-12">
+            <label for="imagen" class="form-label mb-1">URL de Imagen:</label>
+            <input type="url" id="imagen" name="imagen" [(ngModel)]="vehiculoForm.imagen" class="form-control form-control-sm">
           </div>
-          <div class="col-md-6">
-            <label for="transmision" class="form-label">Transmisión:</label>
-            <input type="text" id="transmision" name="transmision" [(ngModel)]="vehiculoForm.caracteristicas.transmision" class="form-control">
+            <div class="col-md-6 col-sm-6">
+            <label for="descripcion_corta" class="form-label mb-1">Descripción Corta:</label>
+            <textarea id="descripcion_corta" name="descripcion_corta" [(ngModel)]="vehiculoForm.descripcion_corta" rows="1" class="form-control form-control-sm"></textarea>
           </div>
-          <div class="col-md-6">
-            <label for="maletero" class="form-label">Maletero:</label>
-            <input type="text" id="maletero" name="maletero" [(ngModel)]="vehiculoForm.caracteristicas.maletero" class="form-control">
-          </div>
-          <div class="col-md-6">
-            <label for="grupo" class="form-label">Grupo:</label>
-            <input type="text" id="grupo" name="grupo" [(ngModel)]="vehiculoForm.caracteristicas.grupo" class="form-control">
+          
+          <!-- Separador para Características y Requisitos -->
+          <div class="col-md-12">
+            <hr class="my-2">
+            <h6 class="text-secondary mb-3">Características y Requisitos</h6>
           </div>
 
-          <!-- Campo Requisitos.edad_minima -->
-          <div class="col-md-6">
-            <label for="edad_minima" class="form-label">Edad Mínima Requerida:</label>
-            <input type="number" id="edad_minima" name="edad_minima" [(ngModel)]="vehiculoForm.requisitos.edad_minima" class="form-control">
+          <!-- Fila de Características -->
+          <div class="col-md-1 col-sm-4"> 
+            <label for="puertas" class="form-label mb-1">Puertas:</label>
+            <input type="number" id="puertas" name="puertas" [(ngModel)]="vehiculoForm.caracteristicas.puertas" class="form-control form-control-sm">
+          </div>
+          <div class="col-md-1 col-sm-4"> 
+            <label for="plazas" class="form-label mb-1">Plazas:</label>
+            <input type="number" id="plazas" name="plazas" [(ngModel)]="vehiculoForm.caracteristicas.plazas" class="form-control form-control-sm">
+          </div>
+          <div class="col-md-2 col-sm-4">
+            <label for="transmision" class="form-label mb-1">Transmisión:</label>
+            <input type="text" id="transmision" name="transmision" [(ngModel)]="vehiculoForm.caracteristicas.transmision" class="form-control form-control-sm">
+          </div>
+          <div class="col-md-2 col-sm-6">
+            <label for="maletero" class="form-label mb-1">Maletero:</label>
+            <input type="text" id="maletero" name="maletero" [(ngModel)]="vehiculoForm.caracteristicas.maletero" class="form-control form-control-sm">
+          </div>
+          <div class="col-md-1 col-sm-6"> 
+            <label for="grupo" class="form-label mb-1">Grupo:</label>
+            <input type="text" id="grupo" name="grupo" [(ngModel)]="vehiculoForm.caracteristicas.grupo" class="form-control form-control-sm">
+          </div>
+          <div class="col-md-1 col-sm-6"> 
+            <label for="edad_minima" class="form-label mb-1">Edad Mín:</label>
+            <input type="number" id="edad_minima" name="edad_minima" [(ngModel)]="vehiculoForm.requisitos.edad_minima" class="form-control form-control-sm">
+          </div>
+          <div class="col-md-1 col-sm-6"> 
+             <label for="disponible" class="form-check-label">Disponible</label>
+                  <input type="checkbox" id="disponible" name="disponible" [(ngModel)]="vehiculoForm.disponible" class="form-check-input">
+              </div>
           </div>
 
-          <div class="col-12 d-flex justify-content-end gap-2 mt-4">
-            <button type="submit" class="btn btn-primary px-4 py-2 rounded-pill shadow-sm">
-              {{ modoEdicion ? 'Actualizar Vehículo' : 'Agregar Vehículo' }}
+          <!-- Botones de Acción -->
+          <div class="col-12 d-flex justify-content-end gap-2">
+            <button type="submit" class="btn btn-primary btn-sm px-3 py-1 rounded-pill shadow-sm">
+              @if (modoEdicion) {
+                Actualizar Vehículo
+              } @else {
+                Agregar Vehículo
+              }
             </button>
-            <button type="button" (click)="cancelarEdicion()" *ngIf="modoEdicion" class="btn btn-secondary px-4 py-2 rounded-pill shadow-sm">
-              Cancelar
-            </button>
+            @if (modoEdicion) {
+              <button type="button" (click)="cancelarEdicion()" class="btn btn-secondary btn-sm px-3 py-1 rounded-pill shadow-sm">
+                Cancelar
+              </button>
+            }
           </div>
-        </div>
       </form>
     </div>
+
+    <!-- Seccion de filtros -->
+    <div class="card p-4 mb-4 bg-warning bg-opacity-10 border-warning shadow-sm hornero-filter-card">
+        <h4 class="card-title text-warning mb-3" id="label-card-filtros">Filtros de Búsqueda</h4>
+        <div class="row g-2 align-items-end">
+            <div class="col-md-2 col-sm-6">
+                <label for="filtroMarca" class="form-label mb-1">Marca:</label>
+                <input type="text" id="filtroMarca" name="filtroMarca" [(ngModel)]="filtroMarca" class="form-control form-control-sm">
+            </div>
+            <div class="col-md-2 col-sm-6">
+                <label for="filtroModelo" class="form-label mb-1">Modelo:</label>
+                <input type="text" id="filtroModelo" name="filtroModelo" [(ngModel)]="filtroModelo" class="form-control form-control-sm">
+            </div>
+            <div class="col-md-2 col-sm-6">
+                <label for="filtroCategoria" class="form-label mb-1">Categoría:</label>
+                <input type="text" id="filtroCategoria" name="filtroCategoria" [(ngModel)]="filtroCategoria" class="form-control form-control-sm">
+            </div>
+            <div class="col-md-2 col-sm-6">
+                <label for="filtroMatricula" class="form-label mb-1">Matrícula:</label>
+                <input type="text" id="filtroMatricula" name="filtroMatricula" [(ngModel)]="filtroMatricula" class="form-control form-control-sm">
+            </div>
+            <div class="col-md-2 col-sm-6">
+                <label for="filtroDisponible" class="form-label mb-1">Disponibilidad:</label>
+                <select id="filtroDisponible" name="filtroDisponible" [(ngModel)]="filtroDisponible" class="form-select form-select-sm">
+                    <option value="todos">Todos</option>
+                    <option value="true">Sí</option>
+                    <option value="false">No</option>
+                </select>
+            </div>
+            <div class="col-md-2 col-sm-12 d-flex justify-content-end gap-2">
+                <button type="button" (click)="aplicarFiltros()" class="btn btn-warning btn-sm px-3 py-1 rounded-pill shadow-sm" id="btn-filtro">
+                    Filtrar
+                </button>
+                <button type="button" (click)="limpiarFiltros()" class="btn btn-outline-secondary btn-sm px-3 py-1 rounded-pill shadow-sm"id="btn-limpiar">
+                    Limpiar 
+                </button>
+            </div>
+        </div>
+    </div>
+    <!-- Fin Sección de Filtros -->
 
     <!-- Lista de Vehículos -->
     <div class="card shadow-lg p-4 bg-body rounded">
       <h3 class="card-title text-primary mb-4">Vehículos Registrados</h3>
-      <div *ngIf="vehiculos.length === 0" class="text-center text-muted py-3">
-        No hay vehículos registrados en este momento.
-      </div>
-      <div *ngIf="vehiculos.length > 0" class="table-responsive">
-        <table class="table table-striped table-hover table-bordered caption-top">
-          <thead class="table-light">
-            <tr>
-              <th scope="col">ID</th>
-              <th scope="col">Marca</th>
-              <th scope="col">Modelo</th>
-              <th scope="col">Categoría</th>
-              <th scope="col">Matrícula</th>
-              <th scope="col">Precio/Día</th>
-              <th scope="col">Disponible</th>
-              <th scope="col">Acciones</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let vehiculo of vehiculos">
-              <td>{{ vehiculo.id }}</td>
-              <td>{{ vehiculo.marca }}</td>
-              <td>{{ vehiculo.modelo }}</td>
-              <td>{{ vehiculo.categoria }}</td>
-              <td>{{ vehiculo.caracteristicas?.matricula }}</td>
-              <td>${{ vehiculo.precio_dia | number:'1.2-2' }}</td>
-              <td>
-                <span class="badge rounded-pill"
-                      [ngClass]="{'bg-success': vehiculo.disponible, 'bg-danger': !vehiculo.disponible}">
-                  {{ vehiculo.disponible ? 'Sí' : 'No' }}
-                </span>
-              </td>
-              <td>
-                <button (click)="seleccionarVehiculo(vehiculo)" class="btn btn-sm btn-warning me-2">
-                  Editar
-                </button>
-                <button (click)="eliminarVehiculo(vehiculo.id)" class="btn btn-sm btn-danger">
-                  Eliminar
-                </button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+      @if (vehiculosFiltrados.length === 0) {
+        <div class="text-center text-muted py-3">
+          No hay vehículos que coincidan con los criterios de búsqueda.
+        </div>
+      } @else {
+        <div class="table-responsive">
+          <table class="table table-striped table-hover table-bordered caption-top">
+            <thead class="table-light">
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Marca</th>
+                <th scope="col">Modelo</th>
+                <th scope="col">Categoría</th>
+                <th scope="col">Matrícula</th>
+                <th scope="col">Precio/Día</th>
+                <th scope="col">Disponible</th>
+                <th scope="col">Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              @for (vehiculo of vehiculosFiltrados; track vehiculo.id) {
+                <tr>
+                  <td>{{ vehiculo.id }}</td>
+                  <td>{{ vehiculo.marca }}</td>
+                  <td>{{ vehiculo.modelo }}</td>
+                  <td>{{ vehiculo.categoria }}</td>
+                  <td>{{ vehiculo.caracteristicas?.matricula }}</td>
+                  <td>${{ vehiculo.precio_dia | number:'1.2-2' }}</td>
+                  <td>
+                    <span class="badge rounded-pill"
+                          [ngClass]="{'bg-success': vehiculo.disponible, 'bg-danger': !vehiculo.disponible}">
+                      {{ vehiculo.disponible ? 'Sí' : 'No' }}
+                    </span>
+                  </td>
+                  <td>
+                    <button (click)="seleccionarVehiculo(vehiculo)" class="btn btn-sm btn-warning me-2">
+                      Editar
+                    </button>
+                    <button (click)="eliminarVehiculo(vehiculo.id)" class="btn btn-sm btn-danger">
+                      Eliminar
+                    </button>
+                  </td>
+                </tr>
+              }
+            </tbody>
+          </table>
+        </div>
+      }
     </div>
   </div>
 </div>
+
