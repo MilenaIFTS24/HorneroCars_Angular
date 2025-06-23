@@ -1,5 +1,7 @@
 h1 {
     text-align: center;
+    font-family: 'Merriweather', serif;
+    margin-top: 1em;
 }
 
 .tarifas {
@@ -49,6 +51,8 @@ img {
 p,
 h2 {
     color: var(--tercer-color);
+    font-family: 'Merriweather', serif;
+    font-weight: 200;
 }
 
 

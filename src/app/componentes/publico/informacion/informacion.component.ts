@@ -30,4 +30,5 @@ export class InformacionComponent {
     this.alertaVisible = false;
     console.log("Ocultando alerta")
   }
+  
 }
