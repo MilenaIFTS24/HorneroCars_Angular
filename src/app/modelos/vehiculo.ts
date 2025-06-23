@@ -1,15 +1,22 @@
 export interface Vehiculo {
-    id:          number;
-    matricula:   string;
-    grupo:       string;
-    categoria:   string;
-    marca:       string;
-    modelo:      string;
-    puertas:     number;
-    plazas:      number;
-    maletero:    string;
-    edad_minima: number;
-    precio_dia:  number;
-    disponible:  boolean;
-    imagen:      string;
+    id: number;
+    marca: string;
+    modelo: string;
+    categoria: string;
+    descripcion_corta: string;
+    precio_dia: number;
+    imagen: string;
+    disponible: boolean;
+    caracteristicas: {
+        puertas: number;
+        plazas: number;
+        transmision: string;
+        maletero: string;
+        grupo: string;
+        matricula: string;
+    };
+    tags: string[];
+    requisitos: {
+        edad_minima: number;
+    };
 }

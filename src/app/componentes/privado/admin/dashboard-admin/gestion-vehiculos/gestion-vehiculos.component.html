@@ -1,0 +1,138 @@
+<div class="container my-5">
+  <div class="card shadow-lg p-4 mb-5 bg-body rounded">
+    <h2 class="text-center mb-4 text-primary fw-bold">Gestión de Vehículos</h2>
+
+    <!-- Mensaje de Error/Éxito -->
+    <div *ngIf="mensajeError" class="alert alert-danger alert-dismissible fade show" role="alert">
+      <strong>¡Error!</strong> {{ mensajeError }}
+      <button type="button" class="btn-close" (click)="mensajeError = ''" aria-label="Close"></button>
+    </div>
+
+    <!-- Formulario de Añadir/Editar Vehículo -->
+    <div class="card p-4 mb-4 bg-light shadow-sm">
+      <form (ngSubmit)="modoEdicion ? actualizarVehiculo() : agregarVehiculo()">
+        <div class="row g-3">
+          <div class="col-md-6">
+            <label for="marca" class="form-label">Marca:</label>
+            <input type="text" id="marca" name="marca" [(ngModel)]="vehiculoForm.marca" required class="form-control">
+          </div>
+          <div class="col-md-6">
+            <label for="modelo" class="form-label">Modelo:</label>
+            <input type="text" id="modelo" name="modelo" [(ngModel)]="vehiculoForm.modelo" required class="form-control">
+          </div>
+          <div class="col-md-6">
+            <label for="categoria" class="form-label">Categoría:</label>
+            <input type="text" id="categoria" name="categoria" [(ngModel)]="vehiculoForm.categoria" required class="form-control">
+          </div>
+          <div class="col-md-6">
+            <label for="precio_dia" class="form-label">Precio por Día:</label>
+            <input type="number" id="precio_dia" name="precio_dia" [(ngModel)]="vehiculoForm.precio_dia" required class="form-control">
+          </div>
+          <div class="col-md-6">
+            <label for="matricula" class="form-label">Matrícula:</label>
+            <input type="text" id="matricula" name="matricula" [(ngModel)]="vehiculoForm.caracteristicas.matricula" required class="form-control">
+          </div>
+          <div class="col-md-6 d-flex align-items-center">
+            <div class="form-check">
+              <input type="checkbox" id="disponible" name="disponible" [(ngModel)]="vehiculoForm.disponible" class="form-check-input">
+              <label for="disponible" class="form-check-label">Disponible:</label>
+            </div>
+          </div>
+          <div class="col-12">
+            <label for="descripcion_corta" class="form-label">Descripción Corta:</label>
+            <textarea id="descripcion_corta" name="descripcion_corta" [(ngModel)]="vehiculoForm.descripcion_corta" rows="2" class="form-control"></textarea>
+          </div>
+          <div class="col-12">
+            <label for="imagen" class="form-label">URL de Imagen:</label>
+            <input type="url" id="imagen" name="imagen" [(ngModel)]="vehiculoForm.imagen" class="form-control">
+          </div>
+
+          <!-- Campos de Características Anidadas -->
+          <div class="col-md-6">
+            <label for="puertas" class="form-label">Puertas:</label>
+            <input type="number" id="puertas" name="puertas" [(ngModel)]="vehiculoForm.caracteristicas.puertas" class="form-control">
+          </div>
+          <div class="col-md-6">
+            <label for="plazas" class="form-label">Plazas:</label>
+            <input type="number" id="plazas" name="plazas" [(ngModel)]="vehiculoForm.caracteristicas.plazas" class="form-control">
+          </div>
+          <div class="col-md-6">
+            <label for="transmision" class="form-label">Transmisión:</label>
+            <input type="text" id="transmision" name="transmision" [(ngModel)]="vehiculoForm.caracteristicas.transmision" class="form-control">
+          </div>
+          <div class="col-md-6">
+            <label for="maletero" class="form-label">Maletero:</label>
+            <input type="text" id="maletero" name="maletero" [(ngModel)]="vehiculoForm.caracteristicas.maletero" class="form-control">
+          </div>
+          <div class="col-md-6">
+            <label for="grupo" class="form-label">Grupo:</label>
+            <input type="text" id="grupo" name="grupo" [(ngModel)]="vehiculoForm.caracteristicas.grupo" class="form-control">
+          </div>
+
+          <!-- Campo Requisitos.edad_minima -->
+          <div class="col-md-6">
+            <label for="edad_minima" class="form-label">Edad Mínima Requerida:</label>
+            <input type="number" id="edad_minima" name="edad_minima" [(ngModel)]="vehiculoForm.requisitos.edad_minima" class="form-control">
+          </div>
+
+          <div class="col-12 d-flex justify-content-end gap-2 mt-4">
+            <button type="submit" class="btn btn-primary px-4 py-2 rounded-pill shadow-sm">
+              {{ modoEdicion ? 'Actualizar Vehículo' : 'Agregar Vehículo' }}
+            </button>
+            <button type="button" (click)="cancelarEdicion()" *ngIf="modoEdicion" class="btn btn-secondary px-4 py-2 rounded-pill shadow-sm">
+              Cancelar
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <!-- Lista de Vehículos -->
+    <div class="card shadow-lg p-4 bg-body rounded">
+      <h3 class="card-title text-primary mb-4">Vehículos Registrados</h3>
+      <div *ngIf="vehiculos.length === 0" class="text-center text-muted py-3">
+        No hay vehículos registrados en este momento.
+      </div>
+      <div *ngIf="vehiculos.length > 0" class="table-responsive">
+        <table class="table table-striped table-hover table-bordered caption-top">
+          <thead class="table-light">
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Marca</th>
+              <th scope="col">Modelo</th>
+              <th scope="col">Categoría</th>
+              <th scope="col">Matrícula</th>
+              <th scope="col">Precio/Día</th>
+              <th scope="col">Disponible</th>
+              <th scope="col">Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let vehiculo of vehiculos">
+              <td>{{ vehiculo.id }}</td>
+              <td>{{ vehiculo.marca }}</td>
+              <td>{{ vehiculo.modelo }}</td>
+              <td>{{ vehiculo.categoria }}</td>
+              <td>{{ vehiculo.caracteristicas?.matricula }}</td>
+              <td>${{ vehiculo.precio_dia | number:'1.2-2' }}</td>
+              <td>
+                <span class="badge rounded-pill"
+                      [ngClass]="{'bg-success': vehiculo.disponible, 'bg-danger': !vehiculo.disponible}">
+                  {{ vehiculo.disponible ? 'Sí' : 'No' }}
+                </span>
+              </td>
+              <td>
+                <button (click)="seleccionarVehiculo(vehiculo)" class="btn btn-sm btn-warning me-2">
+                  Editar
+                </button>
+                <button (click)="eliminarVehiculo(vehiculo.id)" class="btn btn-sm btn-danger">
+                  Eliminar
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
