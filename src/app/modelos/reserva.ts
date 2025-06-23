@@ -2,11 +2,13 @@ import { User } from "./user";
 import { Vehiculo } from "./vehiculo";
 
 export interface Reserva {
-
-    reservaId: number;
-    cliente: User;
-    vehiculo: Vehiculo;
-    señaPagada: boolean;
-    precioTotal: number;
-
+  reservaId: number;
+  clienteId: string;
+  vehiculoId: number;
+  seniaPagada: boolean;
+  precioTotal: number;
+  fechaRecogida: string;
+  horaRecogida: string;
+  fechaDevolucion: string;
+  horaDevolucion: string;
 }

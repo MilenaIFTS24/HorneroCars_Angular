@@ -37,5 +37,25 @@ export const routes: Routes = [ //rutas elaboradas con lazy loading.
     ]
   },
 
+
+  {
+  path: "dashboardAdmin",
+  loadComponent: () => import('./componentes/privado/admin/dashboard-admin/dashboard-admin.component').then(m => m.DashboardAdminComponent),
+  children: [
+    
+    {
+      path: "gestion-reservas",
+      loadComponent: () =>
+        import('./componentes/privado/admin/dashboard-admin/gestion-reservas/gestion-reservas.component')
+          .then(m => m.GestionReservasComponent)
+    },
+    {
+      path: "",
+      redirectTo: "gestion-vehiculos",
+      pathMatch: "full"
+    }
+  ]
+},
+
   { path: '', redirectTo: '/', pathMatch: 'full' },
 ];

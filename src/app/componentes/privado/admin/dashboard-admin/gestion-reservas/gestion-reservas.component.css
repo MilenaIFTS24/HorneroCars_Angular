@@ -1,0 +1,49 @@
+/* fondo gestion */
+#card-gestion {
+    background-color: rgba(254, 252, 252, 0.904) !important;
+}
+
+.hornero-form-card {
+        background-color: rgba(79, 78, 76, 0.068) !important;
+    border-color: rgba(169, 176, 176, 0.37) !important;
+}
+/* separador de formulario */
+#separador { 
+    margin-bottom: 1rem;
+    margin-top:1rem;
+    padding: 0.5rem
+}
+
+/* boton disponible y label */
+#disponible { 
+    height: 1.5rem;
+    width: 1.5rem;
+    margin-left:1rem;
+}
+
+.form-check-label {
+    margin-left: 0.8rem;
+    padding-bottom:0.3rem
+}
+
+/* boton disponible y label */
+.hornero-filter-card {
+    background-color: rgba(191, 135, 24, 0.079) !important;
+    border-color: rgba(169, 176, 176, 0.37) !important;
+}
+
+
+/* label de carta filtro */
+#label-card-filtros {
+    color: var(--primer-color) !important;
+}
+
+/* boton filtro y limpiar filtro */
+#btn-filtro {
+    background-color: var(--primer-color) !important;
+    border-color: var(--segundo-color) !important;
+}
+#btn-filtro:hover {
+    background-color: var(--segundo-color) !important;
+}
+

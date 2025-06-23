@@ -1,0 +1,15 @@
+{
+  "reservas": [
+    {
+      "reservaId": 1001,
+      "clienteId": "gustavocerati",
+      "vehiculoId": 2001,
+      "señaPagada": true,
+      "precioTotal": 95000,
+      "fechaRecogida": "2025-07-20",
+      "horaRecogida": "10:30",
+      "fechaDevolucion": "2025-07-25",
+      "horaDevolucion": "16:00"
+    }
+  ]
+}
