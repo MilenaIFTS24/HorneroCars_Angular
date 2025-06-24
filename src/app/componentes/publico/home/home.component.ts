@@ -13,7 +13,7 @@ interface AutoCarrousel {
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [NgbCarouselModule, CommonModule, RouterLink],
+  imports: [NgbCarouselModule, CommonModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })

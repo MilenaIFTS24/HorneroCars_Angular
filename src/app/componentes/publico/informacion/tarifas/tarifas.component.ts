@@ -8,10 +8,36 @@ import { Component, Output, EventEmitter } from '@angular/core';
 })
 export class TarifasComponent {
   
-  @Output() alertaEnConstruccion = new EventEmitter<void>(); 
+alertaVisible: boolean = false;
 
-  alertarEnConstruccion() {
-    this.alertaEnConstruccion.emit();
-    console.log("Enviando alerta");
+mostrarEnConstruccion() {
+    this.alertaVisible = true;
+    setTimeout(() => {
+      const alertaElement = document.getElementById('alertaEnConstruccion');
+      if (alertaElement) {
+        alertaElement.scrollIntoView({
+          behavior: 'smooth', // scrolleo suave
+          block: 'center'    // centrar la alerta
+        });
+      }
+    }, 10);/* delay */
+    console.log("Alerta visible")
   }
+
+  ocultarAlertaEnConstruccion() {
+    this.alertaVisible = false;
+  }
+
+  irAContacto() {
+    const formContacto = document.getElementById('formContacto');
+    if (formContacto) {
+      formContacto.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    } else {
+      console.log('El formulario con ID "formContacto" no fue encontrado en el DOM.');
+    }
+  }
+
 }

@@ -1,3 +1,4 @@
+
 import { Routes } from '@angular/router';
 import { HomeComponent } from './componentes/publico/home/home.component';
 import { LoginComponent } from './componentes/autenticacion/login/login.component';
@@ -50,6 +51,8 @@ export const routes: Routes = [ //rutas elaboradas con lazy loading.
   },
   
   
+  
+  
     {
         path: "dashboardAdmin",
         loadComponent: () => import('./componentes/privado/admin/dashboard-admin/dashboard-admin.component').then(m => m.DashboardAdminComponent),
@@ -76,6 +79,8 @@ export const routes: Routes = [ //rutas elaboradas con lazy loading.
         ]
     },
 
+     
+   
 
   {
 
@@ -122,7 +127,3 @@ export const routes: Routes = [ //rutas elaboradas con lazy loading.
 
   { path: '', redirectTo: '/', pathMatch: 'full' },
 ];
-
-
-
-

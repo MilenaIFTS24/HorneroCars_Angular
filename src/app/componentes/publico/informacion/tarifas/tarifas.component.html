@@ -1,3 +1,14 @@
+@if (alertaVisible) {
+<div class="lato-regular" id="alertaEnConstruccion">
+    <p>
+        Página en construcción. Para más información, <a id="irAContacto" (click)="irAContacto()">póngase en contacto con nosotros</a>.
+    </p>
+    <button id="cerrarAlerta" (click)="ocultarAlertaEnConstruccion()">
+        X
+    </button>
+</div>
+}
+
 <h1 class="lato-bold2">Tarifas</h1>
 <section class="tarifas">
     <div class="planas">
@@ -12,7 +23,7 @@
             <li><i class="fa-solid fa-gem"></i> Posibilidad de agregar un conductor adicional (con cargo adicional).</li>
             <li><i class="fa-solid fa-gem"></i> Y más...!</li>
         </ul>
-        <button class="lato-bold1" (click)="alertarEnConstruccion()">Ver Detalles</button>
+        <button class="lato-bold1" (click)="mostrarEnConstruccion()">Ver Detalles</button>
     </div>
     <div class="planas">
         <img src="assets\img\Hornero_AutoFamiliar.png" alt="">
@@ -25,7 +36,7 @@
             <li><i class="fa-solid fa-gem"></i> Posibilidad de agregar un conductor adicional sin cargo extra.</li>
             <li><i class="fa-solid fa-gem"></i> Silla de seguridad para niños bonificada (sujeto a disponibilidad).</li>
         </ul>
-        <button class="lato-bold1" (click)="alertarEnConstruccion()">Ver Detalles</button>
+        <button class="lato-bold1" (click)="mostrarEnConstruccion()">Ver Detalles</button>
     </div>
     <div class="planas">
         <img src="assets\img\Hornero_Furgoneta.png" alt="">
@@ -40,6 +51,6 @@
             <li><i class="fa-solid fa-gem"></i> GPS integrado.</li>
             <li><i class="fa-solid fa-gem"></i> Entrega a domicilio.</li>
         </ul>
-        <button class="lato-bold1" (click)="alertarEnConstruccion()">Ver Detalles</button>
+        <button class="lato-bold1" (click)="mostrarEnConstruccion()">Ver Detalles</button>
     </div>
 </section>
