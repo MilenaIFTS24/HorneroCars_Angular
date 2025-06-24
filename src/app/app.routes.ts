@@ -20,13 +20,6 @@ export const routes: Routes = [ //rutas elaboradas con lazy loading.
   { path: "contacto", loadComponent: () => import('./componentes/publico/informacion/contacto/contacto.component').then(m => ContactoComponent) },
   { path: "informacion", loadComponent: () => import('./componentes/publico/informacion/informacion.component').then(m => InformacionComponent) },
   { path: "reserva", loadComponent: () => import('./componentes/publico/reserva/reserva.component').then(m => ReservaComponent) },
-
-
-  { path: "dashboardUser", loadComponent: () => import('./componentes/privado/user/dashboard-user/home-dashboard-user/home-dashboard-user.component').then(m => HomeDashboardUserComponent) },
-  { path: "dashboardAdmin", loadComponent: () => import('./componentes/privado/admin/dashboard-admin/dashboard-admin.component').then(m => DashboardAdminComponent) },
-
-
-
   {
     path: "informacion",
     loadComponent: () => import('./componentes/publico/informacion/informacion.component').then(m => m.InformacionComponent),
@@ -84,7 +77,6 @@ export const routes: Routes = [ //rutas elaboradas con lazy loading.
 
 
   {
-
     path: "dashboardUser",
     loadComponent: () =>
       import('./componentes/privado/user/dashboard-user/dashboard-user.component')
@@ -109,13 +101,12 @@ export const routes: Routes = [ //rutas elaboradas con lazy loading.
       },
       {
         path: 'hacer-reserva',
-        loadComponent: () => import('./componentes/privado/user/dashboard-user/hacer-reserva/hacer-reserva.component').then(m => m.HacerReservaComponent)
+        loadComponent: () => import('./componentes/privado/user/dashboard-user/hacer-reserva/hacer-reserva.component').then(m => m.HacerReservaComponent) 
       },
       {
         path: 'configuracion',
         loadComponent: () => import('./componentes/privado/user/dashboard-user/home-dashboard-user/home-dashboard-user.component').then(m => m.HomeDashboardUserComponent)
       },
-
 
       {
         path: "",

@@ -2,7 +2,6 @@
 // Aquí importamos todas las herramientas necesarias de Angular, una sola vez.
 
 import { ApplicationConfig, LOCALE_ID, provideZoneChangeDetection } from '@angular/core';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap'; // ✅ para NgbModal
 import { provideRouter } from '@angular/router';
 import { provideClientHydration, withEventReplay } from '@angular/platform-browser';
 
@@ -31,7 +30,6 @@ export const appConfig: ApplicationConfig = {
     // Configuración estándar de Angular para la detección de cambios y el router.
     provideZoneChangeDetection({ eventCoalescing: true }), 
     provideRouter(routes), 
-    // importProvidersFrom(NgbModule),
     
     // Habilita la hidratación del cliente para mejorar el rendimiento con SSR.
     provideClientHydration(withEventReplay()),
@@ -45,5 +43,4 @@ export const appConfig: ApplicationConfig = {
     { provide: LOCALE_ID, useValue: 'es-AR' } 
     
   ]
-
 };
