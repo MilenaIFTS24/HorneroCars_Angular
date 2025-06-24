@@ -36,7 +36,6 @@ h1 {
     transition: 0.4s linear;
     background-color: var(--quinto-color);
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
-    /*height: 28rem; hace fija la altura de la tarjeta*/
 }
 
 .planas:hover {
@@ -62,7 +61,6 @@ button {
     max-width: 10rem;
     /*ancho máximo*/
     align-self: center;
-    /*centrarlo*/
     margin: 5px;
     padding: 5px 10px;
     font-size: medium;
@@ -95,25 +93,27 @@ i {
 }
 
 #alertaEnConstruccion {
-    display: flex;    
+    display: flex;
     padding: 3px 0 0 1px;
     background-color: #f8d7da;
     color: #721c24;
     transition: 0.3s ease-in-out;
     position: relative;
-    
+
 }
 
 #alertaEnConstruccion a {
-    color: #721c24;    
+    color: #721c24;
 }
-    
+
 #cerrarAlerta {
     font-weight: bolder;
     background: #fcbfc5;
     border: 1px solid #721c24;
     border-radius: 5px;
-    position: absolute; /* se posiciona respecto al contenedor, moviendose a la derecha */
-    right: 10px; /* ajusta la distancia desde la derecha */
+    position: absolute;
+    /* se posiciona respecto al contenedor, moviendose a la derecha */
+    right: 10px;
+    /* ajusta la distancia desde la derecha */
     color: var(--tercer-color);
 }

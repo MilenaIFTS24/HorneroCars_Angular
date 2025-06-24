@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { User } from '../../../../modelos/user'; // Importamos la interfaz User
+import { User } from '../../../../modelos/user';
 
 // Definimos la estructura de los ítems de navegación
 interface NavItem {

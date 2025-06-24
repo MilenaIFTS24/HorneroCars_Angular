@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-tarifas',
@@ -7,10 +7,10 @@ import { Component, Output, EventEmitter } from '@angular/core';
   styleUrl: './tarifas.component.css'
 })
 export class TarifasComponent {
-  
-alertaVisible: boolean = false;
 
-mostrarEnConstruccion() {
+  alertaVisible: boolean = false;
+
+  mostrarEnConstruccion() {
     this.alertaVisible = true;
     setTimeout(() => {
       const alertaElement = document.getElementById('alertaEnConstruccion');
@@ -28,6 +28,7 @@ mostrarEnConstruccion() {
     this.alertaVisible = false;
   }
 
+  /* Método en desuso */
   irAContacto() {
     const formContacto = document.getElementById('formContacto');
     if (formContacto) {

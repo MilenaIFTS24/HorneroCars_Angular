@@ -20,8 +20,8 @@ export class RegistroComponent implements OnInit {
   registroForm!: FormGroup;
 
   constructor(private fb: FormBuilder,
-              private abmuser: AbmUserService
-             ) {}
+    private abmuser: AbmUserService
+  ) { }
 
   ngOnInit(): void {
     this.registroForm = this.fb.group({

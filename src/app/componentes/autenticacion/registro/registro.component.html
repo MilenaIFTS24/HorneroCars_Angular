@@ -1,8 +1,11 @@
 <div class="container mt-5">
-  <div class="row justify-content-center align-items-center fullscreen-row"> <div class="col-md-8 col-lg-7 form-area"> <h2>Registro de Usuario</h2>
+  <div class="row justify-content-center align-items-center fullscreen-row">
+    <div class="col-md-8 col-lg-7 form-area">
+      <h2>Registro de Usuario</h2>
 
       <form [formGroup]="registroForm" (ngSubmit)="onSubmit()">
-        <div class="row"> <div class="col-md-6">
+        <div class="row">
+          <div class="col-md-6">
             <div class="mb-3">
               <label for="userId" class="form-label">Nombre de Usuario</label>
               <input type="text" class="form-control" id="userId" formControlName="userId"
@@ -119,7 +122,8 @@
             [class.is-invalid]="
                   (registroForm.get('confirmPassword')?.invalid && registroForm.get('confirmPassword')?.touched) ||
                   (registroForm.errors?.['mismatch'] && registroForm.get('confirmPassword')?.touched)
-                "> @if ((registroForm.get('confirmPassword')?.invalid && registroForm.get('confirmPassword')?.touched) ||
+                "> @if ((registroForm.get('confirmPassword')?.invalid && registroForm.get('confirmPassword')?.touched)
+          ||
           (registroForm.errors?.['mismatch'] && registroForm.get('confirmPassword')?.touched)) {
           <div class="invalid-feedback">
             @if (registroForm.get('confirmPassword')?.errors?.['required']) {
@@ -137,6 +141,6 @@
       </form>
     </div>
 
-  
+
   </div>
 </div>

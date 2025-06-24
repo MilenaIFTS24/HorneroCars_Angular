@@ -8,8 +8,8 @@ import { Sucursal } from '../../../../../modelos/sucursal';
   selector: 'app-gestion-sucursales',
   standalone: true,
   imports: [CommonModule, FormsModule],
-  templateUrl: './admin-gestion-sucursales.component.html', 
-  styleUrls: ['./admin-gestion-sucursales.component.css'] 
+  templateUrl: './admin-gestion-sucursales.component.html',
+  styleUrls: ['./admin-gestion-sucursales.component.css']
 })
 export class GestionSucursalesComponent implements OnInit {
   sucursales: Sucursal[] = []; // Todas las sucursales cargadas del servicio
@@ -47,9 +47,7 @@ export class GestionSucursalesComponent implements OnInit {
     this.cargarSucursales(); // Carga las sucursales al inicializar el componente
   }
 
-  /**
-   * Carga todas las sucursales del servicio y luego aplica los filtros iniciales.
-   */
+  /* Carga todas las sucursales del servicio y luego aplica los filtros iniciales.*/
   cargarSucursales(): void {
     this.abmSucursalesService.getSucursales().subscribe({
       next: (data) => {
@@ -64,10 +62,8 @@ export class GestionSucursalesComponent implements OnInit {
     });
   }
 
-  /**
-   * Aplica los criterios de filtro a la lista completa de sucursales.
-   * Actualiza la lista de `sucursalesFiltradas`.
-   */
+  /*Aplica los criterios de filtro a la lista completa de sucursales.
+    Actualiza la lista de `sucursalesFiltradas`.*/
   aplicarFiltros(): void {
     let tempSucursales = [...this.sucursales]; // Trabaja con una copia para no modificar el array original
 
@@ -80,7 +76,6 @@ export class GestionSucursalesComponent implements OnInit {
       tempSucursales = tempSucursales.filter(s =>
         s.direccion.localidad.toLowerCase().includes(this.filtroLocalidad.toLowerCase())
       );
-      console.log('Filtro por localidad...')
     }
     if (this.filtroCodigoPostal) {
       tempSucursales = tempSucursales.filter(s =>
@@ -91,9 +86,7 @@ export class GestionSucursalesComponent implements OnInit {
     this.sucursalesFiltradas = tempSucursales; // Asigna el resultado filtrado a la lista que se muestra
   }
 
-  /**
-   * Limpia todos los campos de filtro y vuelve a aplicar los filtros (mostrando todas las sucursales).
-   */
+  /* Limpia todos los campos de filtro y vuelve a aplicar los filtros (mostrando todas las sucursales). */
   limpiarFiltros(): void {
     this.filtroProvincia = '';
     this.filtroLocalidad = '';
@@ -101,11 +94,9 @@ export class GestionSucursalesComponent implements OnInit {
     this.aplicarFiltros(); // Vuelve a aplicar los filtros para refrescar la tabla
   }
 
-  /**
-   * Añade una nueva sucursal utilizando los datos del formulario.
-   */
+  /*Añade una nueva sucursal utilizando los datos del formulario.*/
   agregarSucursal(): void {
-    // Asigna un ID único a la nueva sucursal (ej. timestamp)
+    // Asigna un ID único a la nueva sucursal (fecha actual)
     this.sucursalForm.sucursalId = Date.now();
 
     this.abmSucursalesService.addSucursal(this.sucursalForm).subscribe({
@@ -122,10 +113,7 @@ export class GestionSucursalesComponent implements OnInit {
     });
   }
 
-  /**
-   * Selecciona una sucursal para editar, precargando el formulario.
-   * @param sucursal El objeto Sucursal a editar.
-   */
+  /*Selecciona una sucursal para editar, precargando el formulario.*/
   seleccionarSucursal(sucursal: Sucursal): void {
     // Realiza una copia profunda para evitar modificar el objeto original directamente.
     // Solo se copia la propiedad 'direccion' de forma profunda, ya que es el único objeto anidado en el modelo actual.
@@ -138,9 +126,7 @@ export class GestionSucursalesComponent implements OnInit {
     this.mensajeError = ''; // Limpia mensaje de error
   }
 
-  /**
-   * Actualiza una sucursal existente utilizando los datos del formulario.
-   */
+  /*Actualiza una sucursal existente utilizando los datos del formulario.*/
   actualizarSucursal(): void {
     this.abmSucursalesService.updateSucursal(this.sucursalForm).subscribe({
       next: (sucursal) => {
@@ -157,17 +143,13 @@ export class GestionSucursalesComponent implements OnInit {
   }
 
   /**
-   * Inicia el proceso de eliminación, mostrando el modal de confirmación.
-   * @param id El ID de la sucursal a eliminar.
-   */
+   * Inicia el proceso de eliminación, mostrando el modal de confirmación.*/
   eliminarSucursal(id: number): void {
     this.sucursalAEliminarId = id;
     this.mostrarConfirmacionEliminar = true; // Muestra el modal/mensaje de confirmación
   }
 
-  /**
-   * Confirma la eliminación de la sucursal.
-   */
+  /*Confirma la eliminación de la sucursal.*/
   confirmarEliminar(): void {
     if (this.sucursalAEliminarId !== null) {
       this.abmSucursalesService.deleteSucursal(this.sucursalAEliminarId).subscribe({
@@ -186,24 +168,18 @@ export class GestionSucursalesComponent implements OnInit {
     }
   }
 
-  /**
-   * Cancela la eliminación y oculta el modal de confirmación.
-   */
+  /*Cancela la eliminación y oculta el modal de confirmación.*/
   cancelarEliminar(): void {
     this.mostrarConfirmacionEliminar = false;
     this.sucursalAEliminarId = null;
   }
 
-  /**
-   * Cancela el modo edición y resetea el formulario.
-   */
+  /*Cancela el modo edición y resetea el formulario.*/
   cancelarEdicion(): void {
     this.limpiarFormulario();
   }
 
-  /**
-   * Resetea el formulario de sucursal a sus valores iniciales y sale del modo edición.
-   */
+  /*Resetea el formulario de sucursal a sus valores iniciales y sale del modo edición.*/
   limpiarFormulario(): void {
     this.sucursalForm = {
       sucursalId: 0,
@@ -216,7 +192,7 @@ export class GestionSucursalesComponent implements OnInit {
         localidad: ''
       },
       telefono: 0 // Resetear teléfono a 0
-    };    
+    };
     this.modoEdicion = false; // Desactiva el modo edición
     this.mensajeError = ''; // Limpia mensaje de error
   }

@@ -9,7 +9,6 @@ import { LoginComponent } from '../../autenticacion/login/login.component';
     NgbNavModule,
     NgbDropdownModule,
     RouterModule,
-    LoginComponent
   ],
   templateUrl: './nav.component.html',
   styleUrls: ['./nav.component.css']
@@ -20,7 +19,7 @@ export class NavComponent {
   constructor(
     private modalService: NgbModal,
     private router: Router
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     // Verificar si hay un usuario guardado en sessionStorage

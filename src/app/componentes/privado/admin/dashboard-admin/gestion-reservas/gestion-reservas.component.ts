@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common'; 
+import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms'; // Para ngModel y formularios
 import { AbmReservaService } from '../../../../../servicios/abm-reservas.service';
 import { ReservaAbm } from '../../../../../modelos/reserva-abm';
@@ -30,7 +30,7 @@ export class GestionReservasComponent implements OnInit {
   modoEdicion: boolean = false;
   mensajeError: string = '';
 
-  constructor(private abmReservaService: AbmReservaService) {}
+  constructor(private abmReservaService: AbmReservaService) { }
 
   ngOnInit(): void {
     this.cargarReservas();

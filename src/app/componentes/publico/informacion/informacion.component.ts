@@ -12,6 +12,7 @@ import { RouterModule } from '@angular/router';
   templateUrl: './informacion.component.html',
   styleUrl: './informacion.component.css'
 })
+
 export class InformacionComponent {
-  
+
 }

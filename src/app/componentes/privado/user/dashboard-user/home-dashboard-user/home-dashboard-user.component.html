@@ -1,8 +1,10 @@
 <div class="home-dashboard-container">
   <div class="welcome-section">
-    <h1 *ngIf="usuarioLogueado">¡Bienvenido de nuevo, {{ usuarioLogueado.nombreCompleto }}!</h1>
-
-    <h1 *ngIf="!usuarioLogueado">¡Bienvenido a tu Dashboard!</h1>
+    @if (usuarioLogueado) {
+    <h1>¡Bienvenido de nuevo, {{ usuarioLogueado.nombreCompleto }}!</h1>
+    } @else {
+    <h1>¡Bienvenido a tu Dashboard!</h1>
+    }
 
     <p>Aquí tienes un resumen de tu actividad y acceso rápido a lo que más necesitas.</p>
   </div>

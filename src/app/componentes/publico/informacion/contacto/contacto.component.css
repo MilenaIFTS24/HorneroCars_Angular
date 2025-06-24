@@ -1,7 +1,3 @@
-/*
- * El Bootstrap maneja el layout principal, este archivo
- * solo se encarga de los detalles finos y la personalización.
-*/
 :host {
     display: block;
 }
@@ -21,8 +17,6 @@
     /* Para que ambas columnas tengan la misma altura */
 }
 
-/* Los estilos del formulario ya usan clases de Bootstrap (.form-label, .form-control),
-   por lo que no necesitamos redefinirlos aquí a menos que queramos algo muy específico. */
 .form-control:focus,
 .form-select:focus {
     border-color: var(--hornero-naranja, #E8751A);

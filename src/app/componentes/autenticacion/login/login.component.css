@@ -31,6 +31,7 @@
   opacity: 0.7;
   color: var(--tercer-color);
 }
+
 .btn-close:hover {
   opacity: 1;
 }
@@ -51,10 +52,10 @@
 .form-label {
   font-weight: 500;
   color: var(--primer-color);
-   font-family: "Lato", sans-serif;
+  font-family: "Lato", sans-serif;
   font-weight: 400;
   font-style: normal;
-  
+
 }
 
 .form-control {
@@ -93,7 +94,7 @@
   height: 1rem;
 }
 
-.olvideCuenta{
+.olvideCuenta {
   text-align: center;
   margin-bottom: 1em;
   margin-top: 1em;
@@ -103,8 +104,7 @@
   text-align: center;
 }
 
-.crear-cuenta p{
+.crear-cuenta p {
   margin-bottom: 0;
   color: var(--cuarto-color);
 }
-

@@ -28,16 +28,11 @@
 
         <!-- Menú desplegable "Información": visible si no hay usuario o si es Cliente -->
         @if(!usuarioLogueado || usuarioLogueado.rol === 'Cliente'){
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" routerLink="/informacion" id="infoDropdown" role="button"
-            data-bs-toggle="dropdown" aria-expanded="false">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/informacion" id="infoDropdown" role="button"
+             aria-expanded="false">
             Información
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="infoDropdown">
-            <li><a class="dropdown-item" routerLink="/vehiculos">Vehículos</a></li>
-            <li><a class="dropdown-item" routerLink="/tarifas">Tarifas y Requisitos</a></li>
-            <li><a class="dropdown-item" routerLink="/contacto">Contacto y Sucursales</a></li>
-          </ul>
+          </a>        
         </li>
         }
       </ul>

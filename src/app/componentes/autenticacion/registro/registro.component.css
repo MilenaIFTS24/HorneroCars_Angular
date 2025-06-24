@@ -1,7 +1,7 @@
 /* --- Estilos Generales y de Layout Fullscreen --- */
 body {
-    font-family: 'Roboto', sans-serif; /* O una fuente sans-serif limpia de Google Fonts */
-    background-color: var(--cuarto-color); /* Fondo principal */
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--cuarto-color);
     min-height: 100vh;
     margin: 0;
     padding: 0;
@@ -12,29 +12,10 @@ body {
     overflow-y: auto;
 }
 
-
-
-
-/* Colores de Hornero Cars (mantener como está) */
-:root {
-    --primer-color: #E8751A; /* Botones principales y enlaces de texto */
-    --segundo-color: #D46B12; /* Hover e interacción de botones principales */
-    --tercer-color: #222831; /* Nav y footer, Texto principal */
-    --cuarto-color: #F8F9FA; /* Fondo principal muy claro (casi blanco) */
-    --quinto-color: #FFFFFF; /* Color de texto en botones principales, nav y footer, Fondo de campos (blanco puro) */
-    --sexto-color: #EEEEEE; /* Bordes y fondos secundarios, Bordes de input (gris muy claro) */
-    --hornero-enlace-secundario: #0056b3;
-    --hornero-enlace-secundario-hover: #004494;
-    --hornero-exito: #198754;
-    --hornero-error: #dc3545;
-    --hornero-advertencia: #ffc107;
-}
-
-
 /* --- Estilos Generales y de Layout Fullscreen --- */
 body {
     font-family: 'Roboto', sans-serif;
-    background-color: var(--sexto-color); /* ¡CAMBIO CLAVE AQUÍ! Usamos un gris muy claro para el fondo general */
+    background-color: var(--sexto-color);
     min-height: 100vh;
     margin: 0;
     padding: 0;
@@ -49,7 +30,7 @@ body {
 .container.mt-5 {
     margin-top: 0 !important;
     padding: 0;
-    display: flex; /* Esto ya no necesitará la imagen, pero sigue siendo útil para centrar */
+    display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
@@ -62,23 +43,22 @@ body {
     width: 100%;
     margin: 0;
     display: flex;
-    justify-content: center; /* Centramos la única columna de contenido */
+    justify-content: center;
     align-items: center;
     flex-grow: 1;
-    /* Eliminamos el 'gap' ya que no hay una segunda columna de imagen */
 }
 
 /* Columna del formulario (contenedor de h2 y form) */
 .form-area {
-    max-width: 800px; /* Ancho máximo para el formulario de dos columnas */
+    max-width: 800px;
     width: 100%;
-    padding: 40px 50px; /* Mantener un buen padding interno */
-    background-color: var(--quinto-color); /* ¡FONDO DEL FORMULARIO BLANCO PURO! */
+    padding: 40px 50px;
+    background-color: var(--quinto-color);
     border-radius: 8px;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1); /* Sombra más pronunciada para que resalte */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
-    justify-content: center; /* Centra el contenido verticalmente */
+    justify-content: center;
 }
 
 h2 {
@@ -163,7 +143,7 @@ input[type="date"].form-control {
 }
 
 .btn-primary:disabled {
-    background-color:rgba(47, 46, 46, 0.2) ;
+    background-color: rgba(47, 46, 46, 0.2);
     border-color: var(--sexto-color) !important;
     cursor: not-allowed;
     opacity: 0.7;
@@ -181,8 +161,8 @@ input[type="date"].form-control {
     .form-area {
         max-width: 100%;
         padding: 25px;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); /* Mantener una sombra sutil en móviles */
-        border-radius: 8px; /* Mantener bordes redondeados */
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        border-radius: 8px;
     }
 
     h2 {
@@ -190,7 +170,7 @@ input[type="date"].form-control {
         margin-bottom: 25px;
     }
 
-    .form-area .row > div {
+    .form-area .row>div {
         width: 100% !important;
         margin-left: 0;
         margin-right: 0;
@@ -201,11 +181,13 @@ input[type="date"].form-control {
 
 @media (min-width: 992px) {
     .fullscreen-row {
-        max-width: 900px; /* Ajusta el ancho máximo total del formulario sin imagen */
-        /* Ya no hay 'gap' aquí */
+        max-width: 900px;
+        /* Ajusta el ancho máximo total del formulario sin imagen */
     }
+
     .form-area {
         min-height: 600px;
-        justify-content: center; /* Centrar el formulario verticalmente en pantallas grandes */
+        justify-content: center;
+        /* Centrar el formulario verticalmente en pantallas grandes */
     }
 }

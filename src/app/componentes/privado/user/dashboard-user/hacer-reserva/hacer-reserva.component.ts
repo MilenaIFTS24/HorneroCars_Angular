@@ -22,7 +22,7 @@ export class HacerReservaComponent implements OnInit {
   // --- Propiedades para los formularios y datos ---
   public formPaso1!: FormGroup;
   public vehiculoElegido: Vehiculo | null = null;
-  
+
   // --- Propiedades para el catálogo ---
   private todosLosVehiculos: Vehiculo[] = [];
   public vehiculosFiltrados: Vehiculo[] = [];
@@ -34,7 +34,7 @@ export class HacerReservaComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private vehiculosService: VehiculosService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     // Se crea la estructura del formulario del Paso 1.
@@ -54,7 +54,7 @@ export class HacerReservaComponent implements OnInit {
     if (this.todosLosVehiculos.length === 0) { this.cargarVehiculos(); }
     this.pasoActual = 2;
   }
-  
+
   seleccionarVehiculo(auto: Vehiculo): void {
     this.vehiculoElegido = auto;
     this.pasoActual = 3;
@@ -64,7 +64,7 @@ export class HacerReservaComponent implements OnInit {
   volverAlPaso(paso: number): void {
     this.pasoActual = paso;
   }
-  
+
   // --- Lógica de Negocio ---
   cargarVehiculos(): void {
     this.isLoadingVehiculos = true;
@@ -78,7 +78,7 @@ export class HacerReservaComponent implements OnInit {
       error: (err) => { this.isLoadingVehiculos = false; console.error(err); }
     });
   }
-  
+
   aplicarFiltros(): void {
     let temp = [...this.todosLosVehiculos];
     if (this.categoriaSeleccionada) { temp = temp.filter(auto => auto.categoria === this.categoriaSeleccionada); }

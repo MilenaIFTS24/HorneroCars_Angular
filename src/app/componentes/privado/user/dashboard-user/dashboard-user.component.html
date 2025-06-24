@@ -4,15 +4,20 @@
     <div class="sidebar-sticky">
       <div class="sidebar-header">
         <h6 class="sidebar-title">Dashboard</h6>
-        <span *ngIf="usuarioLogueado" class="sidebar-user-id">{{ usuarioLogueado.userId }}</span>
+        @if (usuarioLogueado) {
+        <span class="sidebar-user-id">{{ usuarioLogueado.userId }}</span>
+        }
       </div>
       <ul class="nav flex-column">
-        <li class="nav-item" *ngFor="let item of navItems">
-          <a class="nav-link" [routerLink]="item.link" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+        @for (item of navItems; track item.label) {
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="item.link" routerLinkActive="active"
+            [routerLinkActiveOptions]="{exact: true}">
             <i class="{{ item.icon }} me-2"></i>
             <span>{{ item.label }}</span>
           </a>
         </li>
+        }
       </ul>
     </div>
   </nav>

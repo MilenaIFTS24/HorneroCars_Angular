@@ -2,7 +2,8 @@
 
   <div class="contact-header text-center mb-5">
     <h1>Estamos Aquí para Ayudarte</h1>
-    <p class="lead text-muted">¿Tienes una consulta o necesitas asistencia? Contáctanos o encuentra tu sucursal más cercana.</p>
+    <p class="lead text-muted">¿Tienes una consulta o necesitas asistencia? Contáctanos o encuentra tu sucursal más
+      cercana.</p>
   </div>
 
   <div class="row g-5">
@@ -14,16 +15,19 @@
           <div class="row">
             <div class="col-md-6 mb-3">
               <label for="contact-nombre" class="form-label">Nombre</label>
-              <input type="text" class="form-control" id="contact-nombre" placeholder="Tu nombre" formControlName="nombre">
+              <input type="text" class="form-control" id="contact-nombre" placeholder="Tu nombre"
+                formControlName="nombre">
             </div>
             <div class="col-md-6 mb-3">
               <label for="contact-apellido" class="form-label">Apellido</label>
-              <input type="text" class="form-control" id="contact-apellido" placeholder="Tu apellido" formControlName="apellido">
+              <input type="text" class="form-control" id="contact-apellido" placeholder="Tu apellido"
+                formControlName="apellido">
             </div>
           </div>
           <div class="mb-3">
             <label for="contact-email" class="form-label">Correo Electrónico</label>
-            <input type="email" class="form-control" id="contact-email" placeholder="tu@email.com" formControlName="email">
+            <input type="email" class="form-control" id="contact-email" placeholder="tu@email.com"
+              formControlName="email">
           </div>
           <div class="mb-3">
             <label for="contact-asunto" class="form-label">Asunto</label>
@@ -37,7 +41,8 @@
           </div>
           <div class="mb-4">
             <label for="contact-mensaje" class="form-label">Mensaje</label>
-            <textarea class="form-control" id="contact-mensaje" rows="5" placeholder="Escribe tu mensaje aquí..." formControlName="mensaje"></textarea>
+            <textarea class="form-control" id="contact-mensaje" rows="5" placeholder="Escribe tu mensaje aquí..."
+              formControlName="mensaje"></textarea>
           </div>
           <div class="d-grid">
             <button type="submit" class="btn btn-primary btn-lg">Enviar Mensaje</button>
@@ -56,7 +61,8 @@
           </div>
           <div *ngIf="oficinaSeleccionada" class="office-details-card">
             <h5>{{ oficinaSeleccionada.nombre }}</h5>
-            <p class="mb-1"><i class="bi bi-pin-map-fill me-2"></i>{{ oficinaSeleccionada.direccion }}, {{ oficinaSeleccionada.ciudad }}</p>
+            <p class="mb-1"><i class="bi bi-pin-map-fill me-2"></i>{{ oficinaSeleccionada.direccion }}, {{
+              oficinaSeleccionada.ciudad }}</p>
             <p class="mb-1"><i class="bi bi-telephone-fill me-2"></i>{{ oficinaSeleccionada.telefono }}</p>
             <p class="mb-0"><i class="bi bi-clock-fill me-2"></i>{{ oficinaSeleccionada.horario }}</p>
           </div>

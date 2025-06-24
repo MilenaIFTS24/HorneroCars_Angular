@@ -3,7 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { LoginService } from '../../../servicios/login.service';
 import { User } from '../../../modelos/user';
-import { RouterModule} from '@angular/router';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -22,7 +22,7 @@ export class LoginComponent {
   constructor(
     private loginService: LoginService,
     public activeModal: NgbActiveModal
-  ) {}
+  ) { }
 
   iniciarSesion() {
     this.usuarioIncorrecto = false;

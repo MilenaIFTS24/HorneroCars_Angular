@@ -1,16 +1,6 @@
-
-/*
- * ====================================================================
- * Estilos para el Flujo de Reserva Completo (HacerReservaComponent)
- * ====================================================================
- * Este archivo contiene todos los estilos necesarios para el asistente
- * de reserva, incluyendo el formulario de fechas, los filtros y las
- * tarjetas de los vehículos.
-*/
-
 /* --- Contenedor Principal y Estructura de Pasos --- */
 .reserva-flow-container {
-    max-width: 1200px; /* Ancho amplio para el catálogo */
+    max-width: 1200px;
     margin: 2rem auto;
 }
 
@@ -27,6 +17,7 @@
         opacity: 0;
         transform: translateY(20px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -88,13 +79,11 @@
     text-decoration: underline;
     cursor: pointer;
     font-size: 0.9rem;
-    padding-bottom: 0.5rem; /* Alineación con los selects */
+    padding-bottom: 0.5rem;
+    /* Alineación con los selects */
 }
 
 /* --- Estilos para las Tarjetas de Vehículo (Paso 2) --- */
-/* Estos estilos son una réplica de los que diseñamos para vehiculos.component.css,
-   asegurando una total consistencia visual. */
-
 .vehicle-card {
     border-radius: 16px;
     border: 1px solid #eef0f2;

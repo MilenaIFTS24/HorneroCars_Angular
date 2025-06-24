@@ -1,64 +1,36 @@
 <!-- Encabezado del modal -->
 <div class="modal-header">
   <h5 class="modal-title">Iniciar Sesión</h5>
-  <button
-    type="button"
-    class="btn-close"
-    aria-label="Close"
-    (click)="cerrarModal()"
-  ></button>
+  <button type="button" class="btn-close" aria-label="Close" (click)="cerrarModal()"></button>
 </div>
 
 <!-- Cuerpo del modal -->
 <div class="modal-body">
   <div class="logo-container">
-  <img src="assets/img/hornerofondoblanco.png" height="110" alt="logo">
-</div>
+    <img src="assets/img/hornerofondoblanco.png" height="110" alt="logo">
+  </div>
   <form (ngSubmit)="iniciarSesion()">
-    
+
     <!-- Campo de usuario o email -->
     <div class="mb-3 input-container">
       <label for="userId" class="form-label">Usuario o Email</label>
       <i class="fas fa-user icon-lock"></i>
-      <input
-        type="text"
-        id="userId"
-        name="userId"
-        class="form-control ps-5"
-        [(ngModel)]="userId"
-        required
-      />
+      <input type="text" id="userId" name="userId" class="form-control ps-5" [(ngModel)]="userId" required />
       @if (usuarioIncorrecto) {
-      <label
-        class="form-text text-danger"
-        >Usuario o email no encontrado</label
-      >}
-      @else {<label
-        class="form-text text-danger"
-        ></label
-      >}
+      <label class="form-text text-danger">Usuario o email no encontrado</label>}
+      @else {<label class="form-text text-danger"></label>}
     </div>
 
     <!-- Campo de contraseña -->
     <div class="mb-3 input-container">
-  <label for="password" class="form-label">Contraseña</label>
-  <i class="fas fa-lock icon-lock"></i>
-  <input
-    type="password"
-    id="password"
-    name="password"
-    class="form-control ps-5"
-    [(ngModel)]="password"
-    required
-  />
-  @if (passwordIncorrecto) {
-    <label class="form-text text-danger">Contraseña incorrecta</label>
-  }
-  @else {<label
-        class="form-text text-danger"
-        ></label
-      >}
-</div>
+      <label for="password" class="form-label">Contraseña</label>
+      <i class="fas fa-lock icon-lock"></i>
+      <input type="password" id="password" name="password" class="form-control ps-5" [(ngModel)]="password" required />
+      @if (passwordIncorrecto) {
+      <label class="form-text text-danger">Contraseña incorrecta</label>
+      }
+      @else {<label class="form-text text-danger"></label>}
+    </div>
 
     <!-- Botón de envío -->
     <button type="submit" class="btn btn-primary d-block mx-auto">
@@ -70,9 +42,7 @@
     <a href="#">¿Olvidaste tu usuario o contraseña?</a>
   </div>
   <div class="crear-cuenta">
-    <p>¿No tenes cuenta?</p> 
-    <a routerLink="/registro">Crear una cuenta</a>
+    <p>¿No tenes cuenta?</p>
+    <a routerLink="/registro" (click)="cerrarModal()">Crear una cuenta</a>
   </div>
 </div>
-
-

@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common'; 
+import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms'; // Necesario para ngModel (two-way binding)
 import { AbmVehiculoService } from '../../../../../servicios/abm-vehiculo.service';
 import { Vehiculo } from '../../../../../modelos/vehiculo';
-import { VehiculosComponent } from '../../../../publico/informacion/vehiculos/vehiculos.component';
 
 @Component({
   selector: 'app-gestion-vehiculos',

@@ -1,27 +1,20 @@
-/*
- * ===============================================
- * DISEÑO PREMIUM PARA EL DASHBOARD DEL CLIENTE
- * ===============================================
-*/
-
 :host {
   display: block;
   height: 100vh;
   overflow: hidden;
-  /* Usamos la fuente Lato como base para todo el dashboard */
   font-family: 'Lato', sans-serif;
 }
 
 .dashboard-layout {
   display: grid;
-  grid-template-columns: 260px 1fr; /* Sidebar un poco más ancho */
+  grid-template-columns: 260px 1fr;
   height: 100%;
 }
 
-/* --- 1. BARRA LATERAL (SIDEBAR) REFINADA --- */
+/* --- 1. BARRA LATERAL (SIDEBAR) --- */
 .sidebar {
-  background-color: #ffffff; /* Fondo blanco limpio */
-  border-right: 1px solid #e9ecef; /* Borde más sutil */
+  background-color: #ffffff;
+  border-right: 1px solid #e9ecef;
   display: flex;
   flex-direction: column;
 }
@@ -37,7 +30,7 @@
 }
 
 .sidebar-title {
-  font-family: 'Merriweather', serif; /* Fuente con carácter para el título */
+  font-family: 'Merriweather', serif;
   font-size: 1rem;
   color: var(--hornero-texto-oscuro);
 }
@@ -55,19 +48,20 @@
   color: #555;
   padding: 0.8rem 1.5rem;
   border-left: 4px solid transparent;
-  transition: all 0.25s ease-in-out; /* Animación suave para todo */
+  transition: all 0.25s ease-in-out;
+  /* Animación suave para todo */
 }
 
 .sidebar .nav-link:hover {
   background-color: #f8f9fa;
   color: var(--hornero-naranja);
-  border-left-color: #fdd8b4; /* Un naranja muy claro para el borde en hover */
+  border-left-color: #fdd8b4;
 }
 
 .sidebar .nav-link.active {
   color: var(--hornero-naranja);
   font-weight: 700;
-  background-color: #fff8f2; /* Un fondo naranja muy pálido */
+  background-color: #fff8f2;
   border-left-color: var(--hornero-naranja);
 }
 
@@ -82,7 +76,7 @@
 .main-content {
   overflow-y: auto;
   padding: 2.5rem 3rem;
-  background-color: #f4f6f9; /* Fondo general un poco más oscuro que el blanco */
+  background-color: #f4f6f9;
 }
 
 
@@ -92,12 +86,14 @@
   background-color: #ffffff;
   padding: 2rem;
   border-radius: 12px;
-  /* Sombra más sofisticada y suave */
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.08);
 }
 
-/* Estilos para los títulos de cada sección (ej. "¡Bienvenido de nuevo!") */
-h1, h2, h3, h4 {
+/* Estilos para los títulos de cada sección*/
+h1,
+h2,
+h3,
+h4 {
   font-family: 'Merriweather', serif;
 }
 
@@ -105,7 +101,7 @@ h1, h2, h3, h4 {
 /* --- RESPONSIVIDAD --- */
 @media (max-width: 992px) {
   .dashboard-layout {
-    grid-template-columns: 1fr; /* Una sola columna */
+    grid-template-columns: 1fr;
   }
 
   .sidebar {
@@ -114,11 +110,13 @@ h1, h2, h3, h4 {
     position: static;
     border-bottom: 1px solid #dee2e6;
   }
-  
+
   .sidebar .nav {
-    flex-direction: row; /* Menú horizontal */
+    flex-direction: row;
+    /* Menú horizontal */
     flex-wrap: nowrap;
-    overflow-x: auto; /* Scroll horizontal para el menú si no cabe */
+    overflow-x: auto;
+    /* Scroll horizontal para el menú si no cabe */
   }
 
   .main-content {

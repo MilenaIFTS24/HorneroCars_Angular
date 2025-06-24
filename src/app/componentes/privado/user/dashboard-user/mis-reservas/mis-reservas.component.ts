@@ -15,7 +15,7 @@ import { Reserva } from '../../../../../modelos/reserva';
   styleUrls: ['./mis-reservas.component.css']
 })
 export class MisReservasComponent implements OnInit {
-  
+
   public misReservas: Reserva[] = [];
   public usuarioLogueado: User | null = null;
   public isLoading: boolean = true;
@@ -46,7 +46,7 @@ export class MisReservasComponent implements OnInit {
       this.misReservas = todasLasReservas
         .filter(reserva => reserva.userId === this.usuarioLogueado?.userId)
         .sort((a, b) => new Date(b.fechaCreacion).getTime() - new Date(a.fechaCreacion).getTime()); // Ordenamos por fecha
-      
+
       this.isLoading = false;
       console.log(`Se encontraron ${this.misReservas.length} reservas para este usuario.`);
     });

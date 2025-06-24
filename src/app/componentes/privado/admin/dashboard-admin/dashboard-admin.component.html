@@ -1,17 +1,25 @@
 <div class="dashboard-layout">
   <div class="panel-contenedor">
     <div class="logo">
-      <h3>Dashboard <span><h5>{{userId}}</h5></span> </h3>
+      <h3>Dashboard
+        @if (userId) {
+        <span>
+          <h5>{{ userId }}</h5>
+        </span>
+        }
+      </h3>
     </div>
 
     <nav class="panel-nav">
       <ul>
-        <li *ngFor="let item of navItems" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+        @for (item of navItems; track item.label) {
+        <li routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
           <a [routerLink]="item.link">
             <i class="{{ item.icon }}"></i>
             <span>{{ item.label }}</span>
           </a>
         </li>
+        }
       </ul>
     </nav>
 

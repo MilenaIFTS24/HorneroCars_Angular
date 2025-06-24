@@ -15,8 +15,14 @@
   text-align: center;
   margin-bottom: 3rem;
 }
-.vehiculos-header h1 { font-family: 'Merriweather', serif; }
-.vehiculos-header .lead { color: #6c757d; }
+
+.vehiculos-header h1 {
+  font-family: 'Merriweather', serif;
+}
+
+.vehiculos-header .lead {
+  color: #6c757d;
+}
 
 /* --- Filtros --- */
 .filter-controls {
@@ -24,11 +30,14 @@
   border-radius: 12px;
   border: 1px solid #e9ecef;
 }
+
 .form-select {
   font-size: 0.9rem;
-  min-width: 220px; /* Ancho mínimo para cada desplegable */
+  min-width: 220px;
+  /* Ancho mínimo para cada desplegable */
   max-width: 250px;
 }
+
 .btn-clear-filters {
   background: none;
   border: none;
@@ -42,15 +51,15 @@
 .gallery-container {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
-  gap: 2.5rem; /* Un poco más de espacio entre tarjetas */
+  gap: 2.5rem;
 }
 
 /* Tarjeta de Vehículo */
 .vehicle-card {
   background-color: #FFFFFF;
-  border-radius: 16px; /* Bordes más redondeados */
+  border-radius: 16px;
   border: 1px solid #eef0f2;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08); /* Sombra mejorada */
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   display: flex;
   flex-direction: column;
@@ -58,7 +67,7 @@
 
 .vehicle-card:hover {
   transform: translateY(-8px);
-  box-shadow: 0 12px 35px rgba(40, 40, 40, 0.15); /* Sombra más pronunciada en hover */
+  box-shadow: 0 12px 35px rgba(40, 40, 40, 0.15);
 }
 
 .vehicle-card__image {
@@ -71,13 +80,13 @@
 
 /* Cuerpo de la tarjeta, con padding para que el texto no se pegue a los bordes */
 .card-body {
-    padding: 1.5rem;
+  padding: 1.5rem;
 }
 
 .vehicle-card__tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.4rem; 
+  gap: 0.4rem;
   margin-bottom: 0.75rem;
 }
 
@@ -85,7 +94,7 @@
   font-size: 0.65rem;
   font-weight: 700;
   padding: 0.4em 0.8em;
-  color: white !important; /* ¡Aseguramos que el texto siempre sea blanco! */
+  color: white !important;
 }
 
 .tag--oferta {
@@ -97,7 +106,7 @@
 }
 
 .tag--default {
-  background-color: #6c757d !important; /* Gris para tags sin color especial */
+  background-color: #6c757d !important;
 }
 
 /* Título */
@@ -117,15 +126,18 @@
 
 /* Lista de Especificaciones */
 .vehicle-card__specs {
-    border-top: 1px solid #f0f0f0; /* Separador superior */
-    padding-top: 1rem;
-    margin-top: auto; /* Empuja esta sección y el footer de la tarjeta hacia abajo */
+  border-top: 1px solid #f0f0f0;
+  padding-top: 1rem;
+  margin-top: auto;
+  /* Empuja esta sección y el footer de la tarjeta hacia abajo */
 }
+
 .vehicle-card__specs .list-group-item {
-    padding: 0.35rem 0; /* Un poco más de aire */
-    border: none;
-    font-size: 0.9rem;
+  padding: 0.35rem 0;
+  border: none;
+  font-size: 0.9rem;
 }
+
 .vehicle-card__specs i {
   margin-right: 0.75rem;
   color: var(--hornero-naranja, #E8751A);
@@ -138,6 +150,7 @@
   padding-top: 1rem;
   margin-top: 1rem;
 }
+
 .vehicle-card__price span {
   font-size: 1.6rem;
   font-weight: 700;
@@ -146,30 +159,28 @@
 /* Botón de Acción */
 .vehicle-card__cta-button {
   font-weight: 600;
-  padding: 0.6rem 1rem; /* Botón un poco más pequeño */
+  padding: 0.6rem 1rem;
+  /* Botón un poco más pequeño */
 }
 
-/* ======================================================= */
-/* == SOBREESCRITURA FORZADA DE ESTILOS BOOTSTRAP == */
-/* ======================================================= */
-
+/* SOBREESCRITURA FORZADA DE ESTILOS BOOTSTRAP */
 /* Para todos los botones con la clase .btn-primary */
 .btn-primary {
-    background-color: #E8751A !important; /* Naranja Hornero (reemplaza el azul por la fuerza) */
-    border-color: #E8751A !important;   /* El mismo naranja para el borde */
-    color: #FFFFFF !important;        /* Texto siempre blanco */
+  background-color: #E8751A !important;
+  border-color: #E8751A !important;
+  color: #FFFFFF !important;
 }
 
 /* Estilo para el estado 'hover' (cuando pasas el mouse por encima) */
 .btn-primary:hover {
-    background-color: #D46B12 !important; /* Naranja más oscuro */
-    border-color: #D46B12 !important;
+  background-color: #D46B12 !important;
+  border-color: #D46B12 !important;
 }
 
-/* Nos aseguramos que el resto de los enlaces también tengan el color de la marca */
 a {
-    color: #E8751A;
+  color: #E8751A;
 }
+
 a:hover {
-    color: #D46B12;
+  color: #D46B12;
 }

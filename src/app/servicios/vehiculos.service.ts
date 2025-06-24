@@ -34,7 +34,7 @@ export class VehiculosService {
 
   // La ruta a nuestro archivo JSON dentro de la carpeta 'assets'.
   // Esta ruta es relativa a la raíz del sitio cuando se sirve.
-  private vehiculosUrl = 'assets/vehiculos.json'; 
+  private vehiculosUrl = 'assets/vehiculos.json';
 
   // Inyectamos el HttpClient de Angular, la herramienta para hacer peticiones web.
   constructor(private http: HttpClient) { }
