@@ -12,28 +12,6 @@ body {
     overflow-y: auto;
 }
 
-¡Entendido! Vamos a simplificar el diseño quitando la imagen decorativa y usando un fondo que contraste con el formulario. La idea es que el body tenga un color de fondo diferente al form-area (el contenedor del formulario) para darle una separación visual limpia y corporativa.
-
-Aquí tienes el CSS ajustado para lograr esto, manteniendo la estructura de dos columnas para los campos dentro del formulario.
-
-CSS Ajustado para Fondo Contrastante (sin imagen decorativa)
-CSS
-
-/* Colores de Hornero Cars (mantener como está) */
-:root {
-    --primer-color: #E8751A; /* Botones principales y enlaces de texto */
-    --segundo-color: #D46B12; /* Hover e interacción de botones principales */
-    --tercer-color: #222831; /* Nav y footer, Texto principal */
-    --cuarto-color: #F8F9FA; /* Fondo principal muy claro (casi blanco) */
-    --quinto-color: #FFFFFF; /* Color de texto en botones principales, nav y footer, Fondo de campos (blanco puro) */
-    --sexto-color: #EEEEEE; /* Bordes y fondos secundarios, Bordes de input (gris muy claro) */
-    --hornero-enlace-secundario: #0056b3;
-    --hornero-enlace-secundario-hover: #004494;
-    --hornero-exito: #198754;
-    --hornero-error: #dc3545;
-    --hornero-advertencia: #ffc107;
-}
-
 /* --- Estilos Generales y de Layout Fullscreen --- */
 body {
     font-family: 'Roboto', sans-serif;
