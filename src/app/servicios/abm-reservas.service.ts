@@ -3,7 +3,7 @@ import { isPlatformBrowser } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of, throwError } from 'rxjs';
 import { tap, catchError, map } from 'rxjs/operators';
-import { Reserva } from '../modelos/reserva';
+import { ReservaAbm } from '../modelos/reserva-abm';
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +20,7 @@ export class AbmReservaService {
     if (isPlatformBrowser(this.platformId)) {
       const storedReservas = localStorage.getItem(this.localStorageKey);
       if (!storedReservas) {
-        this.http.get<{ reservas: Reserva[] }>(this.initialReservasJsonPath).pipe(
+        this.http.get<{ reservas: ReservaAbm[] }>(this.initialReservasJsonPath).pipe(
           tap(response => {
             localStorage.setItem(this.localStorageKey, JSON.stringify(response.reservas));
             console.log('Reservas iniciales cargadas desde assets/reservas.json a localStorage.');
@@ -39,12 +39,12 @@ export class AbmReservaService {
     }
   }
 
-  getReservas(): Observable<Reserva[]> {
+  getReservas(): Observable<ReservaAbm[]> {
     if (isPlatformBrowser(this.platformId)) {
       const reservasJson = localStorage.getItem(this.localStorageKey);
       if (reservasJson) {
         try {
-          const reservas: Reserva[] = JSON.parse(reservasJson);
+          const reservas: ReservaAbm[] = JSON.parse(reservasJson);
           return of(reservas);
         } catch (e) {
           console.error('Error al parsear reservas de localStorage:', e);
@@ -57,7 +57,7 @@ export class AbmReservaService {
     }
   }
 
-  addReserva(newReserva: Reserva): Observable<Reserva> {
+  addReserva(newReserva: ReservaAbm): Observable<ReservaAbm> {
     if (isPlatformBrowser(this.platformId)) {
       return this.getReservas().pipe(
         map(reservas => {
@@ -79,7 +79,7 @@ export class AbmReservaService {
     }
   }
 
-  updateReserva(updatedReserva: Reserva): Observable<Reserva> {
+  updateReserva(updatedReserva: ReservaAbm): Observable<ReservaAbm> {
     if (isPlatformBrowser(this.platformId)) {
       return this.getReservas().pipe(
         map(reservas => {
@@ -125,7 +125,7 @@ export class AbmReservaService {
     }
   }
 
-  getReservaById(id: number): Observable<Reserva | undefined> {
+  getReservaById(id: number): Observable<ReservaAbm | undefined> {
     return this.getReservas().pipe(
       map(reservas => reservas.find(reserva => reserva.reservaId === id))
     );

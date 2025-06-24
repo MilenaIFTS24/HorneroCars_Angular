@@ -13,5 +13,5 @@ import { RouterModule } from '@angular/router';
   styleUrl: './informacion.component.css'
 })
 export class InformacionComponent {
-
+  
 }

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common'; 
 import { FormsModule } from '@angular/forms'; // Para ngModel y formularios
 import { AbmReservaService } from '../../../../../servicios/abm-reservas.service';
-import { Reserva } from '../../../../../modelos/reserva';
+import { ReservaAbm } from '../../../../../modelos/reserva-abm';
 
 @Component({
   selector: 'app-gestion-vehiculos',
@@ -12,10 +12,10 @@ import { Reserva } from '../../../../../modelos/reserva';
   styleUrls: ['./gestion-reservas.component.css']
 })
 export class GestionReservasComponent implements OnInit {
-  reservas: Reserva[] = [];
-  reservasFiltradas: Reserva[] = [];
+  reservas: ReservaAbm[] = [];
+  reservasFiltradas: ReservaAbm[] = [];
 
-  reservaForm: Reserva = {
+  reservaForm: ReservaAbm = {
     reservaId: 0,
     clienteId: '',
     vehiculoId: 0,
@@ -67,7 +67,7 @@ export class GestionReservasComponent implements OnInit {
     });
   }
 
-  seleccionarReserva(reserva: Reserva): void {
+  seleccionarReserva(reserva: ReservaAbm): void {
     this.reservaForm = { ...reserva };
     this.modoEdicion = true;
     this.mensajeError = '';

@@ -24,11 +24,6 @@ export class DashboardAdminComponent implements OnInit {
     { label: 'Inicio', icon: 'fas fa-home', link: 'home' },
     { label: 'Mi Cuenta', icon: 'fa-regular fa-id-card', link: 'mi-cuenta' },
     { label: 'Gestión reservas', icon: 'fa-solid fa-user-plus', link: 'gestion-reservas' },
-
-    { label: 'Gestión vehículos', icon: 'fa-solid fa-truck', link: '' },
-    { label: 'Gestión sucursales', icon: 'fa-solid fa-building', link: 'gestion-sucursales' },
-    { label: 'Consultas y Reportes', icon: 'fa-solid fa-chart-line', link: '' },
-
     { label: 'Gestión vehículos', icon: 'fa-solid fa-truck', link: 'gestion-vehiculos' },
     { label: 'Gestión sucursales', icon: 'fa-solid fa-building', link: 'gestion-sucursales' },
     { label: 'Consultas y Reportes', icon: 'fa-solid fa-chart-line', link: 'consultas-reportes' },
@@ -36,7 +31,7 @@ export class DashboardAdminComponent implements OnInit {
     { label: 'Configuracion', icon: 'fas fa-cog', link: 'configuracion' }
   ];
 
-  constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) { }
 
   ngOnInit(): void {
     if (isPlatformBrowser(this.platformId)) {

@@ -68,7 +68,7 @@ export const routes: Routes = [ //rutas elaboradas con lazy loading.
                 path: "gestion-vehiculos", 
                   loadComponent: () =>
                       import('./componentes/privado/admin/dashboard-admin/gestion-vehiculos/gestion-vehiculos.component')
-                        .then(m => m.GestionVehiculosComponent) /
+                        .then(m => m.GestionVehiculosComponent) 
              },
              {
                 path: "gestion-reservas",
