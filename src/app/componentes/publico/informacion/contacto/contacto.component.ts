@@ -183,5 +183,6 @@ export class ContactoComponent implements OnInit, AfterViewInit, OnDestroy {
       this.map.remove();
     }
   }
+  
 }
 
