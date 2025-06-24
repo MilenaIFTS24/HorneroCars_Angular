@@ -1,94 +1,127 @@
-/* sidebar.component.scss */
-.panel-contenedor {
-  width: 250px; /* Ancho de tu panel */
-  background-color: var(--cuarto-color); /* Color de fondo oscuro, puedes cambiarlo */
-  color: var(--tercer-color); /* Color del texto */
-  height: 90vh; /* Ocupa el 100% de la altura de la ventana */
+/*
+ * ===============================================
+ * DISEÑO PREMIUM PARA EL DASHBOARD DEL CLIENTE
+ * ===============================================
+*/
+
+:host {
+  display: block;
+  height: 100vh;
+  overflow: hidden;
+  /* Usamos la fuente Lato como base para todo el dashboard */
+  font-family: 'Lato', sans-serif;
+}
+
+.dashboard-layout {
+  display: grid;
+  grid-template-columns: 260px 1fr; /* Sidebar un poco más ancho */
+  height: 100%;
+}
+
+/* --- 1. BARRA LATERAL (SIDEBAR) REFINADA --- */
+.sidebar {
+  background-color: #ffffff; /* Fondo blanco limpio */
+  border-right: 1px solid #e9ecef; /* Borde más sutil */
   display: flex;
   flex-direction: column;
-  padding: 20px 0;
-  padding-bottom: 0px;
-  box-shadow: 2px 0 5px rgba(0,0,0,0.2);
 }
 
-.logo {
+.sidebar-sticky {
+  position: sticky;
+  top: 0;
+}
+
+.sidebar-header {
+  padding: 1.5rem;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.sidebar-title {
+  font-family: 'Merriweather', serif; /* Fuente con carácter para el título */
+  font-size: 1rem;
+  color: var(--hornero-texto-oscuro);
+}
+
+.sidebar-user-id {
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--hornero-naranja);
+}
+
+/* Menú de navegación */
+.sidebar .nav-link {
+  font-weight: 500;
+  font-size: 0.95rem;
+  color: #555;
+  padding: 0.8rem 1.5rem;
+  border-left: 4px solid transparent;
+  transition: all 0.25s ease-in-out; /* Animación suave para todo */
+}
+
+.sidebar .nav-link:hover {
+  background-color: #f8f9fa;
+  color: var(--hornero-naranja);
+  border-left-color: #fdd8b4; /* Un naranja muy claro para el borde en hover */
+}
+
+.sidebar .nav-link.active {
+  color: var(--hornero-naranja);
+  font-weight: 700;
+  background-color: #fff8f2; /* Un fondo naranja muy pálido */
+  border-left-color: var(--hornero-naranja);
+}
+
+.sidebar .nav-link i {
+  width: 20px;
   text-align: center;
-  margin-bottom: 30px;
-  img {
-    max-width: 80%;
-    height: auto;
-  }
+  margin-right: 0.75rem;
+  font-size: 1.1rem;
 }
 
-.panel-nav ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  flex-grow: 1; /* Para que la lista ocupe el espacio disponible */
-}
-
-.panel-nav li {
-  margin-bottom: 5px;
-}
-
-.panel-nav a {
-  display: flex;
-  align-items: center;
-  padding: 15px 20px;
-  color: var(--tercer-color);
-  text-decoration: none;
-  font-size: 1.1em;
-  transition: background-color 0.3s ease;
-
-  i {
-    margin-right: 15px;
-    font-size: 1.3em;
-  }
-}
-
-.panel-nav a:hover,
-.panel-nav li.active a {
-  background-color: var(--primer-color); /* Color al pasar el ratón o cuando está activo */
-  border-left: 5px solid var(--segundo-color); /* Indicador de activo */
-  color: #ecf0f1;
-}
-
-.panel-footer {
-  margin-top: auto; /* Empuja el footer hacia abajo */
-  padding: 20px;
-border-top:solid 1px #9fa0a0; 
-  background-color: var(--cuarto-color);
-  justify-content: center;
-  justify-items: center;
-
-  a {
-    display: flex;
-    align-items: center;
-    color: #626465;
-    text-decoration: none;
-    font-size: 1em;
-  }
-    a:hover {
-    color: var(--hornero-error);
-    }
-
-    i {
-      margin-right: 10px;
-    }
-  }
-.dashboard-layout {
-  display: flex;
-  height: 90vh;
-}
-
-.panel-contenedor {
-  width: 250px;
-  /* resto de estilos */
-}
-
-.dashboard-content {
-  flex: 1;
-  padding: 20px;
+/* --- 2. CONTENIDO PRINCIPAL CON MEJOR APARIENCIA --- */
+.main-content {
   overflow-y: auto;
-  background-color: #f5f5f5;
+  padding: 2.5rem 3rem;
+  background-color: #f4f6f9; /* Fondo general un poco más oscuro que el blanco */
+}
+
+
+/* --- 3. ESTILOS PARA LOS WIDGETS Y TARJETAS DENTRO DEL CONTENIDO --- */
+/* Esta clase se aplicaría a los contenedores de los componentes hijos */
+.dashboard-section {
+  background-color: #ffffff;
+  padding: 2rem;
+  border-radius: 12px;
+  /* Sombra más sofisticada y suave */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+/* Estilos para los títulos de cada sección (ej. "¡Bienvenido de nuevo!") */
+h1, h2, h3, h4 {
+  font-family: 'Merriweather', serif;
+}
+
+
+/* --- RESPONSIVIDAD --- */
+@media (max-width: 992px) {
+  .dashboard-layout {
+    grid-template-columns: 1fr; /* Una sola columna */
+  }
+
+  .sidebar {
+    height: auto;
+    width: 100%;
+    position: static;
+    border-bottom: 1px solid #dee2e6;
+  }
+  
+  .sidebar .nav {
+    flex-direction: row; /* Menú horizontal */
+    flex-wrap: nowrap;
+    overflow-x: auto; /* Scroll horizontal para el menú si no cabe */
+  }
+
+  .main-content {
+    padding: 1.5rem;
+  }
 }
