@@ -1,3 +1,4 @@
+
 @if (alertaVisible) {
 <div id="alertaEnConstruccion">
     <p>
@@ -12,4 +13,28 @@
 
 <app-vehiculos></app-vehiculos>
 <app-contacto></app-contacto>
+
+
+<div class="container my-5">
+  <header class="text-center mb-5">
+    <h1>Centro de Información</h1>
+    <p class="lead text-muted">Todo lo que necesitas saber para tu próximo viaje con Hornero Cars.</p>
+  </header>
+
+  <ul class="nav nav-tabs nav-fill mb-4">
+    <li class="nav-item">
+      <a class="nav-link" routerLink="vehiculos" routerLinkActive="active">Nuestra Flota</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="tarifas" routerLinkActive="active">Tarifas y Requisitos</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="contacto" routerLinkActive="active">Contacto y Sucursales</a>
+    </li>
+  </ul>
+
+  <div class="tab-content pt-4">
+    <router-outlet></router-outlet>
+  </div>
+</div>
 

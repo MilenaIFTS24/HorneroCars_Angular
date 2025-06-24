@@ -14,6 +14,7 @@ body {
 
 
 
+
 /* Colores de Hornero Cars (mantener como está) */
 :root {
     --primer-color: #E8751A; /* Botones principales y enlaces de texto */
@@ -28,6 +29,7 @@ body {
     --hornero-error: #dc3545;
     --hornero-advertencia: #ffc107;
 }
+
 
 /* --- Estilos Generales y de Layout Fullscreen --- */
 body {
