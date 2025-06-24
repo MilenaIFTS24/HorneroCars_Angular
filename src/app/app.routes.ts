@@ -53,8 +53,6 @@ export const routes: Routes = [ //rutas elaboradas con lazy loading.
             .then(m => m.HomeDashboardUserComponent)
       },
 
-
-
       {
         path: 'mi-cuenta',
         loadComponent: () => import('./componentes/privado/user/dashboard-user/home-dashboard-user/home-dashboard-user.component').then(m => m.HomeDashboardUserComponent)
