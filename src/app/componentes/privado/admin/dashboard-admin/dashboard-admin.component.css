@@ -56,7 +56,7 @@
 .panel-footer {
   margin-top: auto; /* Empuja el footer hacia abajo */
   padding: 20px;
-border-top:solid 1px #9fa0a0; 
+  border-top:solid 1px #9fa0a0; 
   background-color: #3a3e43;;
   justify-content: center;
   justify-items: center;
