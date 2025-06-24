@@ -1,5 +1,6 @@
 // Este archivo define la "forma" o el "contrato" que debe tener cada objeto de tipo Reserva.
 export interface Reserva {
+
   reservaId: string;
   userId: string;
   userNombre: string;
@@ -14,4 +15,5 @@ export interface Reserva {
   seguros: string[];
   estado: 'Confirmada - Pendiente de Pago' | 'Pagada' | 'En Curso' | 'Finalizada' | 'Cancelada';
   fechaCreacion: string; // Formato ISO de fecha y hora
+
 }

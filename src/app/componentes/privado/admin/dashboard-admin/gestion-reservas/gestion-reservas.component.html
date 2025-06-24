@@ -1,0 +1,124 @@
+<div class="container my-5">
+  <div class="card shadow-lg p-4 mb-5 bg-body rounded" id="card-gestion">
+    <h2 class="text-center mb-4 text-dark fw-bold">Gestión de Reservas</h2>
+
+    <!-- Mensaje de Error -->
+    @if (mensajeError) {
+      <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <strong>¡Error!</strong> {{ mensajeError }}
+        <button type="button" class="btn-close" (click)="mensajeError = ''" aria-label="Close"></button>
+      </div>
+    }
+
+    <!-- Formulario de Agregar/Editar Reserva -->
+    <div class="card p-4 mb-4 bg-light shadow-sm hornero-form-card">
+      <form (ngSubmit)="modoEdicion ? actualizarReserva() : agregarReserva()">
+        <div class="row g-2">
+          <div class="col-md-3 col-sm-6">
+            <label for="clienteId" class="form-label mb-1">ID Cliente:</label>
+            <input type="text" id="clienteId" name="clienteId" [(ngModel)]="reservaForm.clienteId" required class="form-control form-control-sm">
+          </div>
+          <div class="col-md-3 col-sm-6">
+            <label for="vehiculoId" class="form-label mb-1">ID Vehículo:</label>
+            <input type="number" id="vehiculoId" name="vehiculoId" [(ngModel)]="reservaForm.vehiculoId" required class="form-control form-control-sm">
+          </div>
+          <div class="col-md-3 col-sm-6">
+            <label for="fechaRecogida" class="form-label mb-1">Fecha Recogida:</label>
+            <input type="date" id="fechaRecogida" name="fechaRecogida" [(ngModel)]="reservaForm.fechaRecogida" required class="form-control form-control-sm">
+          </div>
+          <div class="col-md-3 col-sm-6">
+            <label for="horaRecogida" class="form-label mb-1">Hora Recogida:</label>
+            <input type="time" id="horaRecogida" name="horaRecogida" [(ngModel)]="reservaForm.horaRecogida" required class="form-control form-control-sm">
+          </div>
+          <div class="col-md-3 col-sm-6">
+            <label for="fechaDevolucion" class="form-label mb-1">Fecha Devolución:</label>
+            <input type="date" id="fechaDevolucion" name="fechaDevolucion" [(ngModel)]="reservaForm.fechaDevolucion" required class="form-control form-control-sm">
+          </div>
+          <div class="col-md-3 col-sm-6">
+            <label for="horaDevolucion" class="form-label mb-1">Hora Devolución:</label>
+            <input type="time" id="horaDevolucion" name="horaDevolucion" [(ngModel)]="reservaForm.horaDevolucion" required class="form-control form-control-sm">
+          </div>
+          <div class="col-md-3 col-sm-6">
+            <label for="precioTotal" class="form-label mb-1">Precio Total:</label>
+            <input type="number" id="precioTotal" name="precioTotal" [(ngModel)]="reservaForm.precioTotal" required class="form-control form-control-sm">
+          </div>
+          <div class="col-md-2 col-sm-6 d-flex align-items-center">
+            <div class="form-check mt-4">
+              <input type="checkbox" id="señaPagada" name="señaPagada" [(ngModel)]="reservaForm.seniaPagada" class="form-check-input">
+              <label for="señaPagada" class="form-check-label">¿Seña Pagada?</label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Botones de Acción -->
+        <div class="col-12 d-flex justify-content-end gap-2 mt-3">
+          <button type="submit" class="btn btn-primary btn-sm px-3 py-1 rounded-pill shadow-sm">
+            @if (modoEdicion) {
+              Actualizar Reserva
+            } @else {
+              Agregar Reserva
+            }
+          </button>
+          @if (modoEdicion) {
+            <button type="button" (click)="cancelarEdicion()" class="btn btn-secondary btn-sm px-3 py-1 rounded-pill shadow-sm">
+              Cancelar
+            </button>
+          }
+        </div>
+      </form>
+    </div>
+
+    <!-- Lista de Reservas -->
+    <div class="card shadow-lg p-4 bg-body rounded">
+      <h3 class="card-title text-primary mb-4">Reservas Registradas</h3>
+      @if (reservasFiltradas.length === 0) {
+        <div class="text-center text-muted py-3">
+          No hay reservas registradas.
+        </div>
+      } @else {
+        <div class="table-responsive">
+          <table class="table table-striped table-hover table-bordered caption-top">
+            <thead class="table-light">
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Cliente</th>
+                <th scope="col">Vehículo</th>
+                <th scope="col">Recogida</th>
+                <th scope="col">Devolución</th>
+                <th scope="col">Seña</th>
+                <th scope="col">Precio</th>
+                <th scope="col">Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              @for (reserva of reservasFiltradas; track reserva.reservaId) {
+                <tr>
+                  <td>{{ reserva.reservaId }}</td>
+                  <td>{{ reserva.clienteId }}</td>
+                  <td>{{ reserva.vehiculoId }}</td>
+                  <td>{{ reserva.fechaRecogida }} {{ reserva.horaRecogida }}</td>
+                  <td>{{ reserva.fechaDevolucion }} {{ reserva.horaDevolucion }}</td>
+                  <td>
+                    <span class="badge rounded-pill"
+                          [ngClass]="{'bg-success': reserva.seniaPagada, 'bg-danger': !reserva.seniaPagada}">
+                      {{ reserva.seniaPagada ? 'Sí' : 'No' }}
+                    </span>
+                  </td>
+                  <td>${{ reserva.precioTotal | number:'1.2-2' }}</td>
+                  <td>
+                    <button (click)="seleccionarReserva(reserva)" class="btn btn-sm btn-warning me-2">
+                      Editar
+                    </button>
+                    <button (click)="eliminarReserva(reserva.reservaId)" class="btn btn-sm btn-danger">
+                      Eliminar
+                    </button>
+                  </td>
+                </tr>
+              }
+            </tbody>
+          </table>
+        </div>
+      }
+    </div>
+  </div>
+</div>

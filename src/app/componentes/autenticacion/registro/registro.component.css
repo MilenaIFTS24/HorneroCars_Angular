@@ -12,6 +12,25 @@ body {
     overflow-y: auto;
 }
 
+
+
+
+/* Colores de Hornero Cars (mantener como está) */
+:root {
+    --primer-color: #E8751A; /* Botones principales y enlaces de texto */
+    --segundo-color: #D46B12; /* Hover e interacción de botones principales */
+    --tercer-color: #222831; /* Nav y footer, Texto principal */
+    --cuarto-color: #F8F9FA; /* Fondo principal muy claro (casi blanco) */
+    --quinto-color: #FFFFFF; /* Color de texto en botones principales, nav y footer, Fondo de campos (blanco puro) */
+    --sexto-color: #EEEEEE; /* Bordes y fondos secundarios, Bordes de input (gris muy claro) */
+    --hornero-enlace-secundario: #0056b3;
+    --hornero-enlace-secundario-hover: #004494;
+    --hornero-exito: #198754;
+    --hornero-error: #dc3545;
+    --hornero-advertencia: #ffc107;
+}
+
+
 /* --- Estilos Generales y de Layout Fullscreen --- */
 body {
     font-family: 'Roboto', sans-serif;

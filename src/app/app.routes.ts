@@ -18,6 +18,54 @@ export const routes: Routes = [ //rutas elaboradas con lazy loading.
   { path: "informacion", loadComponent: () => import('./componentes/publico/informacion/informacion.component').then(m => InformacionComponent) },
   { path: "reserva", loadComponent: () => import('./componentes/publico/reserva/reserva.component').then(m => ReservaComponent) },
 
+  {
+    path: "dashboardUser",
+    loadComponent: () =>
+      import('./componentes/privado/user/dashboard-user/dashboard-user.component')
+        .then(m => m.DashboardUserComponent),
+    children: [
+      {
+        path: "home",
+        loadComponent: () =>
+          import('./componentes/privado/user/dashboard-user/home-dashboard-user/home-dashboard-user.component')
+            .then(m => m.HomeDashboardUserComponent)
+      },
+      {
+        path: "",
+        redirectTo: "home",
+        pathMatch: "full"
+      }
+    ]
+  },
+
+
+  {
+  path: "dashboardAdmin",
+  loadComponent: () => import('./componentes/privado/admin/dashboard-admin/dashboard-admin.component').then(m => m.DashboardAdminComponent),
+  children: [
+    
+    {
+      path: "gestion-reservas",
+      loadComponent: () =>
+        import('./componentes/privado/admin/dashboard-admin/gestion-reservas/gestion-reservas.component')
+          .then(m => m.GestionReservasComponent)
+    },
+    {
+      path: "",
+      redirectTo: "gestion-vehiculos",
+      pathMatch: "full"
+    }
+  ]
+},
+
+  { path: '', redirectTo: '/', pathMatch: 'full' },
+];
+
+
+  { path: "contacto", loadComponent: () => import('./componentes/publico/informacion/contacto/contacto.component').then(m => ContactoComponent) },
+  { path: "informacion", loadComponent: () => import('./componentes/publico/informacion/informacion.component').then(m => InformacionComponent) },
+  { path: "reserva", loadComponent: () => import('./componentes/publico/reserva/reserva.component').then(m => ReservaComponent) },
+
    // --- ruta padre/hijos dashboardAdmin ---
   {
     path: "dashboardAdmin",
