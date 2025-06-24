@@ -3,6 +3,7 @@
   <!-- ============================================= -->
   <!-- PASO 1: Formulario de Fechas y Lugares        -->
   <!-- ============================================= -->
+
   <section *ngIf="pasoActual === 1" class="reserva-step">
     <div class="step-header">
       <h2><span class="step-number">1</span> ¿Cuándo y Dónde Comienza tu Aventura?</h2>
@@ -10,12 +11,20 @@
     </div>
     <form [formGroup]="formPaso1" (ngSubmit)="irAlPaso2()">
       <div class="row g-3">
-        <div class="col-12"><label class="form-label">Lugar de Recogida</label><input type="text" class="form-control" formControlName="lugarRecogida"></div>
-        <div class="col-md-6"><label class="form-label">Fecha de Recogida</label><input type="date" class="form-control" formControlName="fechaRecogida"></div>
-        <div class="col-md-6"><label class="form-label">Hora de Recogida</label><input type="time" class="form-control" formControlName="horaRecogida"></div>
-        <div class="col-12"><div class="form-check"><input class="form-check-input" type="checkbox" formControlName="mismoLugar"><label class="form-check-label">Devolver en el mismo lugar</label></div></div>
-        <div class="col-md-6"><label class="form-label">Fecha de Devolución</label><input type="date" class="form-control" formControlName="fechaDevolucion"></div>
-        <div class="col-md-6"><label class="form-label">Hora de Devolución</label><input type="time" class="form-control" formControlName="horaDevolucion"></div>
+        <div class="col-12"><label class="form-label">Lugar de Recogida</label><input type="text" class="form-control"
+            formControlName="lugarRecogida"></div>
+        <div class="col-md-6"><label class="form-label">Fecha de Recogida</label><input type="date" class="form-control"
+            formControlName="fechaRecogida"></div>
+        <div class="col-md-6"><label class="form-label">Hora de Recogida</label><input type="time" class="form-control"
+            formControlName="horaRecogida"></div>
+        <div class="col-12">
+          <div class="form-check"><input class="form-check-input" type="checkbox" formControlName="mismoLugar"><label
+              class="form-check-label">Devolver en el mismo lugar</label></div>
+        </div>
+        <div class="col-md-6"><label class="form-label">Fecha de Devolución</label><input type="date"
+            class="form-control" formControlName="fechaDevolucion"></div>
+        <div class="col-md-6"><label class="form-label">Hora de Devolución</label><input type="time"
+            class="form-control" formControlName="horaDevolucion"></div>
       </div>
       <div class="d-grid mt-4">
         <button type="submit" class="btn btn-primary btn-lg" [disabled]="formPaso1.invalid">Buscar Vehículos</button>
@@ -26,50 +35,150 @@
   <!-- ============================================= -->
   <!-- PASO 2: Selección de Vehículo                 -->
   <!-- ============================================= -->
+
+
   <section *ngIf="pasoActual === 2" class="reserva-step">
     <div class="step-header">
       <h2><span class="step-number">2</span> Elige tu Hornero Ideal</h2>
       <p>Estos son los vehículos disponibles para tus fechas.</p>
     </div>
-    
-    <section class="filter-controls card shadow-sm p-3 mb-4"><div class="row g-3 align-items-center justify-content-center"><div class="col-md"><select class="form-select form-select-sm" [(ngModel)]="categoriaSeleccionada" (change)="aplicarFiltros()"><option value="">Todas las Categorías</option><option value="economico">Económicos</option><option value="sedan confort">Sedán Confort</option><option value="suv">SUV / Familiares</option></select></div><div class="col-md"><select class="form-select form-select-sm" [(ngModel)]="marcaSeleccionada" (change)="aplicarFiltros()"><option value="">Todas las Marcas</option><option *ngFor="let marca of marcasUnicas" [value]="marca">{{ marca }}</option></select></div><div class="col-md-auto"><button class="btn btn-sm btn-outline-secondary w-100" (click)="limpiarFiltros()">Limpiar</button></div></div></section>
 
-    <div *ngIf="isLoadingVehiculos" class="text-center p-5"><div class="spinner-border text-primary"></div></div>
+    <!-- Filtros (sin cambios) -->
+    <section class="filter-controls card shadow-sm p-3 mb-4">
+      <div class="row g-3 align-items-center justify-content-center">
+        <div class="col-md"><select class="form-select form-select-sm" [(ngModel)]="categoriaSeleccionada"
+            (change)="aplicarFiltros()">
+            <option value="">Todas las Categorías</option>
+            <option value="economico">Económicos</option>
+            <option value="sedan confort">Sedán Confort</option>
+            <option value="suv">SUV / Familiares</option>
+          </select></div>
+        <div class="col-md"><select class="form-select form-select-sm" [(ngModel)]="marcaSeleccionada"
+            (change)="aplicarFiltros()">
+            <option value="">Todas las Marcas</option>
+            <option *ngFor="let marca of marcasUnicas" [value]="marca">{{ marca }}</option>
+          </select></div>
+        <div class="col-md-auto"><button class="btn btn-sm btn-outline-secondary w-100"
+            (click)="limpiarFiltros()">Limpiar</button></div>
+      </div>
+    </section>
 
+    <!-- Indicador de Carga -->
+    <div *ngIf="isLoadingVehiculos" class="text-center p-5">
+      <div class="spinner-border text-primary"></div>
+    </div>
+
+    <!-- Galería de Vehículos -->
     <div *ngIf="!isLoadingVehiculos" class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
       <div *ngFor="let auto of vehiculosFiltrados" class="col d-flex align-items-stretch">
-        <!-- DISEÑO COMPLETO Y CORRECTO DE LA TARJETA -->
+
+        <!-- ▼▼▼ DISEÑO COMPLETO Y RESTAURADO DE LA TARJETA ▼▼▼ -->
         <div class="card h-100 vehicle-card">
           <img class="card-img-top vehicle-card__image" [src]="auto.imagen" [alt]="auto.marca + ' ' + auto.modelo">
           <div class="card-body d-flex flex-column p-3">
+
+            <div class="vehicle-card__tags mb-2">
+              <span *ngFor="let tag of auto.tags" class="badge rounded-pill me-1" [ngClass]="{
+                'tag--oferta': tag.toLowerCase() === 'oferta',
+                'tag--popular': tag.toLowerCase() === 'popular' || tag.toLowerCase() === 'más vendido',
+                'tag--default': tag.toLowerCase() !== 'oferta' && tag.toLowerCase() !== 'popular' && tag.toLowerCase() !== 'más vendido'
+              }">{{ tag }}</span>
+            </div>
+
             <h5 class="card-title vehicle-card__title">{{ auto.marca }} {{ auto.modelo }}</h5>
             <p class="card-text vehicle-card__description">{{ auto.descripcion_corta }}</p>
+
             <ul class="list-group list-group-flush vehicle-card__specs">
-              <li class="list-group-item"><i class="bi bi-people-fill"></i> {{ auto.caracteristicas.plazas }} Plazas</li>
-              <li class="list-group-item"><i class="bi bi-door-closed-fill"></i> {{ auto.caracteristicas.puertas }} Puertas</li>
-              <li class="list-group-item"><i class="bi bi-gear-wide-connected"></i> {{ auto.caracteristicas.transmision }}</li>
+              <li class="list-group-item"><i class="bi bi-people-fill"></i> {{ auto.caracteristicas.plazas }} Plazas
+              </li>
+              <li class="list-group-item"><i class="bi bi-door-closed-fill"></i> {{ auto.caracteristicas.puertas }}
+                Puertas</li>
+              <li class="list-group-item"><i class="bi bi-gear-wide-connected"></i> {{ auto.caracteristicas.transmision
+                }}</li>
               <li class="list-group-item"><i class="bi bi-briefcase-fill"></i> {{ auto.caracteristicas.maletero }}</li>
             </ul>
+
             <div class="mt-auto text-end pt-3">
-              <p class="vehicle-card__price mb-2"><span class="fs-4 fw-bold">${{ auto.precio_dia | number:'1.0-0':'es-AR' }}</span>/día</p>
+              <p class="vehicle-card__price mb-2">
+                <span class="fs-4 fw-bold">${{ auto.precio_dia | number:'1.0-0':'es-AR' }}</span>/día
+              </p>
               <button class="btn btn-primary w-100" (click)="seleccionarVehiculo(auto)">Elegir este Vehículo</button>
             </div>
           </div>
         </div>
       </div>
     </div>
-    
-    <div class="mt-4"><button class="btn btn-link text-secondary" (click)="volverAlPaso(1)"><i class="bi bi-arrow-left"></i> Modificar Fechas</button></div>
+
+    <div class="mt-4"><button class="btn btn-link text-secondary" (click)="volverAlPaso(1)"><i
+          class="bi bi-arrow-left"></i> Modificar Fechas</button></div>
   </section>
+
 
   <!-- ============================================= -->
   <!-- PASO 3: Personalizar Viaje (Placeholder)      -->
   <!-- ============================================= -->
-  <section *ngIf="pasoActual === 3" class="reserva-step">
-    <div class="step-header"><h2><span class="step-number">3</span> Personaliza tu Viaje</h2></div>
-    <div *ngIf="vehiculoElegido" class="configuracion-placeholder card p-5 text-center">
-      <h4>Configurando: {{ vehiculoElegido.marca }} {{ vehiculoElegido.modelo }}</h4>
+
+
+  <section *ngIf="pasoActual === 3 && vehiculoElegido" class="reserva-step">
+    <div class="step-header">
+      <h2><span class="step-number">3</span> Personaliza tu Viaje</h2>
+      <p>Añade extras y confirma los detalles de tu reserva.</p>
     </div>
-    <div class="mt-4"><button class="btn btn-link text-secondary" (click)="volverAlPaso(2)"><i class="bi bi-arrow-left"></i> Elegir Otro Vehículo</button></div>
+
+    <div class="row g-5">
+      <div class="col-lg-7">
+        <form [formGroup]="formPaso3">
+          <h5>Servicios Adicionales</h5>
+          <p class="text-muted small">Mejora tu experiencia de viaje.</p>
+          <div class="list-group">
+            <label class="list-group-item d-flex justify-content-between align-items-center">
+              <div><i class="bi bi-car-seat-fill me-2 text-primary"></i><strong>Silla para Bebé</strong><small
+                  class="d-block text-muted">Seguridad y comodidad.</small></div>
+              <div class="form-check form-switch"><input class="form-check-input" type="checkbox" role="switch"
+                  formControlName="sillaBebe"><span class="extra-price">+$1.500/día</span></div>
+            </label>
+            <label class="list-group-item d-flex justify-content-between align-items-center">
+              <div><i class="bi bi-compass-fill me-2 text-primary"></i><strong>Asistencia GPS 24hs</strong><small
+                  class="d-block text-muted">Nunca te pierdas.</small></div>
+              <div class="form-check form-switch"><input class="form-check-input" type="checkbox" role="switch"
+                  formControlName="gps"><span class="extra-price">+$1.000/día</span></div>
+            </label>
+            <label class="list-group-item d-flex justify-content-between align-items-center">
+              <div><i class="bi bi-person-plus-fill me-2 text-primary"></i><strong>Conductor Adicional</strong><small
+                  class="d-block text-muted">Comparte el volante.</small></div>
+              <div class="form-check form-switch"><input class="form-check-input" type="checkbox" role="switch"
+                  formControlName="conductorAdicional"><span class="extra-price">+$2.500/día</span></div>
+            </label>
+          </div>
+        </form>
+      </div>
+      <div class="col-lg-5">
+        <div class="summary-card">
+          <h5>Tu Reserva</h5>
+          <hr>
+          <div class="summary-car-info"><img [src]="vehiculoElegido.imagen" [alt]="vehiculoElegido.modelo">
+            <div><strong>{{ vehiculoElegido.marca }} {{ vehiculoElegido.modelo }}</strong><small
+                class="d-block text-muted">{{ vehiculoElegido.categoria | titlecase }}</small></div>
+          </div>
+          <hr>
+          <h6>Resumen de Costos</h6>
+          <ul class="list-unstyled">
+            <li class="d-flex justify-content-between"><span>Vehículo ({{ cotizacion.dias }} día{{ cotizacion.dias > 1 ?
+                's' : '' }})</span><span>${{ cotizacion.subtotalVehiculo | number:'1.0-0':'es-AR' }}</span></li>
+            <li class="d-flex justify-content-between text-muted"><span>Extras</span><span>+ ${{ cotizacion.costoExtras
+                | number:'1.0-0':'es-AR' }}</span></li>
+          </ul>
+          <hr>
+          <div class="d-flex justify-content-between fw-bold fs-5"><span>Total Estimado</span><span
+              class="text-primary">${{ cotizacion.total | number:'1.0-0':'es-AR' }}</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="d-flex justify-content-between mt-4">
+      <button class="btn btn-link text-secondary" (click)="volverAlPaso(2)"><i class="bi bi-arrow-left"></i> Elegir Otro
+        Vehículo</button>
+      <button class="btn btn-primary btn-lg" (click)="irAlPaso4()">Continuar al Pago <i
+          class="bi bi-arrow-right"></i></button>
+    </div>
   </section>
 </div>

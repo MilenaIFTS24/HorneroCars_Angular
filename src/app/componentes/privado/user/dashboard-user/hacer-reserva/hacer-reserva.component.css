@@ -1,16 +1,6 @@
-
-/*
- * ====================================================================
- * Estilos para el Flujo de Reserva Completo (HacerReservaComponent)
- * ====================================================================
- * Este archivo contiene todos los estilos necesarios para el asistente
- * de reserva, incluyendo el formulario de fechas, los filtros y las
- * tarjetas de los vehículos.
-*/
-
-/* --- Contenedor Principal y Estructura de Pasos --- */
+/* Estilos para el flujo de reserva completo */
 .reserva-flow-container {
-    max-width: 1200px; /* Ancho amplio para el catálogo */
+    max-width: 1200px;
     margin: 2rem auto;
 }
 
@@ -27,11 +17,13 @@
         opacity: 0;
         transform: translateY(20px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
     }
 }
+
 
 .step-header {
     text-align: center;
@@ -42,10 +34,6 @@
 
 .step-header h2 {
     font-family: 'Merriweather', serif;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 1rem;
 }
 
 .step-header .step-number {
@@ -57,22 +45,16 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    font-family: 'Lato', sans-serif;
+    font-family: 'Lato',
+        sans-serif;
     font-size: 1.2rem;
     font-weight: 700;
+    margin-right: 1rem;
 }
 
-/* === ESTILOS PARA LOS CONTROLES DE FILTRO (Paso 2) === */
+/* === ESTILOS RESTAURADOS PARA FILTROS Y TARJETAS === */
+
 .filter-controls {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 1.5rem;
-    align-items: flex-end;
-    padding: 1.5rem;
-    background-color: #ffffff;
-    border-radius: 12px;
-    margin-bottom: 2.5rem;
     border: 1px solid #e9ecef;
 }
 
@@ -81,6 +63,7 @@
     min-width: 220px;
 }
 
+
 .btn-clear-filters {
     background: none;
     border: none;
@@ -88,20 +71,14 @@
     text-decoration: underline;
     cursor: pointer;
     font-size: 0.9rem;
-    padding-bottom: 0.5rem; /* Alineación con los selects */
+    padding-bottom: 0.5rem;
 }
-
-/* --- Estilos para las Tarjetas de Vehículo (Paso 2) --- */
-/* Estos estilos son una réplica de los que diseñamos para vehiculos.component.css,
-   asegurando una total consistencia visual. */
 
 .vehicle-card {
     border-radius: 16px;
     border: 1px solid #eef0f2;
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    display: flex;
-    flex-direction: column;
 }
 
 .vehicle-card:hover {
@@ -114,6 +91,26 @@
     object-fit: cover;
 }
 
+.vehicle-card__tags .badge {
+    font-size: 0.65rem;
+    font-weight: 700;
+    padding: 0.4em 0.8em;
+    color: white !important;
+}
+
+.tag--oferta {
+    background-color: var(--hornero-error, #dc3545) !important;
+}
+
+.tag--popular,
+.tag--más-vendido {
+    background-color: var(--hornero-exito, #198754) !important;
+}
+
+.tag--default {
+    background-color: #6c757d !important;
+}
+
 .vehicle-card__title {
     font-family: 'Merriweather', serif;
     font-size: 1.25rem;
@@ -124,6 +121,12 @@
     color: #6c757d;
     min-height: 50px;
     flex-grow: 1;
+}
+
+.vehicle-card__specs {
+    border-top: 1px solid #f0f0f0;
+    padding-top: 1rem;
+    margin-top: auto;
 }
 
 .vehicle-card__specs .list-group-item {
@@ -145,4 +148,88 @@
 
 .vehicle-card__cta-button {
     font-weight: 600;
+}
+
+
+/* --- ESTILOS PARA EL PASO 3: PERSONALIZAR RESERVA --- */
+.list-group-item {
+    padding: 1rem 1.25rem;
+    transition: background-color 0.2s ease;
+    border-color: #e9ecef;
+}
+
+.list-group-item:hover {
+    background-color: #f8f9fa;
+}
+
+.list-group-item i {
+    color: var(--hornero-naranja, #E8751A);
+    font-size: 1.5rem;
+    width: 40px;
+    text-align: center;
+}
+
+.form-check.form-switch {
+    display: flex;
+    align-items: center;
+    padding-left: 0;
+}
+
+.form-check.form-switch .form-check-input {
+    margin-left: auto;
+    margin-right: 0.5rem;
+    width: 3em;
+    height: 1.5em;
+    cursor: pointer;
+    background-color: #dee2e6;
+    border-color: #dee2e6;
+}
+
+.form-check-input:checked {
+    background-color: var(--hornero-exito, #198754);
+    border-color: var(--hornero-exito, #198754);
+}
+
+.extra-price {
+    font-weight: 500;
+    color: #495057;
+    font-size: 0.9rem;
+    min-width: 100px;
+    text-align: right;
+}
+
+/* --- Tarjeta de Resumen de Cotización --- */
+.summary-card {
+    background-color: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 12px;
+    padding: 1.5rem;
+    position: sticky;
+    top: 2rem;
+}
+
+.summary-card h5,
+.summary-card h6 {
+    font-family: 'Merriweather', serif;
+}
+
+.summary-car-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.summary-car-info img {
+    width: 100px;
+    height: 75px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.summary-card .list-unstyled li {
+    padding: 0.5rem 0;
+}
+
+.summary-card .text-primary {
+    color: var(--hornero-naranja, #E8751A) !important;
 }
