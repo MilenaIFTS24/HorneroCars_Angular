@@ -9,8 +9,8 @@
 
     <div class="col-lg-6">
       <div class="contact-form-wrapper p-4 p-md-5">
-        <h4 class="mb-4">Envíanos un Mensaje</h4>
-        <form id="formContacto" [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+        <h4 id="formContacto" class="mb-4">Envíanos un Mensaje</h4>
+        <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
           <div class="row">
             <div class="col-md-6 mb-3">
               <label for="contact-nombre" class="form-label">Nombre</label>

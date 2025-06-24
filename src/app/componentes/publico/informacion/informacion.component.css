@@ -7,9 +7,14 @@
     position: relative;
 }
 
-#alertaEnConstruccion a {
-    color: #721c24;    
+#irAContacto{
+    color: #721c24; 
+    text-decoration: underline;   
 }
+
+#irAContacto:hover {
+    cursor: pointer;}
+
     
 #cerrarAlerta {
     font-weight: bolder;
