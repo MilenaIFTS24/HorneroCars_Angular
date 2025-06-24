@@ -26,7 +26,7 @@ export class DashboardAdminComponent implements OnInit {
     { label: 'Gestión reservas', icon: 'fa-solid fa-user-plus', link: 'gestion-reservas' },
 
     { label: 'Gestión vehículos', icon: 'fa-solid fa-truck', link: '' },
-    { label: 'Gestión sucursales', icon: 'fa-solid fa-building', link: '' },
+    { label: 'Gestión sucursales', icon: 'fa-solid fa-building', link: 'gestion-sucursales' },
     { label: 'Consultas y Reportes', icon: 'fa-solid fa-chart-line', link: '' },
 
     { label: 'Gestión vehículos', icon: 'fa-solid fa-truck', link: 'gestion-vehiculos' },
