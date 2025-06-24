@@ -43,7 +43,7 @@ export const routes: Routes = [ //rutas elaboradas con lazy loading.
   },
   // --- Fin de la nueva estructura ---
 
-  {
+  
 
 
   { path: "reserva", loadComponent: () => import('./componentes/publico/reserva/reserva.component').then(m => ReservaComponent) },
@@ -121,8 +121,3 @@ export const routes: Routes = [ //rutas elaboradas con lazy loading.
 
   { path: '', redirectTo: '/', pathMatch: 'full' },
 ];
-
-
-  { path: '', redirectTo: '/', pathMatch: 'full' },
-];
-
