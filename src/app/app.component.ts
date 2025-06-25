@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterOutlet, Router } from '@angular/router'; 
 import { NavComponent } from './componentes/publico/nav/nav.component';
 import { FooterComponent } from './componentes/publico/footer/footer.component';
 
@@ -12,4 +12,7 @@ import { FooterComponent } from './componentes/publico/footer/footer.component';
 })
 export class AppComponent {
   title = 'Hornero_Cars_Angular';
+
+  // Inyectamos el servicio Router y lo hacemos público
+  constructor(public router: Router) { }
 }

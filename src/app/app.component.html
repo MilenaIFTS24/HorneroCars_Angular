@@ -2,4 +2,6 @@
 
 <router-outlet></router-outlet>
 
-<app-footer></app-footer>
+@if (!router.url.startsWith('/dashboardAdmin')) {
+  <app-footer></app-footer>
+}

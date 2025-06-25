@@ -1,6 +1,6 @@
-/* sidebar.component.scss */
+/* sidebar.component.css */
 .panel-contenedor {
-  height: 100vh;
+  min-height: 100vh;
   /* Ocupa el 100% de la altura de la vista */
   width: 250px;
   /* Ancho de tu panel */
@@ -97,13 +97,9 @@
 
 .dashboard-layout {
   display: flex;
-  height: 90vh;
+  height: 100vh;
 }
 
-.panel-contenedor {
-  width: 250px;
-  /* resto de estilos */
-}
 
 .dashboard-content {
   flex: 1;
