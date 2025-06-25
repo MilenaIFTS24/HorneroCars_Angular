@@ -112,6 +112,22 @@ export class GestionVehiculosComponent implements OnInit {
   }
 
   agregarVehiculo(): void {
+//  Validamos que no haya campos vacios
+ if (!this.vehiculoForm.marca?.trim() ||
+      !this.vehiculoForm.modelo?.trim() ||
+      !this.vehiculoForm.categoria?.trim() ||
+      !this.vehiculoForm.precio_dia || 
+      !this.vehiculoForm.imagen?.trim() ||
+      !this.vehiculoForm.caracteristicas?.matricula?.trim() || 
+      !this.vehiculoForm.caracteristicas?.puertas ||
+      !this.vehiculoForm.caracteristicas?.plazas ||
+      !this.vehiculoForm.caracteristicas?.transmision?.trim() ||
+      !this.vehiculoForm.caracteristicas?.maletero?.trim() ||
+      !this.vehiculoForm.caracteristicas?.grupo?.trim())
+  {
+    this.mensajeError = 'Todos los campos obligatorios del vehículo (Marca, Modelo, Categoría, Precio por Día, Imagen, y detalles de Características como Matrícula, Puertas, Plazas, Transmisión, Maletero, Grupo) deben estar completos.';
+    return;
+  }
     this.vehiculoForm.id = Date.now();
 
     this.abmVehiculoService.addVehiculo(this.vehiculoForm).subscribe({
@@ -140,7 +156,7 @@ export class GestionVehiculosComponent implements OnInit {
   }
 
   actualizarVehiculo(): void {
-    this.abmVehiculoService.updateVehiculo(this.vehiculoForm).subscribe({
+    this.abmVehiculoService.actualizarVehiculo(this.vehiculoForm).subscribe({
       next: (vehiculo) => {
         console.log('Vehículo actualizado:', vehiculo);
         this.cargarVehiculos(); // Recargar todos y aplicar filtros
@@ -156,7 +172,7 @@ export class GestionVehiculosComponent implements OnInit {
 
   eliminarVehiculo(id: number): void {
     if (window.confirm('¿Estás seguro de que deseas eliminar este vehículo?')) {
-      this.abmVehiculoService.deleteVehiculo(id).subscribe({
+      this.abmVehiculoService.eliminarVehiculo(id).subscribe({
         next: () => {
           console.log('Vehículo eliminado con éxito.');
           this.cargarVehiculos(); // Recargar todos y aplicar filtros
