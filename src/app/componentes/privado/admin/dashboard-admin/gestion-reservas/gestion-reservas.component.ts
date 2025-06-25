@@ -5,7 +5,7 @@ import { AbmReservaService } from '../../../../../servicios/abm-reservas.service
 import { ReservaAbm } from '../../../../../modelos/reserva-abm';
 
 @Component({
-  selector: 'app-gestion-vehiculos',
+  selector: 'app-gestion-reservas',
   standalone: true,
   imports: [CommonModule, FormsModule],
   templateUrl: './gestion-reservas.component.html',
@@ -51,6 +51,19 @@ export class GestionReservasComponent implements OnInit {
   }
 
   agregarReserva(): void {
+
+
+    if (!this.reservaForm.clienteId?.trim() ||
+      !this.reservaForm.vehiculoId || // Asumiendo que 0 o null no son válidos para vehiculoId
+      !this.reservaForm.precioTotal || // Asumiendo que 0 o null no son válidos para precioTotal
+      !this.reservaForm.fechaRecogida?.trim() ||
+      !this.reservaForm.horaRecogida?.trim() ||
+      !this.reservaForm.fechaDevolucion?.trim() ||
+      !this.reservaForm.horaDevolucion?.trim())
+  {
+    this.mensajeError = 'Todos los campos obligatorios de la reserva (ID Cliente, ID Vehículo, Precio Total, Fecha y Hora de Recogida, Fecha y Hora de Devolución) deben estar completos.';
+    return;
+  }
     this.reservaForm.reservaId = Date.now();
 
     this.abmReservaService.addReserva(this.reservaForm).subscribe({
@@ -74,7 +87,7 @@ export class GestionReservasComponent implements OnInit {
   }
 
   actualizarReserva(): void {
-    this.abmReservaService.updateReserva(this.reservaForm).subscribe({
+    this.abmReservaService.actualizarReserva(this.reservaForm).subscribe({
       next: (reserva) => {
         console.log('Reserva actualizada:', reserva);
         this.cargarReservas();
@@ -90,7 +103,7 @@ export class GestionReservasComponent implements OnInit {
 
   eliminarReserva(id: number): void {
     if (window.confirm('¿Estás seguro de que deseas eliminar esta reserva?')) {
-      this.abmReservaService.deleteReserva(id).subscribe({
+      this.abmReservaService.eliminarReserva(id).subscribe({
         next: () => {
           console.log('Reserva eliminada con éxito.');
           this.cargarReservas();

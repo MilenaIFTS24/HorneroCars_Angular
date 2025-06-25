@@ -1,18 +1,23 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { Router, ActivatedRoute, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-informacion',
   standalone: true,
   imports: [
     CommonModule,
-    RouterModule // Necesario para routerLink, routerLinkActive y router-outlet
+    RouterModule
   ],
   templateUrl: './informacion.component.html',
   styleUrl: './informacion.component.css'
 })
+export class InformacionComponent implements OnInit {  // 👈 Acá implementás OnInit
+  constructor(private router: Router, private route: ActivatedRoute) {}
 
-export class InformacionComponent {
-
+  ngOnInit(): void {
+    if (this.router.url === '/informacion') {
+      this.router.navigate(['tarifas'], { relativeTo: this.route });
+    }
+  }
 }

@@ -1,8 +1,7 @@
-import { Injectable, Inject, PLATFORM_ID } from '@angular/core';
-import { isPlatformBrowser } from '@angular/common';
+import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of, throwError } from 'rxjs';
-import { tap, catchError, map } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { ReservaAbm } from '../modelos/reserva-abm';
 
 @Injectable({
@@ -10,122 +9,131 @@ import { ReservaAbm } from '../modelos/reserva-abm';
 })
 export class AbmReservaService {
 
+  // --- Propiedades de Configuración ---
   private readonly localStorageKey = 'appReservas';
-  private readonly initialReservasJsonPath = 'assets/reservas.json';
+  private readonly rutaJsonReservasIniciales = 'assets/reservas.json';
 
-  constructor(
-    private http: HttpClient,
-    @Inject(PLATFORM_ID) private platformId: Object
-  ) {
-    if (isPlatformBrowser(this.platformId)) {
-      const storedReservas = localStorage.getItem(this.localStorageKey);
-      if (!storedReservas) {
-        this.http.get<{ reservas: ReservaAbm[] }>(this.initialReservasJsonPath).pipe(
-          tap(response => {
-            localStorage.setItem(this.localStorageKey, JSON.stringify(response.reservas));
-            console.log('Reservas iniciales cargadas desde assets/reservas.json a localStorage.');
-          }),
-          catchError(error => {
-            console.error('Error al cargar reservas iniciales:', error);
-            localStorage.setItem(this.localStorageKey, JSON.stringify([]));
-            return of({ reservas: [] });
-          })
-        ).subscribe();
-      } else {
-        console.log('Reservas cargadas desde localStorage.');
-      }
-    } else {
-      console.log('AbmReservaService inicializado en entorno de servidor.');
+  // Almacena las reservas una vez cargadas para un acceso rápido.
+  private reservasEnMemoria: ReservaAbm[] | null = null;
+
+  // --- Constructor del Servicio ---
+  constructor(private http: HttpClient) {
+    this.initReservas();
+  }
+
+  // Obtiene las reservas almacenadas en localStorage.
+  private getReservasFromStorage(): ReservaAbm[] | null {
+    try {
+      const stored = localStorage.getItem(this.localStorageKey);
+      return stored ? JSON.parse(stored) : null;
+    } catch (e) {
+      console.error('Error al parsear reservas de localStorage:', e);
+      return null;
     }
   }
 
-  getReservas(): Observable<ReservaAbm[]> {
-    if (isPlatformBrowser(this.platformId)) {
-      const reservasJson = localStorage.getItem(this.localStorageKey);
-      if (reservasJson) {
-        try {
-          const reservas: ReservaAbm[] = JSON.parse(reservasJson);
-          return of(reservas);
-        } catch (e) {
-          console.error('Error al parsear reservas de localStorage:', e);
-          return throwError(() => new Error('Error al cargar reservas.'));
+  // Guarda un array de reservas en localStorage.
+  private saveReservasToStorage(reservas: ReservaAbm[]): void {
+    localStorage.setItem(this.localStorageKey, JSON.stringify(reservas));
+  }
+
+  // --- Lógica de Inicialización de Reservas ---
+
+  // Inicializa las reservas: intenta cargarlas desde localStorage.
+  // Si no hay, las carga desde un archivo JSON predefinido y las guarda.
+  private initReservas(): void {
+    const storedReservas = this.getReservasFromStorage();
+
+    if (!storedReservas) {
+      // Si no hay reservas en localStorage, las carga desde el JSON
+      this.http.get<{ reservas: ReservaAbm[] }>(this.rutaJsonReservasIniciales).subscribe({
+        next: (response) => {
+          this.reservasEnMemoria = response.reservas;
+          this.saveReservasToStorage(response.reservas);
+          console.log('Reservas iniciales cargadas desde assets/reservas.json a localStorage y memoria.');
+        },
+        error: (err) => {
+          console.error('Error al cargar reservas iniciales:', err);
+          this.reservasEnMemoria = [];
+          this.saveReservasToStorage([]);
         }
-      }
-      return of([]);
+      });
     } else {
-      return of([]);
+      // Si ya hay reservas en localStorage, las carga a la caché en memoria
+      this.reservasEnMemoria = storedReservas;
+      console.log('Reservas cargadas desde localStorage a memoria.');
     }
   }
 
+
+  // Obtiene todas las reservas.
+  getReservas(): Observable<ReservaAbm[]> {
+    if (this.reservasEnMemoria) {
+      return of(this.reservasEnMemoria);
+    }
+
+    // intenta cargar desde localStorage 
+    const reservas = this.getReservasFromStorage();
+    if (reservas) {
+      this.reservasEnMemoria = reservas;
+      return of(reservas);
+    }
+    return of([]); // Si no hay datos, devuelve un array vacío.
+  }
+
+  // Añade una nueva reserva, con validación de ID.
   addReserva(newReserva: ReservaAbm): Observable<ReservaAbm> {
-    if (isPlatformBrowser(this.platformId)) {
-      return this.getReservas().pipe(
-        map(reservas => {
-          if (reservas.some(r => r.reservaId === newReserva.reservaId)) {
-            throw new Error('El ID de la reserva ya existe.');
-          }
+    const reservas = this.getReservasFromStorage() || [];
 
-          const updatedReservas = [...reservas, newReserva];
-          localStorage.setItem(this.localStorageKey, JSON.stringify(updatedReservas));
-          return newReserva;
-        }),
-        catchError(error => {
-          console.error('Error al añadir reserva a localStorage:', error);
-          return throwError(() => error);
-        })
-      );
+    // Valida si el ID de la reserva ya existe.
+    if (reservas.some(r => r.reservaId === newReserva.reservaId)) {
+      return throwError(() => new Error('El ID de la reserva ya existe.'));
+    }
+
+    // Agrega la nueva reserva y actualiza el almacenamiento.
+    const reservasActualizadas = [...reservas, newReserva];
+    this.saveReservasToStorage(reservasActualizadas);
+    this.reservasEnMemoria = reservasActualizadas;
+
+    return of(newReserva); // Retorna la reserva añadida.
+  }
+
+  // Actualiza una reserva existente por su ID.
+  actualizarReserva(reservaParaActualizar: ReservaAbm): Observable<ReservaAbm> {
+    const reservas = this.getReservasFromStorage() || [];
+    const index = reservas.findIndex(r => r.reservaId === reservaParaActualizar.reservaId);
+
+    if (index > -1) {
+      // Si la encuentra, la actualiza y guarda los cambios.
+      reservas[index] = reservaParaActualizar;
+      this.saveReservasToStorage(reservas);
+      this.reservasEnMemoria = reservas;
+      return of(reservaParaActualizar);
     } else {
-      return throwError(() => new Error('localStorage no disponible en este entorno.'));
+      return throwError(() => new Error('Reserva no encontrada para actualizar.'));
     }
   }
 
-  updateReserva(updatedReserva: ReservaAbm): Observable<ReservaAbm> {
-    if (isPlatformBrowser(this.platformId)) {
-      return this.getReservas().pipe(
-        map(reservas => {
-          const index = reservas.findIndex(r => r.reservaId === updatedReserva.reservaId);
-          if (index > -1) {
-            reservas[index] = updatedReserva;
-            localStorage.setItem(this.localStorageKey, JSON.stringify(reservas));
-            return updatedReserva;
-          } else {
-            throw new Error('Reserva no encontrada para actualizar.');
-          }
-        }),
-        catchError(error => {
-          console.error('Error al actualizar reserva:', error);
-          return throwError(() => error);
-        })
-      );
+  // Elimina una reserva por su ID.
+  eliminarReserva(reservaId: number): Observable<void> {
+    const reservas = this.getReservasFromStorage() || [];
+    const initialLength = reservas.length;
+    // Filtra el array para excluir la reserva a eliminar.
+    const reservasActualizadas = reservas.filter(r => r.reservaId !== reservaId);
+
+    if (reservasActualizadas.length < initialLength) {
+      // Si se eliminó una reserva, guarda los cambios.
+      this.saveReservasToStorage(reservasActualizadas);
+      this.reservasEnMemoria = reservasActualizadas;
+      return of(undefined);
     } else {
-      return throwError(() => new Error('localStorage no disponible en este entorno.'));
+      return throwError(() => new Error('Reserva no encontrada para eliminar.'));
     }
   }
 
-  deleteReserva(reservaId: number): Observable<void> {
-    if (isPlatformBrowser(this.platformId)) {
-      return this.getReservas().pipe(
-        map(reservas => {
-          const initialLength = reservas.length;
-          const updatedReservas = reservas.filter(r => r.reservaId !== reservaId);
-          if (updatedReservas.length < initialLength) {
-            localStorage.setItem(this.localStorageKey, JSON.stringify(updatedReservas));
-            return;
-          } else {
-            throw new Error('Reserva no encontrada para eliminar.');
-          }
-        }),
-        catchError(error => {
-          console.error('Error al eliminar reserva:', error);
-          return throwError(() => error);
-        })
-      );
-    } else {
-      return throwError(() => new Error('localStorage no disponible en este entorno.'));
-    }
-  }
-
+  // Busca una reserva por su ID.
   getReservaById(id: number): Observable<ReservaAbm | undefined> {
+    // Obtiene todas las reservas y busca la que coincida con el ID.
     return this.getReservas().pipe(
       map(reservas => reservas.find(reserva => reserva.reservaId === id))
     );
