@@ -25,8 +25,10 @@ export class HacerReservaComponent implements OnInit {
   // --- Propiedades para los formularios y datos ---
   public formPaso1!: FormGroup;
   public formPaso3!: FormGroup;
+  public formPaso4!: FormGroup; // <-- Nuevo formulario para el pago
   public vehiculoElegido: Vehiculo | null = null;
   public cotizacion = { dias: 0, subtotalVehiculo: 0, costoExtras: 0, total: 0 };
+  public pagoProcesando: boolean = false; // Para mostrar un spinner en el botón de pago
 
   // --- Propiedades para el catálogo ---
   private todosLosVehiculos: Vehiculo[] = [];
@@ -63,6 +65,11 @@ export class HacerReservaComponent implements OnInit {
     });
 
     this.formPaso3.valueChanges.subscribe(() => this.calcularCotizacion());
+
+    this.formPaso4 = this.fb.group({
+      metodoPago: ['tarjeta', Validators.required]
+    });
+
   }
 
   // --- Lógica del Flujo ---
@@ -79,6 +86,10 @@ export class HacerReservaComponent implements OnInit {
     this.calcularCotizacion();
   }
 
+  confirmarYProcederAlPago(): void {
+    this.pasoActual = 4;
+  }
+
   // Función para el botón "Solo Reservar"
   soloReservar(): void {
     const reserva = this.crearObjetoReserva('Confirmada - Pendiente de Pago');
@@ -89,17 +100,26 @@ export class HacerReservaComponent implements OnInit {
     this.router.navigate(['/dashboardUser/mis-reservas']);
   }
 
-  // Función para el botón "Pagar y Confirmar"
-  irAlPaso4(): void {
-    const reserva = this.crearObjetoReserva('Pagada'); // Simulamos que se paga
-    if (!reserva) return;
+  //Funcion para el boton Pagar y continaur
+  finalizarReservaPagada(estado: 'Pagada'): void {
+  if (this.pagoProcesando) return;
+  this.pagoProcesando = true;
 
-    // Aquí iría la lógica para mostrar el Paso 4 (módulo de pago).
-    // Por ahora, simulamos el proceso completo.
+  setTimeout(() => {
+    const reserva = this.crearObjetoReserva(estado); // Usa el parámetro recibido
+    if (!reserva) {
+      this.pagoProcesando = false;
+      return;
+    }
+
     this.reservasService.agregarReserva(reserva);
-    alert('¡Pago procesado y reserva confirmada!\nGracias por tu confianza.');
+    alert('¡Pago procesado y reserva confirmada!\nGracias por tu confianza en Hornero Cars.');
     this.router.navigate(['/dashboardUser/mis-reservas']);
-  }
+
+    this.pagoProcesando = false;
+  }, 2000);
+}
+
 
   // --- Funciones de Soporte ---
 
@@ -159,3 +179,4 @@ export class HacerReservaComponent implements OnInit {
   limpiarFiltros(): void { this.categoriaSeleccionada = ''; this.marcaSeleccionada = ''; this.aplicarFiltros(); }
   volverAlPaso(paso: number): void { this.pasoActual = paso; }
 }
+

@@ -28,7 +28,7 @@ export class MisReservasComponent implements OnInit {
   }
 
   getUsuarioActivo(): void {
-    const usuarioStr = sessionStorage.getItem('usuarioActivo'); // O la clave que estén usando, ej: 'usuario'
+    const usuarioStr = sessionStorage.getItem('usuario') || sessionStorage.getItem('usuarioActivo'); // O la clave que estén usando, ej: 'usuario'
     if (usuarioStr) {
       this.usuarioLogueado = JSON.parse(usuarioStr);
     }
