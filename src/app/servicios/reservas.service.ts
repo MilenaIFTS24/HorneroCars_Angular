@@ -29,6 +29,20 @@ export class ReservasService {
     localStorage.setItem(this.localStorageKey, JSON.stringify(reservas));
   }
 
+   /* Añade una nueva reserva al listado existente en localStorage.
+   * @param nuevaReserva - El objeto de la nueva reserva que se va a guardar.
+   */
+  agregarReserva(nuevaReserva: Reserva): void {
+    this.getReservas().subscribe(reservasActuales => {
+      // Añadimos la nueva reserva al principio del array para que aparezca primero.
+      const reservasActualizadas = [nuevaReserva, ...reservasActuales];
+      // Guardamos el array actualizado en localStorage.
+      this.guardarReservas(reservasActualizadas);
+      console.log('Servicio: Nueva reserva agregada con éxito.', nuevaReserva);
+    });
+  }
+
+
   /**
    * Cambia el estado de una reserva específica a "Cancelada".
    * @param reservaId - El ID de la reserva que se quiere cancelar.
